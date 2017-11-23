@@ -4,6 +4,10 @@
 
 # 博客列表
 
+## [2017-11-1 自主搭建git服务器](ARTICLE/2017-11-1自主搭建git服务器.md)
+
+## [2017-11-1 树的遍历](ARTICLE/2017-11-1TreeTraverse.md)
+
 ## [2017-10-26 FTP操作命令笔记](ARTICLE/2017-10-26.md)
 
 ## [2017-10-24 安卓学习笔记(7) Camera2API代码逻辑整理](ARTICLE/2017-10-24-2.md)
@@ -20,4 +24,4 @@
 
 ## [2017/10/16 Java 文件读写操作](ARTICLE/2017-10-16.md)
 
-## [2017/10/15 Shadowsocks + DigitalOcean 翻墙 ](ARTICLE/2017-10-15.md)
+## [2017/10/15 Shadowsocks + DigitalOcean 翻墙 ](ARTICLE/2017-10-15管理代理配置.md)
