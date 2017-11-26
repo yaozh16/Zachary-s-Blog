@@ -1,5 +1,5 @@
 #!/bin/bash
-password="YAOyao123"
+password="YourPSW"
 sudo -S su<<EOF
 $password
 EOF
