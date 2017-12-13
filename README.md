@@ -3,6 +3,13 @@
 [样式表](STYLE-README.md)
 
 # 博客列表
+## [python改变print输出样式](ARTICLE/2017-12-5python改变print输出样式.md)
+
+## [树霉派配置创建wifi](ARTICLE/2017-11-29树霉派配置创建wifi.md)
+
+## [2017-11-29 Django复习](ARTICLE/2017-11-29 Django复习.md)
+
+## [2017-11-22 树霉派烧写](ARTICLE/2017-11-22树霉派烧写.md)
 
 ## [2017-11-1 自主搭建git服务器](ARTICLE/2017-11-1自主搭建git服务器.md)
 
