@@ -7,7 +7,7 @@
 
 ## [树霉派配置创建wifi](ARTICLE/2017-11-29树霉派配置创建wifi.md)
 
-## [2017-11-29 Django复习](ARTICLE/2017-11-29 Django复习.md)
+## [2017-11-29 Django复习](ARTICLE/2017-11-29Django复习.md)
 
 ## [2017-11-22 树霉派烧写](ARTICLE/2017-11-22树霉派烧写.md)
 
