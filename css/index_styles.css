@@ -1,6 +1,10 @@
 body.index_body{
   font-family: 'Josefin Sans';
 }
+div.index_list{
+  margin-left: 20%;
+  margin-right: 20%;
+}
 div.index_itembox{
   margin: 10px;
   background-color: rgba(64, 125, 196, 0.45);
