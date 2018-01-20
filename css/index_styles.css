@@ -1,0 +1,19 @@
+body.index_body{
+  font-family: 'Josefin Sans';
+}
+div.index_itembox{
+  margin: 10px;
+  background-color: rgba(64, 125, 196, 0.45);
+  padding: 10px;
+  -webkit-border-radius: 15px;
+}
+div.index_itembox:hover{
+  background-color: rgba(64, 125, 196, 0.25);
+}
+div.index_itembox:hover a.index_item{
+  color: rgba(2, 2, 2, 1);
+}
+a.index_item{
+  color: rgba(27, 57, 122, 1);
+  text-decoration: none;
+}
