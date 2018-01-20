@@ -1,21 +1,30 @@
 body.index_body{
   font-family: 'Josefin Sans';
 }
+div.index_head{
+  background-color: #009E8E;
+  color: #ffffff;
+  padding: 10%;
+  font-size: 40;
+}
 div.index_list{
-  margin-left: 20%;
-  margin-right: 20%;
+  list-style-type: none;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 div.index_itembox{
+  display: block;
+  float: left;
   margin: 10px;
-  background-color: rgba(64, 125, 196, 0.45);
+  background-color: #5dcfc3;
   padding: 10px;
   -webkit-border-radius: 15px;
 }
 div.index_itembox:hover{
-  background-color: rgba(64, 125, 196, 0.25);
+  background-color: #00675c;
 }
 div.index_itembox:hover a.index_item{
-  color: rgba(2, 2, 2, 1);
+  color: #ffffff;
 }
 a.index_item{
   color: rgba(27, 57, 122, 1);
