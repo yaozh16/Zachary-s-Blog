@@ -11,7 +11,7 @@ sudo lokkit -s http -s ssh
 ## 2. Add the GitLab package repository and install the package
 ```
 curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
-sudo yum install gitlab-ce
+sudo yum install -y gitlab-ce
 
 ```
 ## 3. 修改    /etc/gitlab/gitlab.rb
@@ -32,3 +32,5 @@ gitlab-ctl status
 gitlab-ctl restart
 
 ```
+
+ns1.alidns.com
