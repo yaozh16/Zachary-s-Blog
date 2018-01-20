@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>2017-10-18</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/yaozh16/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <h1 class="mume-header" id="android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-%E5%AD%A6%E4%B9%A0%E7%99%BE%E5%BA%A6%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABsdk%E4%BD%BF%E7%94%A81">Android学习笔记(4) 学习百度语音识别SDK使用(1)</h1>
+
+<h2 class="mume-header" id="%E9%A2%84%E5%A4%87%E5%A4%84%E7%90%86%E5%BA%93">预备处理：库</h2>
+
+<ol>
+<li>下载<a href="../ATTACHMENT/bdasr/bdasr_V3_20170801_60da871.jar">jar</a>和<a href="../ATTACHMENT/bdasr/JniLibs">其他几个文件</a><br>
+将其分别放在</li>
+</ol>
+<pre class="language-">app/libs/bdasr_V3_20170801_60da871.jar
+app/src/main/JniLibs
+</pre>
+<p>目录下<br>
+2. 然后修改app/src/build.gradle,在dependencies {...}添加</p>
+<pre class="language-">dependencies {
+  ...
+  compile files(&apos;libs/bdasr_V3_20170801_60da871.jar&apos;)
+}
+</pre>
+<p>重新sync<br>
+3. 修改app/src/main/AndroidManifest.xml</p>
+<p>manifest层下添加</p>
+<pre class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.INTERNET<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.CAMERA<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.RECORD_AUDIO<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.ACCESS_NETWORK_STATE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.READ_PHONE_STATE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.WRITE_EXTERNAL_STORAGE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+</pre>
+<p>在application层下添加</p>
+<pre class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta-data</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.baidu.speech.APP_ID<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>yourAPP_ID<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta-data</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.baidu.speech.API_KEY<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>yourAPI_KEY<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta-data</span>
+    <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.baidu.speech.SECRET_KEY<span class="token punctuation">"</span></span>
+    <span class="token attr-name"><span class="token namespace">android:</span>value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>yourSECRET_KEY<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.baidu.speech.VoiceRecognitionService<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>  
+</pre>
+<h2 class="mume-header" id="%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF">基本思路</h2>
+
+<blockquote>
+<p>1、构造一个Eventmanager</p>
+<p>2、为EventManager注册构造一个EventListener（其中构造了回调函数）</p>
+<p>3、通知EventManager开始工作</p>
+</blockquote>
+<h2 class="mume-header" id="%E7%9B%AE%E5%BD%95">目录</h2>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:left">使用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="#1%E5%88%9D%E5%A7%8B%E5%8C%96">初始化</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#2%E6%B3%A8%E5%86%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BE%93%E5%87%BA%E4%BA%8B%E4%BB%B6%E7%B1%BB">注册自己的输出事件类</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#3%E5%90%91sdk%E5%8F%91%E9%80%81%E5%BC%80%E5%A7%8B%E4%BA%8B%E4%BB%B6">向sdk发送开始事件</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#4%E5%9B%9E%E8%B0%83%E4%BA%8B%E4%BB%B6">回调事件</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#5%E4%BA%8B%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E9%80%80%E5%87%BA">事件管理器退出</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#6%E7%A6%BB%E7%BA%BF%E5%91%BD%E4%BB%A4%E8%AF%8D">离线命令词</a></td>
+</tr>
+<tr>
+<td style="text-align:left"><a href="#7%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">输入输出参数</a></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">接入</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><a href="#%E9%9B%86%E6%88%90">集成</a></td>
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="1-%E5%88%9D%E5%A7%8B%E5%8C%96">1、初始化</h2>
+
+<p><a href="#%E7%9B%AE%E5%BD%95">返回目录</a></p>
+<p>SDK 中，通过工厂创建语音识别的事件管理器。</p>
+<p>注意识别事件管理器只能维持一个，请勿同时使用多个实例。</p>
+<p>即创建一个新的识别事件管理器后，之前的那个设置为null。并不再使用。</p>
+<pre class="language-java">EventManager asr <span class="token operator">=</span> EventManagerFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">"asr"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// this是Activity或其它Context类</span>
+</pre>
+<h2 class="mume-header" id="2-%E6%B3%A8%E5%86%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BE%93%E5%87%BA%E4%BA%8B%E4%BB%B6%E7%B1%BB">2、注册自己的输出事件类</h2>
+
+<p><a href="#%E7%9B%AE%E5%BD%95">返回目录</a></p>
+<p>SDK 中，需要实现EventListener的输出事件回调接口。该类需要处理SDK在识别过程中的回调事件。</p>
+<pre class="language-java">EventListener yourListener <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EventListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onEvent</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> String params<span class="token punctuation">,</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">,</span> <span class="token keyword">int</span> offset<span class="token punctuation">,</span> <span class="token keyword">int</span> length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>CALLBACK_EVENT_ASR_READY<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 引擎就绪，可以说话，一般在收到此事件后通过UI通知用户可以说话了</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>CALLBACK_EVENT_ASR_FINISH<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 识别结束</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>CALLBACK_EVENT_ASR_BEGIN<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//检测到识别开始</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>CALLBACK_EVENT_ASR_END<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//检测到识别结束</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>CALLBACK_EVENT_ASR_PARTIAL<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//识别结果</span>
+    <span class="token comment" spellcheck="true">//params 中就是 json格式内容，</span>
+    <span class="token comment" spellcheck="true">//具体内容看#7</span>
+    <span class="token punctuation">}</span>
+  <span class="token comment" spellcheck="true">// ... 支持的输出事件和事件支持的事件参数见“输入和输出参数”一节</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+asr<span class="token punctuation">.</span><span class="token function">registerListener</span><span class="token punctuation">(</span>yourListener<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+<h2 class="mume-header" id="3-%E5%90%91sdk%E5%8F%91%E9%80%81%E5%BC%80%E5%A7%8B%E4%BA%8B%E4%BB%B6">3、向SDK发送开始事件</h2>
+
+<p><a href="#%E7%9B%AE%E5%BD%95">返回目录</a></p>
+<p>开始事件的参数可以参见” 输入和输出参数 “。</p>
+<p>SDK中，您需要根据文档或者demo确定您的输入参数。</p>
+<p>DEMO中有UI界面简化选择和测试过程。demo中，在点击“开始录音”按钮后，您可以在界面或者日志中看见ASR_START事件的json格式的参数。</p>
+<pre class="language-java"><span class="token comment" spellcheck="true">// asr params(反馈请带上此行日志):</span>
+<span class="token comment" spellcheck="true">//{"accept-audio-data":false,"disable-punctuation":false,"accept-audio-volume":true,"pid":1736}</span>
+<span class="token comment" spellcheck="true">// 其中</span>
+<span class="token comment" spellcheck="true">//{"accept-audio-data":false,"disable-punctuation":false,"accept-audio-volume":true,"pid":1736}为ASR_START 事件的参数</span>
+String json <span class="token operator">=</span> "<span class="token punctuation">{</span>\"accept<span class="token operator">-</span>audio<span class="token operator">-</span>data\"<span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
+                \"disable<span class="token operator">-</span>punctuation\"<span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
+                \"accept<span class="token operator">-</span>audio<span class="token operator">-</span>volume\"<span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>
+                \<span class="token string">"pid\":1736}"</span><span class="token punctuation">;</span>
+asr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>ASR_START<span class="token punctuation">,</span> json<span class="token punctuation">,</span> null<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+<p>实际上asr.send的参数为(String s,String s1,byte[],int i, int i1)</p>
+<pre class="language-java"><span class="token comment" spellcheck="true">//所以还可以这样:先写成HashMap再转为json String</span>
+Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+params<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>ACCEPT_AUDIO_VOLUME<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+params<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>VAD<span class="token punctuation">,</span>SpeechConstant<span class="token punctuation">.</span>VAD_DNN<span class="token punctuation">)</span><span class="token punctuation">;</span>
+params<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>DECODER<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+asr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>event<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">JSONObject</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> null<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+<h3 class="mume-header" id="4-%E5%9B%9E%E8%B0%83%E4%BA%8B%E4%BB%B6">4、回调事件</h3>
+
+<p><a href="#%E7%9B%AE%E5%BD%95">返回目录</a></p>
+<p>SDK中，回调事件在您实现的EventListener中获取。</p>
+<pre class="language-">@Override
+public void onEvent(String name, String params, byte[] data, int offset, int length)
+</pre>
+<p>OnEvent中， name是输出事件名，params该事件的参数，(data,offset, length) 三者一起组成额外数据。</p>
+<p>如回调的音频数据，从data[offset] 开始至data[offset + length] 结束，长度为length。</p>
+<h3 class="mume-header" id="5-%E4%BA%8B%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E9%80%80%E5%87%BA">5、事件管理器退出</h3>
+
+<p><a href="#%E7%9B%AE%E5%BD%95">返回目录</a></p>
+<p>SDK中 无需调用任何逻辑，但需要创建一个新的识别事件管理器(EventListener)的话，之前的那个请设置为null，并不再使用。</p>
+<h3 class="mume-header" id="6-%E7%A6%BB%E7%BA%BF%E5%91%BD%E4%BB%A4%E8%AF%8D">6、离线命令词</h3>
+
+<p><a href="#%E7%9B%AE%E5%BD%95">返回目录</a></p>
+<p>离线命令词功能需要首先实现之前的在线识别功能的代码。<br>
+离线引擎加载需要在EventManager初始化之后，识别事件之前。<br>
+在SDK中，</p>
+<pre class="language-java">HashMap map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>DECODER<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 0:在线 2.离在线融合(在线优先)</span>
+map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>ASR_OFFLINE_ENGINE_GRAMMER_FILE_PATH<span class="token punctuation">,</span> <span class="token string">"/sdcard/yourpath/baidu_speech_grammar.bsg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 设置离线命令词文件路径</span>
+<span class="token comment" spellcheck="true">// 下面这段可选，用于生成SLOT_DATA参数， 用于动态覆盖ASR_OFFLINE_ENGINE_GRAMMER_FILE_PATH文件的词条部分</span>
+JSONObject  json <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+json<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">JSONArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"王自强"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"叶问"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+json<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"appname"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">JSONArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"手百"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"度秘"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
+map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>SLOT_DATA<span class="token punctuation">,</span> json<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// SLOT_DATA 参数添加完毕</span>
+<span class="token comment" spellcheck="true">// 加载离线引擎，使用离线命令词时使用，请在整个离线识别任务结束之后卸载离线引擎</span>
+asr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>ASR_KWS_LOAD_ENGINE<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">JSONObject</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// 此处开始你的识别流程，注意离线必须断网生效或者SDK无法连接百度服务器时生效，只能识别bsg文件里定义的短语。</span>
+
+<span class="token comment" spellcheck="true">// 不再需要识别功能后，卸载离线引擎。再次需要识别功能的话，可以重复以上步骤。即依旧需要EventManager初始化之后，识别事件之前加载离线引擎。</span>
+asr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>ASR_KWS_UNLOAD_ENGINE<span class="token punctuation">,</span> null<span class="token punctuation">,</span> null<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre>
+<h3 class="mume-header" id="7-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">7、输入输出参数</h3>
+
+<p><a href="#%E7%9B%AE%E5%BD%95">返回目录</a></p>
+<h3 class="mume-header" id="%E5%AD%90%E7%9B%AE%E5%BD%95">子目录</h3>
+
+<p><a href="#%E8%AF%86%E5%88%AB%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6">识别输入事件</a></p>
+<p><a href="#asr_start-%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6%E5%8F%82%E6%95%B0">ASR_START 输入事件参数</a></p>
+<p><a href="#asr_kws_load_engine-%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6%E5%8F%82%E6%95%B0">ASR_KWS_LOAD_ENGINE 输入事件参数</a></p>
+<p><a href="#PID%E5%8F%82%E6%95%B0">PID参数</a></p>
+<p><a href="#%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">输出参数</a></p>
+<h3 class="mume-header" id="%E8%AF%86%E5%88%AB%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6">识别输入事件</h3>
+
+<p><a href="#7%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">输入输出参数</a></p>
+<table>
+<thead>
+<tr>
+<th>事件名</th>
+<th>类型</th>
+<th>值</th>
+<th>场景</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ASR_STOP</td>
+<td></td>
+<td></td>
+<td>全部</td>
+<td>停止录音</td>
+</tr>
+<tr>
+<td>ASR_CANCEL</td>
+<td></td>
+<td></td>
+<td>全部</td>
+<td>取消本次识别</td>
+</tr>
+<tr>
+<td>ASR_START</td>
+<td>String(JSON结构的字符串）</td>
+<td>json内的参数见下文“ASR_START 参数”</td>
+<td>全部</td>
+<td>开始一次识别。 注意不要连续调用ASR_START参数。下次调用需要在CALLBACK_EVENT_ASR_EXIT回调后，或者在ASR_CANCEL输入后。</td>
+</tr>
+<tr>
+<td>ASR_KWS_LOAD_ENGINE</td>
+<td>String (JSON结构的字符串）</td>
+<td>json内的参数见下文“ASR_KWS_LOAD_ENGINE 参数”</td>
+<td></td>
+<td>离线命令词</td>
+</tr>
+<tr>
+<td>ASR_KWS_UNLOAD_ENGINE</td>
+<td></td>
+<td></td>
+<td>离线命令词</td>
+<td>高级</td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="asr_start-%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6%E5%8F%82%E6%95%B0">ASR_START 输入事件参数</h3>
+
+<p><a href="#7%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">输入输出参数</a></p>
+<table>
+<thead>
+<tr>
+<th>事件参数</th>
+<th>类型/值</th>
+<th>场景</th>
+<th>常用程度</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PID</td>
+<td>int</td>
+<td>在线</td>
+<td>常用</td>
+<td>根据识别语种，搜索或输入法模型及是否需要在线语义，来选择PID。默认1536，即中文搜索模型，不带在线语义。PID具体值及说明见下一个表格。 其中长搜索或输入法模型是指适用于长句的输入法模型，可以带有标点符号，但没有在线语义，开启标点符号时，没有本地语义；适用于短语的搜索模型，没有标点符号，但可以使用在线语义和本地语义</td>
+</tr>
+<tr>
+<td>DECODER</td>
+<td>int</td>
+<td>全部</td>
+<td>常用</td>
+<td>离在线的并行策略</td>
+</tr>
+<tr>
+<td></td>
+<td>0 （默认）</td>
+<td>在线</td>
+<td></td>
+<td>纯在线(默认)</td>
+</tr>
+<tr>
+<td></td>
+<td>2</td>
+<td>离线</td>
+<td></td>
+<td>离在线融合(在线优先)，离线命令词功能需要开启这个选项。</td>
+</tr>
+<tr>
+<td>VAD</td>
+<td>String</td>
+<td>全部</td>
+<td>高级</td>
+<td>语音活动检测， 根据静音时长自动断句。注意不开启长语音的情况下，SDK只能录制60s音频。静音时长及长语音请设置VAD_ENDPOINT_TIMEOUT参数</td>
+</tr>
+<tr>
+<td></td>
+<td>VAD_DNN（推荐）</td>
+<td></td>
+<td>高级</td>
+<td>新一代VAD，各方面信息优秀，推荐使用。</td>
+</tr>
+<tr>
+<td></td>
+<td>VAD_MODEL(默认)</td>
+<td></td>
+<td>高级</td>
+<td>通用型静音检查, 推荐使用。</td>
+</tr>
+<tr>
+<td></td>
+<td>VAD_TOUCH</td>
+<td></td>
+<td>高级</td>
+<td>关闭语音活动检测。适合用户自行控制音频结束，如按住说话松手停止的场景。功能等同于60s限制的长语音。需要手动调用ASR_STOP停止录音</td>
+</tr>
+<tr>
+<td></td>
+<td>VAD_MFE</td>
+<td></td>
+<td>不常用</td>
+<td>算法VAD  ，不常用</td>
+</tr>
+<tr>
+<td>VAD_ENDPOINT_TIMEOUT</td>
+<td>int</td>
+<td>全部</td>
+<td>高级</td>
+<td>静音超时断句及长语音</td>
+</tr>
+<tr>
+<td></td>
+<td>0</td>
+<td>在线</td>
+<td>常用</td>
+<td>开启长语音。即无静音超时断句。此时VAD选项不生效。需要手动调用ASR_STOP停止录音</td>
+</tr>
+<tr>
+<td></td>
+<td>&gt;0（毫秒），默认800ms</td>
+<td>在线</td>
+<td>高级</td>
+<td>不开启长语音。开启VAD尾点检测，即静音判断的毫秒数。建议设置800ms-3000ms</td>
+</tr>
+<tr>
+<td>IN_FILE</td>
+<td>String：文件路径 资源路径或回调方法名</td>
+<td>全部</td>
+<td>高级</td>
+<td>该参数支持设置为：文件系统路径，如：/sdcard/test/test.pcm；<br>java资源路径，如：res:///com/baidu.test/16k_test.pcm；<br>数据源方法全名，格式如：”#com.test.Factory.create16KInputStream()”（解释：Factory类中存在一个返回InputStream的方法create16kInputStream()），注意：必须以井号开始；方法原型必须为：public static InputStream yourMethod()。 <br>录音文件不要超过3分钟</td>
+</tr>
+<tr>
+<td>OUT_FILE</td>
+<td>String ：文件路径</td>
+<td>全部</td>
+<td>高级</td>
+<td>保存识别过程产生的录音文件, 该参数需要开启ACCEPT_AUDIO_DATA后生效</td>
+</tr>
+<tr>
+<td>AUDIO_MILLS</td>
+<td>int：毫秒</td>
+<td>全部</td>
+<td>高级</td>
+<td>录音开始的时间点。用于唤醒+识别连续说。SDK有15s的录音缓存。如设置为(System.currentTimeMillis() - 1500),表示回溯1.5s的音频。</td>
+</tr>
+<tr>
+<td>NLU</td>
+<td>String</td>
+<td>本地语义</td>
+<td>高级</td>
+<td>本地语义解析设置。必须设置ASR_OFFLINE_ENGINE_GRAMMER_FILE_PATH参数生效，无论网络状况，都可以有本地语义结果。并且本地语义结果会覆盖在线语义结果。本参数不控制在线语义输出，需要在线语义输出见PID参数</td>
+</tr>
+<tr>
+<td></td>
+<td>disable（默认）</td>
+<td></td>
+<td>高级</td>
+<td>禁用</td>
+</tr>
+<tr>
+<td></td>
+<td>enable</td>
+<td></td>
+<td>高级</td>
+<td>启用</td>
+</tr>
+<tr>
+<td></td>
+<td>enable-all</td>
+<td></td>
+<td>不常用</td>
+<td>在enable的基础上，临时结果也会做本地语义解析</td>
+</tr>
+<tr>
+<td>ASR_OFFLINE_ENGINE_GRAMMER_FILE_PATH</td>
+<td>String：文件路径，支持assets路径</td>
+<td>本地语义</td>
+<td>高级</td>
+<td>用于支持本地语义解析的bsg文件，离线和在线都可使用。NLU开启生效，其它说明见NLU参数。注意bsg文件同时也用于ASR_KWS_LOAD_ENGINE离线命令词功能。</td>
+</tr>
+<tr>
+<td>SLOT_DATA</td>
+<td>String（JSON格式）</td>
+<td>本地语义</td>
+<td>高级</td>
+<td>与ASR_OFFLINE_ENGINE_GRAMMER_FILE_PATH参数一起使用后生效。 用于代码中动态扩展本地语义bsg文件的词条部分（bsg文件下载页面的左侧表格部分），具体格式参见代码示例或者demo</td>
+</tr>
+<tr>
+<td>DISABLE_PUNCTUATION</td>
+<td>boolean</td>
+<td>在线</td>
+<td>高级</td>
+<td>在选择PID为长句（输入法模式）的时候，是否禁用标点符号</td>
+</tr>
+<tr>
+<td></td>
+<td>true</td>
+<td></td>
+<td></td>
+<td>禁用标点</td>
+</tr>
+<tr>
+<td></td>
+<td>false（默认）</td>
+<td></td>
+<td></td>
+<td>不禁用标点，无法使用本地语义</td>
+</tr>
+<tr>
+<td>PROP</td>
+<td>int</td>
+<td>在线</td>
+<td></td>
+<td>垂直领域 ,选择您的领域可略微提高识别率，请以实际测试为准。注意选搜索或输入法模型生效。</td>
+</tr>
+<tr>
+<td></td>
+<td>10005（默认）</td>
+<td></td>
+<td></td>
+<td>热词</td>
+</tr>
+<tr>
+<td></td>
+<td>10060</td>
+<td></td>
+<td></td>
+<td>地图</td>
+</tr>
+<tr>
+<td></td>
+<td>10001</td>
+<td></td>
+<td></td>
+<td>音乐</td>
+</tr>
+<tr>
+<td></td>
+<td>10002</td>
+<td></td>
+<td></td>
+<td>视频</td>
+</tr>
+<tr>
+<td></td>
+<td>10003</td>
+<td></td>
+<td></td>
+<td>应用</td>
+</tr>
+<tr>
+<td></td>
+<td>10004</td>
+<td></td>
+<td></td>
+<td>网页</td>
+</tr>
+<tr>
+<td></td>
+<td>10006</td>
+<td></td>
+<td></td>
+<td>购物</td>
+</tr>
+<tr>
+<td></td>
+<td>10007</td>
+<td></td>
+<td></td>
+<td>健康</td>
+</tr>
+<tr>
+<td></td>
+<td>10008</td>
+<td></td>
+<td></td>
+<td>电话</td>
+</tr>
+<tr>
+<td></td>
+<td>10052</td>
+<td></td>
+<td></td>
+<td>医疗</td>
+</tr>
+<tr>
+<td></td>
+<td>10053</td>
+<td></td>
+<td></td>
+<td>汽车</td>
+</tr>
+<tr>
+<td></td>
+<td>10054</td>
+<td></td>
+<td></td>
+<td>娱乐餐饮</td>
+</tr>
+<tr>
+<td></td>
+<td>10055</td>
+<td></td>
+<td></td>
+<td>财经</td>
+</tr>
+<tr>
+<td></td>
+<td>10056</td>
+<td></td>
+<td></td>
+<td>游戏</td>
+</tr>
+<tr>
+<td></td>
+<td>10057</td>
+<td></td>
+<td></td>
+<td>菜谱</td>
+</tr>
+<tr>
+<td></td>
+<td>10058</td>
+<td></td>
+<td></td>
+<td>助手</td>
+</tr>
+<tr>
+<td></td>
+<td>20000</td>
+<td></td>
+<td></td>
+<td>输入</td>
+</tr>
+<tr>
+<td>ACCEPT_AUDIO_DATA</td>
+<td>boolean</td>
+<td>全部</td>
+<td>高级</td>
+<td>是否需要语音音频数据回调，开启后有CALLBACK_EVENT_ASR_AUDIO事件</td>
+</tr>
+<tr>
+<td></td>
+<td>true</td>
+<td></td>
+<td></td>
+<td>需要音频数据回调</td>
+</tr>
+<tr>
+<td></td>
+<td>false （默认）</td>
+<td></td>
+<td></td>
+<td>不需要音频数据回调</td>
+</tr>
+<tr>
+<td>ACCEPT_AUDIO_VOLUME</td>
+<td>boolean</td>
+<td>全部</td>
+<td>高级</td>
+<td>是否需要语音音量数据回调，开启后有CALLBACK_EVENT_ASR_VOLUME事件回调</td>
+</tr>
+<tr>
+<td></td>
+<td>true （默认）</td>
+<td></td>
+<td></td>
+<td>需要音量数据回调</td>
+</tr>
+<tr>
+<td></td>
+<td>false</td>
+<td></td>
+<td></td>
+<td>不需要音量数据回调</td>
+</tr>
+<tr>
+<td>SOUND_START</td>
+<td>int：资源ID</td>
+<td>全部</td>
+<td>不常用</td>
+<td>说话开始的提示音</td>
+</tr>
+<tr>
+<td>SOUND_END</td>
+<td>int：资源ID</td>
+<td>全部</td>
+<td>不常用</td>
+<td>说话结束的提示音</td>
+</tr>
+<tr>
+<td>SOUND_SUCCESS</td>
+<td>int：资源ID</td>
+<td>全部</td>
+<td>不常用</td>
+<td>识别成功的提示音</td>
+</tr>
+<tr>
+<td>SOUND_ERROR</td>
+<td>int：资源ID</td>
+<td>全部</td>
+<td>不常用</td>
+<td>识别出错的提示音</td>
+</tr>
+<tr>
+<td>SOUND_CANCEL</td>
+<td>int：资源ID</td>
+<td>全部</td>
+<td>不常用</td>
+<td>识别取消的提示音</td>
+</tr>
+<tr>
+<td>APP_ID</td>
+<td>String</td>
+<td>全部</td>
+<td>基本不用</td>
+<td>开放平台创建应用后分配，填写后会覆盖 androidManifest.xml中定义的</td>
+</tr>
+<tr>
+<td>APP_KEY</td>
+<td>String</td>
+<td>全部</td>
+<td>基本不用</td>
+<td>开放平台创建应用后分配，填写后会覆盖 androidManifest.xml中定义的</td>
+</tr>
+<tr>
+<td>SECRET</td>
+<td>String</td>
+<td>全部</td>
+<td>基本不用</td>
+<td>开放平台创建应用后分配，填写后会覆盖 androidManifest.xml中定义的</td>
+</tr>
+<tr>
+<td>SAMPLE_RATE</td>
+<td>int</td>
+<td>全部</td>
+<td>基本不用</td>
+<td>采样率 ，固定及默认值16000</td>
+</tr>
+<tr>
+<td></td>
+<td>16000（默认）</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>8000</td>
+<td></td>
+<td></td>
+<td>不再支持，请使用16000</td>
+</tr>
+<tr>
+<td>ASR_OFFLINE_ENGINE <br> _LICENSE_FILE_PATH</td>
+<td>String ：文件路径 ，支持assets路径</td>
+<td>离线命令词</td>
+<td>基本不用</td>
+<td>临时授权文件路径。SDK在联网时会获取自动获取离线正式授权。有特殊原因可用在官网创建应用时下载通用临时授权文件。临时授权文件测试期仅有15天，不推荐使用。使用正式授权时请确认官网应用设置的包名与APP自身的包名相一致。目前离线命令词和唤醒词功能需要使用正式授权。</td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="asr_kws_load_engine-%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6%E5%8F%82%E6%95%B0">ASR_KWS_LOAD_ENGINE 输入事件参数</h3>
+
+<p><a href="#7%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">输入输出参数</a></p>
+<table>
+<thead>
+<tr>
+<th>事件参数</th>
+<th>类型</th>
+<th>值</th>
+<th>场景</th>
+<th>常用程度</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SLOT_DATA</td>
+<td>String</td>
+<td>JSON格式</td>
+<td>本地语义</td>
+<td>高级</td>
+<td>与ASR_OFFLINE_ENGINE_GRAMMER_FILE_PATH参数一起使用后生效。 用于代码中动态扩展离线命令词bsg文件的词条部分（bsg文件下载页面的左侧表格部分），具体格式参见代码示例或者demo</td>
+</tr>
+<tr>
+<td>DECODER</td>
+<td>int</td>
+<td>2</td>
+<td></td>
+<td></td>
+<td>固定值：2，离在线的并行策略</td>
+</tr>
+<tr>
+<td>ASR_OFFLINE_ENGINE <br> _GRAMMER_FILE_PATH</td>
+<td>String</td>
+<td>文件路径，支持assets路径</td>
+<td></td>
+<td></td>
+<td>用于支持离线命令词（同时也是本地语义）解析的bsg文件，离线断网时可以使用。NLU开启生效，其它说明见NLU参数。注意bsg文件同时也用于ASR_KWS_LOAD_ENGINE离线命令词功能。<br><br>语义解析设置，在线使用时，会在识别结果的文本基础上同时输出语义解析的结果（改功能需要在官网的应用里设置“语义解析设置”）。</td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="pid%E5%8F%82%E6%95%B0">PID参数</h3>
+
+<p><a href="#7%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">输入输出参数</a></p>
+<p>在线参数， 请根据语言， 输入法或者搜索模型及是否需要在线语义，来选择PID。</p>
+<ul>
+<li>语言：目前支持中文普通话，四川话，粤语，和英语四个</li><li>输入法模型：适用于较长的句子输入。默认有标点，不支持在线语义; 开启标点后，不支持本地语义。另外PROP垂直领域参数无效。</li><li>搜索模型：适用于较短的句子输入。无标点，支持在线语义和本地语义。</li><li>在线语义：在线语义只支持普通话（本地语义也是只支持普通话）</li></ul>
+<table>
+<thead>
+<tr>
+<th>PID</th>
+<th>语言</th>
+<th>模型</th>
+<th>是否有标点</th>
+<th>在线语义</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1536</td>
+<td>普通话</td>
+<td>搜索模型</td>
+<td>无标点</td>
+<td>不支持</td>
+<td>默认PID</td>
+</tr>
+<tr>
+<td>15361</td>
+<td>普通话</td>
+<td>搜索模型</td>
+<td>无标点</td>
+<td>支持</td>
+<td></td>
+</tr>
+<tr>
+<td>1537</td>
+<td>普通话</td>
+<td>输入法模型</td>
+<td>可以有标点</td>
+<td>不支持</td>
+<td></td>
+</tr>
+<tr>
+<td>1736</td>
+<td>英语</td>
+<td>搜索模型</td>
+<td>无标点</td>
+<td>不支持</td>
+<td></td>
+</tr>
+<tr>
+<td>1737</td>
+<td>英语</td>
+<td>输入法模型</td>
+<td>可以有标点</td>
+<td>不支持</td>
+<td></td>
+</tr>
+<tr>
+<td>1636</td>
+<td>粤语</td>
+<td>搜索模型</td>
+<td>无标点</td>
+<td>不支持</td>
+<td></td>
+</tr>
+<tr>
+<td>1637</td>
+<td>粤语</td>
+<td>输入法模型</td>
+<td>可以有标点</td>
+<td>不支持</td>
+<td></td>
+</tr>
+<tr>
+<td>1836</td>
+<td>四川话</td>
+<td>搜索模型</td>
+<td>无标点</td>
+<td>不支持</td>
+<td></td>
+</tr>
+<tr>
+<td>1837</td>
+<td>四川话</td>
+<td>输入法模型</td>
+<td>可以有标点</td>
+<td>不支持</td>
+</tr>
+</tbody>
+</table>
+<h3 class="mume-header" id="%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">输出参数</h3>
+
+<p><a href="#7%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">输入输出参数</a></p>
+<p>语音回调事件统一由public void onEvent(String name, String params, byte[] data, int offset, int length) 该方法回调<br>其中name是回调事件， params是回调参数。（data，offset，length）缓存临时数据，三者一起，生效部分为 data[offset] 开始，长度为length。</p>
+<table>
+<thead>
+<tr>
+<th>事件名（name）</th>
+<th>事件参数</th>
+<th>类型</th>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CALLBACK_EVENT_ASR_READY</td>
+<td></td>
+<td></td>
+<td></td>
+<td>引擎准备就绪，可以开始说话</td>
+</tr>
+<tr>
+<td>CALLBACK_EVENT_ASR_BEGIN</td>
+<td></td>
+<td></td>
+<td></td>
+<td>检测到说话开始</td>
+</tr>
+<tr>
+<td>CALLBACK_EVENT_ASR_END</td>
+<td></td>
+<td></td>
+<td></td>
+<td>检测到说话结束</td>
+</tr>
+<tr>
+<td>CALLBACK_EVENT_ASR_PARTIAL</td>
+<td>params</td>
+<td>json</td>
+<td></td>
+<td>识别结果</td>
+</tr>
+<tr>
+<td></td>
+<td>params[results_recognition]</td>
+<td>String[]</td>
+<td></td>
+<td>解析后的识别结果。如无特殊情况，请取第一个结果</td>
+</tr>
+<tr>
+<td></td>
+<td>params[result_type]</td>
+<td>String</td>
+<td>partial_result</td>
+<td>临时识别结果</td>
+</tr>
+<tr>
+<td></td>
+<td>params[result_type]</td>
+<td>String</td>
+<td>final_result</td>
+<td>最终结果，长语音每一句都有一个最终结果</td>
+</tr>
+<tr>
+<td></td>
+<td>params[result_type]</td>
+<td>String</td>
+<td>nlu_result</td>
+<td>语义结果，在final_result后回调。语义结果的内容在(data，offset，length中）</td>
+</tr>
+<tr>
+<td></td>
+<td>(data，offset，length）</td>
+<td>String</td>
+<td></td>
+<td>语义结果的内容 ，当 params[result_type]=nlu_result时出现。</td>
+</tr>
+<tr>
+<td>CALLBACK_EVENT_ASR_FINISH</td>
+<td>params</td>
+<td>String(json格式）</td>
+<td></td>
+<td>识别结束（可能含有错误信息）</td>
+</tr>
+<tr>
+<td></td>
+<td>params[errorCode]</td>
+<td>int</td>
+<td></td>
+<td>错误码</td>
+</tr>
+<tr>
+<td></td>
+<td>params[desc]</td>
+<td>String</td>
+<td></td>
+<td>错误描述</td>
+</tr>
+<tr>
+<td>CALLBACK_EVENT_ASR_LONG_SPEECH</td>
+<td></td>
+<td></td>
+<td></td>
+<td>长语音额外的回调，表示长语音识别结束</td>
+</tr>
+<tr>
+<td>CALLBACK_EVENT_ASR_EXIT</td>
+<td></td>
+<td></td>
+<td></td>
+<td>识别结束，资源释放</td>
+</tr>
+<tr>
+<td>CALLBACK_EVENT_ASR_AUDIO</td>
+<td>(data，offset，length)</td>
+<td>byte[]</td>
+<td></td>
+<td>PCM音频片段 回调。必须输入ACCEPT_AUDIO_DATA  参数激活</td>
+</tr>
+<tr>
+<td>CALLBACK_EVENT_ASR_VOLUME</td>
+<td>params</td>
+<td>json</td>
+<td></td>
+<td>当前音量回调。必须输入ACCEPT_AUDIO_VOLUME参数激活</td>
+</tr>
+<tr>
+<td></td>
+<td>params[volume]</td>
+<td>float</td>
+<td></td>
+<td>当前音量</td>
+</tr>
+<tr>
+<td></td>
+<td>params[volume-percent]</td>
+<td>int</td>
+<td></td>
+<td>当前音量的相对值（0-100）</td>
+</tr>
+<tr>
+<td>CALLBACK_EVENT_ASR_LOADED</td>
+<td></td>
+<td></td>
+<td></td>
+<td>离线模型加载成功回调</td>
+</tr>
+<tr>
+<td>CALLBACK_EVENT_ASR_UNLOADED</td>
+<td></td>
+<td></td>
+<td></td>
+<td>离线模型卸载成功回调</td>
+</tr>
+</tbody>
+</table>
+<h2 class="mume-header" id="%E9%9B%86%E6%88%90">集成</h2>
+
+<p><a href="#%E7%9B%AE%E5%BD%95">目录</a></p>
+<ul>
+<li>注册开发者账号、注册包，获取APP ID、Secret Key、API KEY</li>
+<li>复制jniLibs到app\src\main</li>
+<li>IDE中加入库</li>
+<li>manifest中修改加入service</li>
+<li>修改APP ID、Secret Key、API KEY</li>
+</ul>
+
+      </div>
+      <div class="md-sidebar-toc"><ul>
+<li><a href="#android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-%E5%AD%A6%E4%B9%A0%E7%99%BE%E5%BA%A6%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABsdk%E4%BD%BF%E7%94%A81">Android学习笔记(4) 学习百度语音识别SDK使用(1)</a>
+<ul>
+<li><a href="#%E9%A2%84%E5%A4%87%E5%A4%84%E7%90%86%E5%BA%93">预备处理：库</a></li>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF">基本思路</a></li>
+<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
+<li><a href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96">1、初始化</a></li>
+<li><a href="#2-%E6%B3%A8%E5%86%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BE%93%E5%87%BA%E4%BA%8B%E4%BB%B6%E7%B1%BB">2、注册自己的输出事件类</a></li>
+<li><a href="#3-%E5%90%91sdk%E5%8F%91%E9%80%81%E5%BC%80%E5%A7%8B%E4%BA%8B%E4%BB%B6">3、向SDK发送开始事件</a>
+<ul>
+<li><a href="#4-%E5%9B%9E%E8%B0%83%E4%BA%8B%E4%BB%B6">4、回调事件</a></li>
+<li><a href="#5-%E4%BA%8B%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E9%80%80%E5%87%BA">5、事件管理器退出</a></li>
+<li><a href="#6-%E7%A6%BB%E7%BA%BF%E5%91%BD%E4%BB%A4%E8%AF%8D">6、离线命令词</a></li>
+<li><a href="#7-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">7、输入输出参数</a></li>
+<li><a href="#%E5%AD%90%E7%9B%AE%E5%BD%95">子目录</a></li>
+<li><a href="#%E8%AF%86%E5%88%AB%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6">识别输入事件</a></li>
+<li><a href="#asr_start-%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6%E5%8F%82%E6%95%B0">ASR_START 输入事件参数</a></li>
+<li><a href="#asr_kws_load_engine-%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6%E5%8F%82%E6%95%B0">ASR_KWS_LOAD_ENGINE 输入事件参数</a></li>
+<li><a href="#pid%E5%8F%82%E6%95%B0">PID参数</a></li>
+<li><a href="#%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">输出参数</a></li>
+</ul>
+</li>
+<li><a href="#%E9%9B%86%E6%88%90">集成</a></li>
+</ul>
+</li>
+</ul>
+</div>
+      <a id="sidebar-toc-btn">≡</a>
+    </body>
+    
+    
+    
+    
+    
+    <script>
+(function bindTaskListEvent() {
+  var taskListItemCheckboxes = document.body.getElementsByClassName('task-list-item-checkbox')
+  for (var i = 0; i < taskListItemCheckboxes.length; i++) {
+    var checkbox = taskListItemCheckboxes[i]
+    var li = checkbox.parentElement
+    if (li.tagName !== 'LI') li = li.parentElement
+    if (li.tagName === 'LI') {
+      li.classList.add('task-list-item')
+    }
+  }
+}())    
+</script>
+    
+<script>
+
+var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
+sidebarTOCBtn.addEventListener('click', function(event) {
+  event.stopPropagation()
+  if (document.body.hasAttribute('html-show-sidebar-toc')) {
+    document.body.removeAttribute('html-show-sidebar-toc')
+  } else {
+    document.body.setAttribute('html-show-sidebar-toc', true)
+  }
+})
+</script>
+      
+  </html>
