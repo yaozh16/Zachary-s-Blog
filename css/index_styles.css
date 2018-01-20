@@ -4,7 +4,7 @@ body.index_body{
 div.index_head{
   background-color: #009E8E;
   color: #ffffff;
-  padding: 10%;
+  padding: 50px;
   font-size: 40;
 }
 div.index_list{
@@ -13,10 +13,12 @@ div.index_list{
   margin-right: 10%;
 }
 div.index_itembox{
+  padding: 20px;
+  font-size: 20px;
   display: block;
   float: left;
   margin: 10px;
-  
+
   background-color: #5dcfc3;
   padding: 10px;
   -webkit-border-radius: 15px;
