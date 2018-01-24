@@ -2,15 +2,15 @@
 ## Lecture 1
 ### tensor and session
 创建Graph(默认有一个defaultGraph)
-```
+```python
 g=tf.get_default_graph() # 获取默认图句柄
 ```
 然后在session中计算graph
-```
+```python
 tf.Session().run(node)
 ```
 ### multi CPU/GPU
-```
+```python
 with tf.device("/gpu:2"):
   op=.......
 tf.Session().run(op)
@@ -18,29 +18,29 @@ tf.Session().run(op)
 ```
 ### 创建新的Graph
 需要设置为default_graph才可以加入节点
-```
+```python
 g=tf.Graph()
 with g.as_default():
   operations...
 ```
 使用时则指定graph
-```
+```python
 sess=tf.Session(graph=g)
 ```
 ## Lecture 2
 ### tensorboard
 在sess的graph写到./graph文件夹中
-```
+```python
 with tf.Session() as sess:
   tf.summary.FileWriter('./graph',sess.graph)
 ```
 terminal运行tensorboard
-```
+```python
 tensorboard --logdir="./graph" --pt 6006
 ```
-然后在上面相对应的端口中(http://localhost:6006/ 去查看)
+然后在上面相对应的端口中( http://localhost:6006/ 去查看)
 ### tf.constant
-```
+```python
 tf.constant(value,dtype=None,shape=None,name="Const",verify_shape=False)
 ```
 其中
@@ -90,7 +90,7 @@ tf.constant(value,dtype=None,shape=None,name="Const",verify_shape=False)
 * feed_dict需要填充所有place_holder(保证loss_function有结果)
 
 ### 样例：线性回归
-```
+```python
 import tensorflow as tf
 x=tf.placeholder(tf.float32)
 y=tf.placeholder(tf.float32)

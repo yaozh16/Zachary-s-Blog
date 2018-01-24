@@ -218,43 +218,43 @@ code.language-yaml {
 <h3 class="mume-header" id="tensor-and-session">tensor and session</h3>
 
 <p>创建Graph(默认有一个defaultGraph)</p>
-<pre class="language-">g=tf.get_default_graph() # &#x83B7;&#x53D6;&#x9ED8;&#x8BA4;&#x56FE;&#x53E5;&#x67C4;
+<pre class="language-python">g<span class="token operator">=</span>tf<span class="token punctuation">.</span>get_default_graph<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true"># 获取默认图句柄</span>
 </pre>
 <p>然后在session中计算graph</p>
-<pre class="language-">tf.Session().run(node)
+<pre class="language-python">tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>run<span class="token punctuation">(</span>node<span class="token punctuation">)</span>
 </pre>
 <h3 class="mume-header" id="multi-cpugpu">multi CPU/GPU</h3>
 
-<pre class="language-">with tf.device(&quot;/gpu:2&quot;):
-  op=.......
-tf.Session().run(op)
+<pre class="language-python"><span class="token keyword">with</span> tf<span class="token punctuation">.</span>device<span class="token punctuation">(</span><span class="token string">"/gpu:2"</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  op<span class="token operator">=</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>run<span class="token punctuation">(</span>op<span class="token punctuation">)</span>
 
 </pre>
 <h3 class="mume-header" id="%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84graph">创建新的Graph</h3>
 
 <p>需要设置为default_graph才可以加入节点</p>
-<pre class="language-">g=tf.Graph()
-with g.as_default():
-  operations...
+<pre class="language-python">g<span class="token operator">=</span>tf<span class="token punctuation">.</span>Graph<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">with</span> g<span class="token punctuation">.</span>as_default<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  operations<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
 </pre>
 <p>使用时则指定graph</p>
-<pre class="language-">sess=tf.Session(graph=g)
+<pre class="language-python">sess<span class="token operator">=</span>tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span>graph<span class="token operator">=</span>g<span class="token punctuation">)</span>
 </pre>
 <h2 class="mume-header" id="lecture-2">Lecture 2</h2>
 
 <h3 class="mume-header" id="tensorboard">tensorboard</h3>
 
 <p>在sess的graph写到./graph文件夹中</p>
-<pre class="language-">with tf.Session() as sess:
-  tf.summary.FileWriter(&apos;./graph&apos;,sess.graph)
+<pre class="language-python"><span class="token keyword">with</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> sess<span class="token punctuation">:</span>
+  tf<span class="token punctuation">.</span>summary<span class="token punctuation">.</span>FileWriter<span class="token punctuation">(</span><span class="token string">'./graph'</span><span class="token punctuation">,</span>sess<span class="token punctuation">.</span>graph<span class="token punctuation">)</span>
 </pre>
 <p>terminal运行tensorboard</p>
-<pre class="language-">tensorboard --logdir=&quot;./graph&quot; --pt 6006
+<pre class="language-python">tensorboard <span class="token operator">-</span><span class="token operator">-</span>logdir<span class="token operator">=</span><span class="token string">"./graph"</span> <span class="token operator">-</span><span class="token operator">-</span>pt <span class="token number">6006</span>
 </pre>
-<p>然后在上面相对应的端口中(<a href="http://localhost:6006/">http://localhost:6006/</a> 去查看)</p>
+<p>然后在上面相对应的端口中( <a href="http://localhost:6006/">http://localhost:6006/</a> 去查看)</p>
 <h3 class="mume-header" id="tfconstant">tf.constant</h3>
 
-<pre class="language-">tf.constant(value,dtype=None,shape=None,name=&quot;Const&quot;,verify_shape=False)
+<pre class="language-python">tf<span class="token punctuation">.</span>constant<span class="token punctuation">(</span>value<span class="token punctuation">,</span>dtype<span class="token operator">=</span>None<span class="token punctuation">,</span>shape<span class="token operator">=</span>None<span class="token punctuation">,</span>name<span class="token operator">=</span><span class="token string">"Const"</span><span class="token punctuation">,</span>verify_shape<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
 </pre>
 <p>其中</p>
 <ul>
@@ -339,24 +339,24 @@ with g.as_default():
 </ul>
 <h3 class="mume-header" id="%E6%A0%B7%E4%BE%8B%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92">样例：线性回归</h3>
 
-<pre class="language-">import tensorflow as tf
-x=tf.placeholder(tf.float32)
-y=tf.placeholder(tf.float32)
-a=tf.Variable(0.0)
-b=tf.Variable(0.0)
-predict_y=tf.multiply(a,x)+b
-loss=tf.square(y-predict_y)
-optimizer=tf.train.GradientDescentOptimizer(0.001).minimize(loss)
-s = tf.Session()
-s.run(tf.global_variables_initializer())
-for i in range(loopNum):
-  # x,y&#x4ECE;&#x6570;&#x636E;&#x96C6;&#x4E2D;&#x63D0;&#x53D6;
-  ...
-  s.run(optimizer,feed_dict={x:x_datum,y:y_datum})
+<pre class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> tf
+x<span class="token operator">=</span>tf<span class="token punctuation">.</span>placeholder<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
+y<span class="token operator">=</span>tf<span class="token punctuation">.</span>placeholder<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>float32<span class="token punctuation">)</span>
+a<span class="token operator">=</span>tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span>
+b<span class="token operator">=</span>tf<span class="token punctuation">.</span>Variable<span class="token punctuation">(</span><span class="token number">0.0</span><span class="token punctuation">)</span>
+predict_y<span class="token operator">=</span>tf<span class="token punctuation">.</span>multiply<span class="token punctuation">(</span>a<span class="token punctuation">,</span>x<span class="token punctuation">)</span><span class="token operator">+</span>b
+loss<span class="token operator">=</span>tf<span class="token punctuation">.</span>square<span class="token punctuation">(</span>y<span class="token operator">-</span>predict_y<span class="token punctuation">)</span>
+optimizer<span class="token operator">=</span>tf<span class="token punctuation">.</span>train<span class="token punctuation">.</span>GradientDescentOptimizer<span class="token punctuation">(</span><span class="token number">0.001</span><span class="token punctuation">)</span><span class="token punctuation">.</span>minimize<span class="token punctuation">(</span>loss<span class="token punctuation">)</span>
+s <span class="token operator">=</span> tf<span class="token punctuation">.</span>Session<span class="token punctuation">(</span><span class="token punctuation">)</span>
+s<span class="token punctuation">.</span>run<span class="token punctuation">(</span>tf<span class="token punctuation">.</span>global_variables_initializer<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span>loopNum<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token comment" spellcheck="true"># x,y从数据集中提取</span>
+  <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+  s<span class="token punctuation">.</span>run<span class="token punctuation">(</span>optimizer<span class="token punctuation">,</span>feed_dict<span class="token operator">=</span><span class="token punctuation">{</span>x<span class="token punctuation">:</span>x_datum<span class="token punctuation">,</span>y<span class="token punctuation">:</span>y_datum<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-# view result
-print s.run(a)
-print s.run(b)
+<span class="token comment" spellcheck="true"># view result</span>
+<span class="token keyword">print</span> s<span class="token punctuation">.</span>run<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token keyword">print</span> s<span class="token punctuation">.</span>run<span class="token punctuation">(</span>b<span class="token punctuation">)</span>
 </pre>
 
       </div>
