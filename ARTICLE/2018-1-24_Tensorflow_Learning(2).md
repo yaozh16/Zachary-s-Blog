@@ -1,4 +1,4 @@
-# 2018/1/24 Tensorflow Learning(2)
+# 2018/1/24 Tensorflow Learning(2) Note of Lecture
 ## Lecture 1
 ### tensor and session
 创建Graph(默认有一个defaultGraph)
@@ -72,3 +72,19 @@ tf.constant(value,dtype=None,shape=None,name="Const",verify_shape=False)
 * tf.placeholder<br>have to be feed in data by **feed_dict**
 
 **Attension:** Avoid lazy loading
+### ***model building***
+| Step                              | Usage                                |
+|:----------------------------------|:-------------------------------------|
+| decide placeholder                | for data input                       |
+| decide variable                   | for learning                         |
+| decide loss function              | with graph node relationship         |
+| decide optimizer                  | it will modify variables when runned |
+| create session and init variables |                                      |
+| **loop**                          |                                      |
+
+**loop中的步骤：**
+1. 读取数据
+2. session.run(optimizer,feed_dict={...})运行迭代
+
+* 在optimizer被run的时候会自动修改那些允许修改的variable
+* feed_dict需要保证loss_function有结果，需要填充所有place_holder
