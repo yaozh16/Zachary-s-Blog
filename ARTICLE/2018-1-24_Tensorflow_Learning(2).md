@@ -87,4 +87,26 @@ tf.constant(value,dtype=None,shape=None,name="Const",verify_shape=False)
 2. session.run(optimizer,feed_dict={...})运行迭代
 
 * 在optimizer被run的时候会自动修改那些允许修改的variable
-* feed_dict需要保证loss_function有结果，需要填充所有place_holder
+* feed_dict需要填充所有place_holder(保证loss_function有结果)
+
+### 样例：线性回归
+```
+import tensorflow as tf
+x=tf.placeholder(tf.float32)
+y=tf.placeholder(tf.float32)
+a=tf.Variable(0.0)
+b=tf.Variable(0.0)
+predict_y=tf.multiply(a,x)+b
+loss=tf.square(y-predict_y)
+optimizer=tf.train.GradientDescentOptimizer(0.001).minimize(loss)
+s = tf.Session()
+s.run(tf.global_variables_initializer())
+for i in range(loopNum):
+  # x,y从数据集中提取
+  ...
+  s.run(optimizer,feed_dict={x:x_datum,y:y_datum})
+
+# view result
+print s.run(a)
+print s.run(b)
+```
