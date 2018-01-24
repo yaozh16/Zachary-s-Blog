@@ -45,7 +45,7 @@ tf.constant(value,dtype=None,shape=None,name="Const",verify_shape=False)
 ```
 其中
 * value可以是n维矩阵
-1
+[1]
 [2,2]
 [ [1,2],[2,3] ]
 [ [ [1,2],[2,3] ],[ [1,2],[2,3] ] ]
