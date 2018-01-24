@@ -13,14 +13,12 @@ div.index_list{
   margin-right: 10%;
 }
 div.index_itembox{
-  padding: 20px;
-  font-size: 20px;
+  padding: 30px;
+  font-size: 30px;
   display: block;
   float: left;
-  margin: 10px;
-
+  margin: 20px;
   background-color: #5dcfc3;
-  padding: 10px;
   -webkit-border-radius: 15px;
 }
 div.index_itembox:hover{
