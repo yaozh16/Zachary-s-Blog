@@ -47,8 +47,8 @@ tf.constant(value,dtype=None,shape=None,name="Const",verify_shape=False)
 * value可以是n维矩阵
 1
 [2,2]
-[[1,2][2,3]]
-[[[1,2][2,3]][[1,2][2,3]]]
+[ [1,2],[2,3] ]
+[ [ [1,2],[2,3] ],[ [1,2],[2,3] ] ]
 * shape为
 [1,2,...]向量：对应于value为矩阵（包括[p]这种1x1的）
 ()空：对应于value为常数
