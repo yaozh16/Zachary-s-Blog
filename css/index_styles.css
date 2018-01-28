@@ -18,11 +18,11 @@ div.index_itembox{
   display: block;
   float: left;
   margin: 20px;
-  background-color: #5dcfc3;
+  background-color: rgba(#5dcfc3, 0.6);
   -webkit-border-radius: 15px;
 }
 div.index_itembox:hover{
-  background-color: #00675c;
+  background-color: rgba(#00675c, 0.78);
 }
 div.index_itembox:hover a.index_item{
   color: #ffffff;
