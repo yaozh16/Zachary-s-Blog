@@ -2,7 +2,7 @@ body.index_body{
   font-family: 'Josefin Sans';
   background-image: url(../IMG/65621672__空と共に.jpg);
   background-repeat:no-repeat;
-  background-size: 100%;
+  background-size: 100% 100%;
   background-attachment:fixed;
 }
 div.index_head{
@@ -22,11 +22,11 @@ div.index_itembox{
   display: block;
   float: left;
   margin: 20px;
-  background-color: rgba(93, 207, 195, 0.56);
+  background-color: rgba(93, 207, 195, 0.70);
   -webkit-border-radius: 15px;
 }
 div.index_itembox:hover{
-  background-color: rgba(0, 103, 92, 0.63);
+  background-color: rgba(0, 103, 92, 0.50);
 }
 div.index_itembox:hover a.index_item{
   color: #ffffff;
