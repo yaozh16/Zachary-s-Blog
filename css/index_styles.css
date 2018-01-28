@@ -2,7 +2,7 @@ body.index_body{
   font-family: 'Josefin Sans';
 }
 div.index_head{
-  background-color: #009E8E;
+  background-color: rgba(0, 158, 142, 0.54);
   color: #ffffff;
   padding: 50px;
   font-size: 40;
@@ -18,11 +18,11 @@ div.index_itembox{
   display: block;
   float: left;
   margin: 20px;
-  background-color: rgba(#5dcfc3, 0.6);
+  background-color: rgba(93, 207, 195, 0.56);
   -webkit-border-radius: 15px;
 }
 div.index_itembox:hover{
-  background-color: rgba(#00675c, 0.78);
+  background-color: rgba(0, 103, 92, 0.63);
 }
 div.index_itembox:hover a.index_item{
   color: #ffffff;
