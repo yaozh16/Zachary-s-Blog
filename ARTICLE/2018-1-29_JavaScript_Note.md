@@ -34,7 +34,19 @@ splice(2, 0 ,1,'12','asd') //example : insert 3 item
 splice(2, 2 )              //example : delete 2 item
 ```
 12. concat(another_array_to_connect)//返回新的array
-13. join(connnect_char)
+13. join(connect_char)
+14. map(function)
+```JavaScript
+var sq=function(x){
+  return x*x;
+}
+var arr=[1,2,3,4,5,6];
+var result= arr.map(sq);  //result=[1,4,9,16,25,36]
+```
+15. reduce(function)
+```
+[x1, x2, x3, x4].reduce(f) = f(f(f(x1, x2), x3), x4)
+```
 ### 对象
 1. 直接用var x={key:value;...}写
 2. 可以直接delete一个属性
@@ -42,7 +54,58 @@ splice(2, 2 )              //example : delete 2 item
 4. hasOwnProperty(var_key_property). //检测是否在对象内非继承地拥有该属性
 ### Map和Set
 #### Map
+```JavaScript
+var m = new Map([['Michael', 95], ['Bob', 75], ['Tracy', 85]]);
+```
 1. set(var_str_key,var_value)
 2. has(var_str_key)
 3. get(var_str_key)
 4. delete(var_str_key)
+#### Set
+```JavaScript
+var s2 = new Set([1, 2, 3]);
+```
+1. add(var)
+2. delete(var)
+### iterable
+#### for ... of
+for ... of循环只循环集合本身的元素
+```
+var a = [1, 2, 3];
+for (var x of a)
+```
+#### for ... in
+for ... in循环由于历史遗留问题，它遍历的实际上是对象的属性名称。
+```
+var a = ['A', 'B', 'C'];
+a.name = 'Hello';
+for (var x of a) {
+    console.log(x); // 'A', 'B', 'C'
+}
+```
+#### forEach
+1. Array
+```JavaScript
+'use strict';
+var a = ['A', 'B', 'C'];
+a.forEach(function (element, index, array) {
+    // element: 指向当前元素的值
+    // index: 指向当前索引
+    // array: 指向Array对象本身
+    console.log(element + ', index = ' + index);
+});
+```
+2. Map
+```JavaScript
+var m = new Map([[1, 'x'], [2, 'y'], [3, 'z']]);
+m.forEach(function (value, key, map) {
+    console.log(value);
+});
+```
+3. Set
+```JavaScript
+var a = ['A', 'B', 'C'];
+a.forEach(function (element) {
+    console.log(element);
+});
+```
