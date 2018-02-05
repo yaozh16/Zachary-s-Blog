@@ -111,4 +111,4 @@ getAge.call(xiaoming, p1,p2);
 #### filter(function)
 #### sort(function)
 sort函数默认的将所有数字转为string再进行ascii比较，但也可以自己定义比较函数
-返回值为-1,0,1分别标识小于、等于、大于
+返回值为负数,0,正数分别标识小于、等于、大于
