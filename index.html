@@ -5,21 +5,28 @@
   <meta name="viewport" content="width=device-width">
   <title>Home</title>
   <link rel="stylesheet" type="text/css" media="all" href="css/index_styles.css">
-  <script>
-    function backToTop() {
-      //scrollTo(0, 0);
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-    })
-
-    function testAlert() {
-      alert('t');
-    }
-    document.onload(function() {
-      testAlert();
-    });
-  </script>
+  <script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.js"></script>
 </head>
+<script>
+  window.onscroll = function() {
+    if (document.body.scrollTop > 20) {
+      var x = $('button#backToTop');
+      x.css('display', "block");
+    } else {
+      $('button#backToTop').css('display', "none");
+    }
+  }
+
+  function backToTop() {
+    (function smoothscroll() {
+      var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+      if (currentScroll > 0) {
+        window.requestAnimationFrame(smoothscroll);
+        window.scrollTo(0, currentScroll - (currentScroll / 5));
+      }
+    })();
+  }
+</script>
 
 <body class="index_body">
   <div id="topAnchor"></div>
@@ -114,9 +121,8 @@
       <a class="index_item" href="ARTICLE/2017-10-15管理代理配置.html">2017/10/15 Shadowsocks + DigitalOcean 翻墙</a><br>
     </div>
   </div>
-  <div class="backToTop">
-      <button onclick="backToTop">返回顶部</a>
-  </div>
+  <button onclick="backToTop()" id="backToTop" title="回顶部">返回顶部</button>
+
 </body>
 
 </html>

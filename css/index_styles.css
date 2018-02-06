@@ -6,6 +6,7 @@ body.index_body{
   background-attachment:fixed;
 }
 div.index_head{
+  //background-image: url(../IMG/title.jpg);
   background-color: rgba(0, 158, 142, 0.54);
   color: #ffffff;
   padding: 50px;
@@ -20,7 +21,7 @@ div.index_itembox{
   padding: 30px;
   font-size: 30px;
   display: block;
-  float: left;
+  //float: left;
   margin: 20px;
   background-color: rgba(93, 207, 195, 0.70);
   -webkit-border-radius: 15px;
@@ -36,7 +37,17 @@ a.index_item{
   text-decoration: none;
 }
 
-div.backToTop{
-  width: 100px;
-  text-decoration: none;
+button#backToTop{
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 40px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  opacity: 0.7;
+  color: whitergb(58, 68, 133);
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
 }
