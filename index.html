@@ -7,7 +7,9 @@
   <link rel="stylesheet" type="text/css" media="all" href="css/index_styles.css">
   <script>
     function backToTop() {
-      scrollTo(0, 0);
+      //scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
     })
 
     function testAlert() {
@@ -113,7 +115,7 @@
     </div>
   </div>
   <div class="backToTop">
-      <a href="#topAnchor" onclick="testAlert">返回顶部</a>
+      <button onclick="backToTop">返回顶部</a>
   </div>
 </body>
 
