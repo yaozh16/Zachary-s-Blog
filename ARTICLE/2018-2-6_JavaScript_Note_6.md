@@ -94,5 +94,182 @@ var p = document.getElementById('p-id');
 p.style.color = '#ff0000';
 p.style.fontSize = '20px';
 p.style.paddingTop = '2em';
+```
+### 插入DOM
+#### 移动
+```HTML
+<!-- HTML结构 -->
+<p id="js">JavaScript</p>
+<div id="list">
+    <p id="java">Java</p>
+    <p id="python">Python</p>
+    <p id="scheme">Scheme</p>
+</div>
+```
+把```<p id="js">JavaScript</p>```添加到```<div id="list">```的最后一项：
+```JavaScript
+var
+    js = document.getElementById('js'),
+    list = document.getElementById('list');
+list.appendChild(js);
+```
+#### 新建
+```JavaScript
+haskell = document.createElement('p');
+haskell.id = 'haskell';
+haskell.innerText = 'Haskell';
+list.appendChild(haskell);
+```
+或者
+```JavaScript
+var d = document.createElement('style');
+d.setAttribute('type', 'text/css');
+d.innerHTML = 'p { color: red }';
+document.getElementsByTagName('head')[0].appendChild(d);
+```
+#### insertBefore
+插入到指定元素之前
+```JavaScript
+parentElement.insertBefore(newElement, referenceElement);
+```
+### 删除DOM
+```JavaScript
+parentElement.removeChild(childElement);
+```
+children属性是一个只读属性，并且它在子节点变化时会实时更新
+## 操作表单
+HTML表单的输入控件主要有以下几种：
+* 文本框，对应的```<input type="text">```，用于输入文本；
+* 口令框，对应的```<input type="password">```，用于输入口令；
+* 单选框，对应的```<input type="radio">```，用于选择一项；
+* 复选框，对应的```<input type="checkbox">```，用于选择多项；
+* 下拉框，对应的```<select>```，用于选择一项；
+* 隐藏文本，对应的```<input type="hidden">```，用户不可见，但表单提交时会把隐藏文本发送到服务器。
+### 获取值
+如果我们获得了一个```<input>```节点的引用，就可以直接调用inputElement.value获得对应的用户输入值
+### 设置值
+设置值和获取值类似
+* 对于text、password、hidden以及select，直接设置value就可以
+* 对于单选框和复选框，设置checked为true或false即可。
+### HTML5控件
+HTML5新增了大量标准控件，常用的包括date、datetime、datetime-local、color等，它们都使用```<input>```标签
+```HTML
+<input type="date" value="2015-07-01">
+<input type="datetime-local" value="2015-07-01T02:03:04">
+<input type="color" value="#ff0000">
+```
+### 提交表单
+JavaScript可以以两种方式来处理表单的提交（AJAX方式在后面章节介绍）。
+* 方式一是通过<form>元素的submit()方法提交一个表单，例如，响应一个<button>的click事件，在JavaScript代码中提交表单：
+```HTML
+<!-- HTML -->
+<form id="test-form">
+    <input type="text" name="test">
+    <button type="button" onclick="doSubmitForm()">Submit</button>
+</form>
 
+<script>
+function doSubmitForm() {
+    var form = document.getElementById('test-form');
+    // 可以在此修改form的input...
+    // 提交form:
+    form.submit();
+}
+</script>
+```
+* 第二种方式是响应<form>本身的onsubmit事件，在提交form时作修改：
+```HTML
+<!-- HTML -->
+<form id="test-form" onsubmit="return checkForm()">
+    <input type="text" name="test">
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+function checkForm() {
+    var form = document.getElementById('test-form');
+    // 可以在此修改form的input...
+    // 继续下一步:
+    return true;
+}
+</script>
+```
+注意要return true来告诉浏览器继续提交，如果return false，浏览器将不会继续提交form，这种情况通常对应用户输入有误，提示用户错误信息后终止提交form。
+* 一般利用hidden传输口令和MD5后的密码等，而原本用户输入的没有name属性的```<input>```的数据不会被提交
+```HTML
+<!-- HTML -->
+<form id="login-form" method="post" onsubmit="return checkForm()">
+    <input type="text" id="username" name="username">
+    <input type="password" id="input-password">
+    <input type="hidden" id="md5-password" name="password">
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+function checkForm() {
+    var input_pwd = document.getElementById('input-password');
+    var md5_pwd = document.getElementById('md5-password');
+    // 把用户输入的明文变为MD5:
+    md5_pwd.value = toMD5(input_pwd.value);
+    // 继续下一步:
+    return true;
+}
+</script>
+```
+
+### 操作文件
+&emsp;在HTML表单中，可以上传文件的唯一控件就是```<input type="file">```。
+&emsp;注意：当一个表单包含```<input type="file">```时，表单的enctype必须指定为multipart/form-data，method必须指定为post，浏览器才能正确编码并以multip00art/form-data格式发送表单的数据。
+&emsp;出于安全考虑，浏览器只允许用户点击```<input type="file">```来选择本地文件，用JavaScript对```<input type="file">```的value赋值是没有任何效果的。当用户选择了上传某个文件后，JavaScript也无法获得该文件的真实路径
+&emsp;通常，上传的文件都由后台服务器处理，JavaScript可以在提交表单时对文件扩展名做检查，以便防止用户上传无效格式的文件
+```JavaScript
+var f = document.getElementById('test-file-upload');
+var filename = f.value; // 'C:\fakepath\test.png'
+if (!filename || !(filename.endsWith('.jpg') || filename.endsWith('.png') || filename.endsWith('.gif'))) {
+    alert('Can only upload image file.');
+    return false;
+}
+```
+#### File API
+
+由于JavaScript对用户上传的文件操作非常有限，尤其是无法读取文件内容，使得很多需要操作文件的网页不得不用Flash这样的第三方插件来实现。
+
+随着HTML5的普及，新增的File API允许JavaScript读取文件内容，获得更多的文件信息。
+
+HTML5的File API提供了File和FileReader两个主要对象，可以获得文件信息并读取文件。
+```JavaScript
+var
+    fileInput = document.getElementById('test-image-file'),//<input>
+    info = document.getElementById('test-file-info'),//<p>
+    preview = document.getElementById('test-image-preview');//<div>
+// 监听change事件:
+fileInput.addEventListener('change', function () {
+    // 清除背景图片:
+    preview.style.backgroundImage = '';
+    // 检查文件是否选择:
+    if (!fileInput.value) {
+        info.innerHTML = '没有选择文件';
+        return;
+    }
+    // 获取File引用:
+    var file = fileInput.files[0];
+    // 获取File信息:
+    info.innerHTML = '文件: ' + file.name + '<br>' +
+                     '大小: ' + file.size + '<br>' +
+                     '修改: ' + file.lastModifiedDate;
+    if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
+        alert('不是有效的图片文件!');
+        return;
+    }
+    // 读取文件:
+    var reader = new FileReader();
+    reader.onload = function(e) {
+        var
+            data = e.target.result; // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...'            
+        //显示预览
+        preview.style.backgroundImage = 'url(' + data + ')';
+    };
+    // 以DataURL的形式读取文件:
+    reader.readAsDataURL(file);
+});
 ```

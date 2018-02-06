@@ -5,6 +5,18 @@
   <meta name="viewport" content="width=device-width">
   <title>Home</title>
   <link rel="stylesheet" type="text/css" media="all" href="css/index_styles.css">
+  <script>
+  function backToTop(){
+    scrollTo(0,0);
+  })
+  function testAlert(){
+    alert('t');
+  }
+  document.onload(function(){
+   testAlert();
+  });
+  
+  </script>
 </head>
 
 <body class="index_body">
@@ -100,6 +112,7 @@
       <a class="index_item" href="ARTICLE/2017-10-15管理代理配置.html">2017/10/15 Shadowsocks + DigitalOcean 翻墙</a><br>
     </div>
   </div>
+  <a href="JavaScript" onclick="backToTop">back</a>
 </body>
 
 </html>

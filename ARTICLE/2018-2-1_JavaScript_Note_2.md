@@ -103,7 +103,7 @@ getAge.apply(xiaoming, [p1,p2]);
 getAge.call(xiaoming, p1,p2);
 ```
 #### map(function)
-#### reduce(function)
+#### reduce(function(x,y),initX)   其中initX可以不要
 注意使用标准函数的时候可能的默认参数
 ```
 ['1','2','3'].map(parseInt);// 结果实际上是[1,NaN,NaN];
