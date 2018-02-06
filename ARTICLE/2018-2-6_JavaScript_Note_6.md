@@ -86,7 +86,7 @@ var ps = q1.querySelectorAll('div.highlighted > p');
 1. innerText
 1. innerHTML
 1. style
-修改CSS也是经常需要的操作。DOM节点的style属性对应所有的CSS，可以直接获取或设置。因为CSS允许font-size这样的名称，但它并非JavaScript有效的属性名，所以需要在JavaScript中改写为驼峰式命名fontSize
+修改CSS也是经常需要的操作。DOM节点的style属性对应所有的CSS，可以直接获取或设置。因为CSS允许font-size这样的名称，但它并非JavaScript有效的属性名，所以需要在JavaScript中改写为 **驼峰式命名** fontSize
 ```JavaScript
 // 获取<p id="p-id">...</p>
 var p = document.getElementById('p-id');
