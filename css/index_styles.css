@@ -35,3 +35,8 @@ a.index_item{
   color: rgba(27, 57, 122, 1);
   text-decoration: none;
 }
+
+div.backToTop{
+  width: 100px;
+  text-decoration: none;
+}
