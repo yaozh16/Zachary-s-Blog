@@ -14,8 +14,8 @@ div.index_head{
 }
 div.index_list{
   list-style-type: none;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 20%;
+  margin-right: 20%;
 }
 div.index_itembox{
   padding: 30px;
@@ -50,4 +50,9 @@ button#backToTop{
   cursor: pointer;
   padding: 15px;
   border-radius: 10px;
+}
+button#backToTop:hover{
+  color:white;
+  background-color: rgba(6, 31, 163, 0.77);
+  -webkit-border-radius: 15px;
 }
