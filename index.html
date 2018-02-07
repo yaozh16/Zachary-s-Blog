@@ -6,28 +6,28 @@
   <title>Home</title>
   <link rel="stylesheet" type="text/css" media="all" href="css/index_styles.css">
   <script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.js"></script>
-</head>
-<script>
-  window.onscroll = function() {
-    if (document.body.scrollTop > 50) {
-      var x = $('button#backToTop');
-      x.css('display', "block");
-    } else {
-      $('button#backToTop').css('display', "none");
-    }
-  }
-
-  function backToTop() {
-    (function smoothscroll() {
-      var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-      if (currentScroll > 0) {
-        
-        window.requestAnimationFrame(smoothscroll);
-        window.scrollTo(0, currentScroll - (currentScroll / 5));
+  <script>
+    window.onscroll = function() {
+      if (document.body.scrollTop > 50) {
+        var x = $('button#backToTop');
+        x.css('display', "block");
+      } else {
+        $('button#backToTop').css('display', "none");
       }
-    })();
-  }
-</script>
+    }
+
+    function backToTop() {
+      (function smoothscroll() {
+        var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+        if (currentScroll > 0) {
+          
+          window.requestAnimationFrame(smoothscroll);
+          window.scrollTo(0, currentScroll - (currentScroll / 5));
+        }
+      })();
+    }
+  </script>
+</head>
 
 <body class="index_body">
   <div id="topAnchor"></div>
