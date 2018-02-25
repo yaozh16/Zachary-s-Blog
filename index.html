@@ -19,8 +19,7 @@
     function backToTop() {
       (function smoothscroll() {
         var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-        if (currentScroll > 0) {
-          
+        if (currentScroll > 0) {          
           window.requestAnimationFrame(smoothscroll);
           window.scrollTo(0, currentScroll - (currentScroll / 5));
         }
@@ -30,6 +29,8 @@
 </head>
 
 <body class="index_body">
+  <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28578495&auto=1&height=66">
+  </iframe>
   <div id="topAnchor"></div>
   <div class="index_head">
     <div id="index_headTitleDiv">
