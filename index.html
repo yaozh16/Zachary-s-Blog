@@ -7,15 +7,22 @@
   <link rel="stylesheet" type="text/css" media="all" href="css/index_styles.css">
   <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script>
-    window.onscroll = function() {
-      if (document.body.scrollTop > 50) {
-        var x = $('button#backToTop');
-        x.css('display', "block");
-      } else {
-        $('button#backToTop').css('display', "none");
-      }
-    }
-
+  
+   window.onload=function(){
+     window.onscroll = function() {
+       if (document.body.scrollTop > 50) {
+         var x = $('button#backToTop');
+         x.css('display', "block");
+       } else {
+         $('button#backToTop').css('display', "none");
+       }
+     }
+     window.oncontextmenu = function(event){
+       
+       //alert('test '+event.pageX+' '+event.pageY+' '+event.relatedTarget);
+       return false;
+     }
+   }
     function backToTop() {
       (function smoothscroll() {
         var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
@@ -30,19 +37,11 @@
 
 <body class="index_body">
   <div id="topAnchor"></div>
-  <iframe
-  frameborder="no" 
-  border="0" 
-  marginwidth="0" 
-  marginheight="0" 
-  width=100%
-  height=32 
-  src="http://music.163.com/outchain/player?type=2&id=28578495&auto=1&height=32"></iframe>
+  <iframe frameborder="no" border="0" width=100% height="52" src="http://music.163.com/outchain/player?type=2&id=28578495&auto=1&height=32"></iframe>
+  
   <div class="index_head">
-    <div id="index_headTitleDiv">
-      <img id="index_headTitle" src="">
-    </div>
-    <div id="index_headTopic">
+    <div class="index_headCover"></div>
+    <div class="index_headTopic">
       welcome to Zachary's person note page.
     </div>
   </div>
@@ -129,8 +128,8 @@
       <a class="index_item" href="ARTICLE/2017-10-15管理代理配置.html">2017/10/15 Shadowsocks + DigitalOcean 翻墙</a><br>
     </div>
   </div>
-  <button onclick="backToTop()" id="backToTop" title="回顶部">返回顶部</button>
-
+<button onclick="backToTop()" id="backToTop" title="回顶部">返回顶部</button>
+  
 </body>
 
 </html>

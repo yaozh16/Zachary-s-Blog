@@ -6,11 +6,30 @@ body.index_body{
   background-attachment:fixed;
 }
 div.index_head{
-  //background-image: url(../IMG/title.jpg);
-  background-color: rgba(0, 158, 142, 0.54);
-  color: #ffffff;
+  //background-image: url(../IMG/9d6cd5930f48c5124dfcfbea2c8c2126_r.jpg);
+  //background-repeat:no-repeat;
+  //background-size:100% 100%;
+  background-color: rgba(98, 122, 226, 0.19);
+  color: white;
   padding: 50px;
+  font-weight: bold;
   font-size: 40;
+  -webkit-border-radius: 35px;
+}
+div.index_headCover{
+  //background:rgba(255, 255, 255, 0.5);
+  //width:80%;
+  //height: 10%;
+  background-repeat:no-repeat;
+  background-size:cover;
+  -webkit-filter:blur(15px);
+  -moz-filter:blur(15px);
+  -o-filter:blur(15px);
+  -ms-filter:blur(15px);
+  filter:blur(15px);
+  position:absolute;
+  left:0;
+  top:0;
 }
 div.index_list{
   list-style-type: none;
@@ -23,7 +42,7 @@ div.index_itembox{
   display: block;
   //float: left;
   margin: 20px;
-  background-color: rgba(93, 207, 195, 0.70);
+  background-color: rgba(170, 227, 221, 0.19);
   -webkit-border-radius: 15px;
 }
 div.index_itembox:hover{
@@ -33,7 +52,7 @@ div.index_itembox:hover a.index_item{
   color: #ffffff;
 }
 a.index_item{
-  color: rgba(27, 57, 122, 1);
+  color: white;
   text-decoration: none;
 }
 
@@ -46,7 +65,7 @@ button#backToTop{
   border: none;
   outline: none;
   opacity: 0.7;
-  color: whitergb(58, 68, 133);
+  color: rgb(58, 68, 133);
   cursor: pointer;
   padding: 15px;
   border-radius: 10px;
