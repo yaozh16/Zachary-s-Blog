@@ -2,8 +2,8 @@ body.index_body{
   font-family: 'Josefin Sans';
   background-image: url(../IMG/v2-cb1db5fed86c7cbb9172f487cf9f709e_r.jpg);
   background-repeat:no-repeat;
-  background-size: 100% 100%;
-  background-attachment:fixed;
+  background-size:width 100%;
+  //background-attachment:fixed;
 }
 div.index_head{
   //background-image: url(../IMG/title.jpg);
