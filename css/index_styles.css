@@ -33,37 +33,53 @@ div.index_headCover{
   left:0;
   top:0;
 }
-div.index_list{
-  list-style-type: none;
+div#displayDiv{
+  border-radius: 35px;
   margin-left: 20%;
   margin-right: 20%;
 }
+div.index_list{
+  list-style-type: none;
+}
 div.index_itembox{
+  outline: none;
   padding: 30px;
   font-size: 30px;
   display: block;
-  //float: left;
   margin: 20px;
   background-color: rgba(170, 227, 221, 0.19);
   -webkit-border-radius: 15px;
 }
+
 div.index_itembox:hover{
   background-color: rgba(0, 103, 92, 0.50);
 }
+button.index_itemBtn{
+  padding: 30px;
+  font-size: 30px;
+  display: block;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: none;
+  background-color: rgba(170, 227, 221, 0.19);
+  -webkit-border-radius: 15px;
+  color: #ffffff;
+}
 div.index_itembox:hover a.index_item{
   color: #ffffff;
+}
+button.index_itemBtn:hover{
+  color: #ffffff;
+  color: white;
+  text-decoration: none;
 }
 a.index_item{
   color: white;
   text-decoration: none;
 }
 
-button#backToTop{
-  display: none;
-  position: fixed;
-  bottom: 30px;
-  right: 40px;
-  z-index: 99;
+button.backButton{
+  display: block;
   border: none;
   outline: none;
   opacity: 0.7;
@@ -72,7 +88,7 @@ button#backToTop{
   padding: 15px;
   border-radius: 10px;
 }
-button#backToTop:hover{
+button.backButton:hover{
   color:white;
   background-color: rgba(6, 31, 163, 0.77);
   -webkit-border-radius: 15px;
