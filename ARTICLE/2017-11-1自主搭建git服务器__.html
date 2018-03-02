@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="自主搭建git服务器">自主搭建git服务器</h1>
+
+<h2 id="主要步骤">主要步骤</h2>
+
+<h3 id="0.前期准备">0.前期准备</h3>
+首先，在命令行环境下（用putty远程登录，或者直接用键盘显示器等设备打开服务器后进入Terminal）
+安装git(
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>sudo apt-get update
+sudo apt-get install git
+</blockquote></pre></div>
+
+<h3 id="1. 服务器添加、配置用户">1. 服务器添加、配置用户</h3>
+首先，在命令行环境下（用putty远程登录，或者直接用键盘显示器等设备打开服务器后进入Terminal）
+添加用户git(注意这里必须是git)
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>sudo adduser git
+</blockquote></pre></div>
+这里可能需要设置git用户的密码，<strong>注意不要和别的账户的密码相同，特别是root用户</strong>，设置之后记住就好
+<h3 id="2. 授权配置">2. 授权配置</h3>
+然后进入git用户主目录(注意，此时不是git用户在操作，而是某个具有sudo权限的用户，也就是自己刚开始登陆使用的用户,比如root)
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote><h1 id="注意home前面的一个‘/’符号不要丢">注意home前面的一个‘/’符号不要丢</h1>
+cd /home/git
+</blockquote></pre></div>
+
+然后为远程登录授权
+在/home/git目录下创建.ssh文件夹
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>mkdir /home/git/.ssh
+</blockquote></pre></div>
+在.ssh中创建authorized_keys存入公钥，一行存一个
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>cd /home/git/.ssh
+vim authorized_keys
+<h1 id="按Insert然后复制粘贴(Shift+Insert)或者手打公钥进去">按Insert然后复制粘贴(Shift+Insert)或者手打公钥进去</h1>
+<h1 id="一行一个公钥">一行一个公钥</h1>
+<h1 id="保存退出">保存退出</h1>
+</blockquote></pre></div>
+<strong>当我们需要有一台新设备登录的时候，注意为它创建私钥公钥对，把公钥导入```/home/git/.ssh/authorized_keys```</strong>
+<h3 id="3. 服务器配置仓库">3. 服务器配置仓库</h3>
+回到git用户主目录
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>cd /home/git
+</blockquote></pre></div>
+创建一个用于保存仓库的文件夹,这里假设是MyGitDirectory
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>mkdir 文件夹名字
+<h1 id="例如">例如</h1>
+<h1 id="mkdir MyGitDirectory">mkdir MyGitDirectory</h1>
+</blockquote></pre></div>
+进入刚才的文件夹,并创建仓库（假设是HelloWorld.git）
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>git init HelloWorld.git
+</blockquote></pre></div>
+这之后就可以作为仓库使用了
+<h3 id="4. 服务器端防止误操作（如果自己用，可选可不选）">4. 服务器端防止误操作（如果自己用，可选可不选）</h3><div class="liRank0"><li class="liRank0">主要的不安全处在于，如果要远程git bash登录服务器，则对方是知道git用户的密码的，这意味者对方不仅能git登录，还可以ssh登录，从而直接进入我们的服务器进行各种各样的操作（比如写代码、跑程序、开关权限、删除文件），所以在多用户下为了让我们的git服务器更加稳定，需要防止这种危险</li></div>
+
+<strong> 当我们又真正需要在shell环境下操作服务器时，只要自己用别的账户(比如root)登录就可以了  </strong>
+打开```/etc/passwd```将
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>git:x:1001:1001:,,,:/home/git:/bin/bash
+</blockquote></pre></div>
+替换为
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>git:x:1001:1001:,,,:/home/git:/usr/bin/git-shell
+</blockquote></pre></div>
+<div class="liRank0"><li class="liRank0">另一方面也需要防止别的用户删除git目录下的仓库</li></div>
+
+找到我们的```.git```仓库
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote><h1 id="例如">例如</h1>
+cd /home/git/MyGitDirectory
+</blockquote></pre></div>
+设置下面的git仓库为git用户
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>sudo chown -R git:git 仓库名.git
+<h1 id="例如">例如</h1>
+<h1 id="sudo chown -R git:git HelloWorld.git">sudo chown -R git:git HelloWorld.git</h1>
+</blockquote></pre></div>
+<h2 id="之后就可以利用git bash 去clone和push，开始愉快的玩耍了">之后就可以利用git bash 去clone和push，开始愉快的玩耍了</h2>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>git clone git@服务器IP地址或者URL:/home/git/仓库文件夹/仓库名.git
+<h1 id="例如 git clone git@123.123.123.123:/home/git/MyGitDirectory/HelloWorld.git">例如 git clone git@123.123.123.123:/home/git/MyGitDirectory/HelloWorld.git</h1>
+<h1 id="例如 git clone git@www.MyPersonalSite.com:/home/git/MyGitDirectory/HelloWorld.git">例如 git clone git@www.MyPersonalSite.com:/home/git/MyGitDirectory/HelloWorld.git</h1>
+</blockquote></pre></div>
+URL会被网络连接自己解析为IP地址，不过那部分要使用的话需要更多设置啦，比如买域名啦，给服务器配置域名等等啦，这里就不展开了
+</div></body>
+</html>

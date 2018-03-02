@@ -1,4 +1,9 @@
 # 2018-2-26_selenium_Python(3)_Proxy
+## Method
+\[
+\frac{1}{2}
+\]
+**code**
 ```
 from selenium.webdriver.common.proxy import *  
 ip=rdl(zd.keys())  

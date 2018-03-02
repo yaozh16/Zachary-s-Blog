@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="搭建服务器实现翻墙">搭建服务器实现翻墙</h1>
+
+<h2 id="1、搭建远程服务器">1、搭建远程服务器</h2>
+
+
+我是在digitalOcean上购买服务器资源，一个月5美刀有1TB流量，512MB内存,按照流量计费
+
+windows下，使用的时候用PuTTY去SSH登陆
+
+linux下直接ssh
+<h2 id="2、windows PuTTY远端登陆">2、windows PuTTY远端登陆</h2>
+
+由于Ubuntu自带python所以只需要安装pip和shadowsocks
+
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>apt-get install python-pip
+pip install shadowsocks
+</blockquote></pre></div>
+
+之后就写好配置文件，之后自动调用跑就好了
+
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>vim /etc/shadowsocks.json
+</blockquote></pre></div>
+写入(里面server、password和server_port换成你需要的)<div class='citation'><p class='citationP'><br>{<br><br> "server":"你的服务器ip地址",<br><br> "server_port":8388,<br><br> "local_address": "127.0.0.1",<br><br> "local_port":1080,  <br><br> "password":"你设置的密码",<br><br> "timeout":300,<br><br> "method":"aes-256-cfb",<br><br> "fast_open": false<br><br>}
+</p></div>
+<h2 id="3、使用">3、使用</h2>
+
+<h3 id="服务器端启动">服务器端启动</h3>
+直接运行可以
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>ssserver -c /etc/shadowsocks.json
+</blockquote></pre></div>
+然后服务器就跑起来了，自己手机也好PC也好，安好shadowsocks自己配置一下就可以连接了
+
+如果需要关闭ssh之后仍然能够使用，需要后台运行,则
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>(后台启动)
+ssserver -c /etc/shadowsocks.json -d start
+(后台关闭)
+ssserver -c /etc/shadowsocks.json -d stop
+</blockquote></pre></div>
+
+<h3 id="用户windows主机/手机">用户windows主机/手机</h3>
+
+首先安装shadowsocks,按照之前自己上面的配置填写，然后启动就可以了
+
+<h3 id="用户linux主机">用户linux主机</h3>
+
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>sudo add-apt-repository ppa:hzwhuang/ss-qt5
+sudo apt-get update
+sudo apt-get install shadowsocks-qt5
+</blockquote></pre></div>
+在gui客户端里配置sock5连接
+然后接下来我们开始将其转为全局
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>安装 Privoxy：apt install privoxy -y
+编辑 Privoxy 配置文件 vim /etc/privoxy/config
+添加forward-socks5 / 127.0.0.1:1080 .
+注意上面那一句需要 &quot;.&quot;
+启动 Privoxy：systemctl start privoxy
+查看 Privoxy 状态：systemctl status privoxy， 如果有 running 和 active 字样，说明成功运行。
+</blockquote></pre></div>
+设置bash代理
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>cd ~
+vim .bash_profile
+在 .bash_profile 的最后，增加一句命令：export http_proxy=http://127.0.0.1:8118 等等
+使 .bash_profile 设置生效：source .bash_profile
+</blockquote></pre></div>
+接下来
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>在/etc/apt中
+修改/etc/apt/apt.conf增加（这里是8118是因为默认的上网的端口是8118，在/etc/privoxy/config中可以修改）
+Acquire::http::proxy &quot;http://127.0.0.1:8118/&quot;;
+Acquire::ftp::proxy &quot;ftp://127.0.0.1:8118/&quot;;
+Acquire::https::proxy &quot;https://127.0.0.1:8118/&quot;;
+
+</blockquote></pre></div>
+<h2 id="kcptun加速">kcptun加速</h2>
+/usr/local/kcptun/server_linux_amd64 -c /usr/local/kcptun/server-config.json
+</div></body>
+</html>

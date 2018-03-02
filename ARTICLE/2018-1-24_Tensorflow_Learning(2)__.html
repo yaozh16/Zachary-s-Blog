@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="2018/1/24 Tensorflow Learning(2) Note of Lecture">2018/1/24 Tensorflow Learning(2) Note of Lecture</h1>
+<h2 id="Lecture 1">Lecture 1</h2>
+<h3 id="tensor and session">tensor and session</h3>
+创建Graph(默认有一个defaultGraph)
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>g=tf.get_default_graph() <h1 id="获取默认图句柄">获取默认图句柄</h1>
+</blockquote></pre></div>
+然后在session中计算graph
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>tf.Session().run(node)
+</blockquote></pre></div>
+<h3 id="multi CPU/GPU">multi CPU/GPU</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>with tf.device(&quot;/gpu:2&quot;):
+  op=.......
+tf.Session().run(op)
+
+</blockquote></pre></div>
+<h3 id="创建新的Graph">创建新的Graph</h3>
+需要设置为default_graph才可以加入节点
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>g=tf.Graph()
+with g.as_default():
+  operations...
+</blockquote></pre></div>
+使用时则指定graph
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>sess=tf.Session(graph=g)
+</blockquote></pre></div>
+<h2 id="Lecture 2">Lecture 2</h2>
+<h3 id="tensorboard">tensorboard</h3>
+在sess的graph写到./graph文件夹中
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>with tf.Session() as sess:
+  tf.summary.FileWriter(&apos;./graph&apos;,sess.graph)
+</blockquote></pre></div>
+terminal运行tensorboard
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>tensorboard --logdir=&quot;./graph&quot; --pt 6006
+</blockquote></pre></div>
+然后在上面相对应的端口中( http://localhost:6006/ 去查看)
+<h3 id="tf.constant">tf.constant</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>tf.constant(value,dtype=None,shape=None,name=&quot;Const&quot;,verify_shape=False)
+</blockquote></pre></div>
+其中<div class="liRank0"><li class="liRank0">value可以是n维矩阵</li></div>
+[1]
+[2,2]
+[ [1,2],[2,3] ]
+[ [ [1,2],[2,3] ],[ [1,2],[2,3] ] ]<div class="liRank0"><li class="liRank0">shape为</li></div>
+[1,2,...]向量：对应于value为矩阵（包括[p]这种1x1的）
+()空：对应于value为常数<div class="liRank0"><li class="liRank0">verify_shape：</li></div>
+默认为False:当value和shape不对应的时候，将value转化为shape并少位填充末尾数字
+设置为True:强制value和shape对应
+<strong>当维度不同的node运算时会取小维度的node作高维度的复制直到和大维度node相同再运算</strong>
+例如<br>
+[ [1,2],[3,4] ]+[1,2]=[ [1,2],[3,4] ]+[ [1,2],[1,2] ]=[ [2,4],[4,6] ] <br>
+[ [1,2],[3,4] ]x[1,2]=[ [1,2],[3,4] ]x[ [1,2],[1,2] ]=[ [1,4],[3,8] ]<div class="liRank0"><li class="liRank0">others：</li></div><div class="ulRank0"><ul class="ulRank0">1. tf.zeros(shape,dtype,name)</ul></div><div class="ulRank0"><ul class="ulRank0">2. tf.zeros_like(tensor_with_shape,name)</ul></div><div class="ulRank0"><ul class="ulRank0">3. tf.ones(shape,dtype,name)</ul></div><div class="ulRank0"><ul class="ulRank0">4. tf.ones_like(tensor_with_shape,name)</ul></div><div class="ulRank0"><ul class="ulRank0">5. tf.fill(shape,value,name)</ul></div>
+<h2 id="Lecture 3">Lecture 3</h2>
+<h3 id="structure type">structure type</h3><div class="liRank0"><li class="liRank0">tf.Variable</li></div><div class="liRank0"><li class="liRank0">tf.constant</li></div><div class="liRank0"><li class="liRank0">tf.placeholder<br>have to be feed in data by <strong>feed_dict</strong></li></div>
+
+<strong>Attension:</strong> Avoid lazy loading
+<h3 id="<strong>*model building</strong>*"><strong>*model building</strong>*</h3>
+<table cellspacing='0'><tr><th> Step                              </th><th> Usage                                </th></tr><tr><td> decide placeholder                </td><td> for data input                       </td></tr><tr><td> decide variable                   </td><td> for learning                         </td></tr><tr><td> decide loss function              </td><td> with graph node relationship         </td></tr><tr><td> decide optimizer                  </td><td> it will modify variables when runned </td></tr><tr><td> create session and init variables </td><td>                                      </td></tr><tr><td> <strong>loop</strong>                          </td><td>                                      </td></tr></table><br>
+<strong>loop中的步骤：</strong><div class="ulRank0"><ul class="ulRank0">1. 读取数据</ul></div><div class="ulRank0"><ul class="ulRank0">2. session.run(optimizer,feed_dict={...})运行迭代</ul></div>
+<div class="liRank0"><li class="liRank0">在optimizer被run的时候会自动修改那些允许修改的variable</li></div><div class="liRank0"><li class="liRank0">feed_dict需要填充所有place_holder(保证loss_function有结果)</li></div>
+
+<h3 id="样例：线性回归">样例：线性回归</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>import tensorflow as tf
+x=tf.placeholder(tf.float32)
+y=tf.placeholder(tf.float32)
+a=tf.Variable(0.0)
+b=tf.Variable(0.0)
+predict_y=tf.multiply(a,x)+b
+loss=tf.square(y-predict_y)
+optimizer=tf.train.GradientDescentOptimizer(0.001).minimize(loss)
+s = tf.Session()
+s.run(tf.global_variables_initializer())
+for i in range(loopNum):
+  <h1 id="x,y从数据集中提取">x,y从数据集中提取</h1>
+  ...
+  s.run(optimizer,feed_dict={x:x_datum,y:y_datum})
+
+<h1 id="view result">view result</h1>
+print s.run(a)
+print s.run(b)
+</blockquote></pre></div>
+</div></body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="2018-2-2 JavaScript Note 4">2018-2-2 JavaScript Note 4</h1>
+<h2 id="标准对象">标准对象</h2>
+<h4 id="Date">Date</h4>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>var now = new Date();
+now; // Wed Jun 24 2015 19:49:22 GMT+0800 (CST)
+now.getFullYear(); // 2015, 年份
+now.getMonth(); // 5, 月份，注意月份范围是0~11，5表示六月
+now.getDate(); // 24, 表示24号
+now.getDay(); // 3, 表示星期三
+now.getHours(); // 19, 24小时制
+now.getMinutes(); // 49, 分钟
+now.getSeconds(); // 22, 秒
+now.getMilliseconds(); // 875, 毫秒数
+now.getTime(); // 1435146562875, 以number形式表示的时间戳
+</blockquote></pre></div><div class="ulRank0"><ul class="ulRank0">1. 创建时间对象</ul></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>//注意月份从0开始
+var d = new Date(2015, 5, 19, 20, 15, 30, 123);
+d; // Fri Jun 19 2015 20:15:30 GMT+0800 (CST)
+</blockquote></pre></div><div class="ulRank0"><ul class="ulRank0">2. 提取解析一个符合ISO 8601格式的字符串,再传入</ul></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>//字符串使用实际月份01~12，转换为Date对象后getMonth()获取的月份值为0~11
+var d = Date.parse(&apos;2015-06-24T19:49:22.875+08:00&apos;);
+d; // 1435146562875
+</blockquote></pre></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>var d = new Date(1435146562875);
+d.toLocaleString(); // &apos;2015/6/24 下午7:49:22&apos;，本地时间（北京时区+8:00），显示的字符串与操作系统设定的格式有关
+d.toUTCString(); // &apos;Wed, 24 Jun 2015 11:49:22 GMT&apos;，UTC时间，与本地时间相差8小时
+
+</blockquote></pre></div>
+
+<h4 id="RegExp">RegExp</h4><div class="ulRank0"><ul class="ulRank0">1. 用/.../符号之间的部分标识或者new RegExp('...')</ul></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>var re1 = /ABC\-001/;
+var re2 = new RegExp(&apos;ABC\\-001&apos;);
+</blockquote></pre></div><div class="ulRank0"><ul class="ulRank0">2. pattern.test(var_str)</ul></div><div class="ulRank0"><ul class="ulRank0">3. var_str.split(pattern)</ul></div><div class="ulRank0"><ul class="ulRank0">4. pattern.exec(var_str)分组(rank=0处仍然是匹配整体)</ul></div><div class="ulRank0"><ul class="ulRank0">5. 全局搜索</ul></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>var s = &apos;JavaScript, VBScript, JScript and ECMAScript&apos;;
+//下面等效于var re = new RegExp(&apos;[a-zA-Z]+Script&apos;, &apos;g&apos;);
+var re=/[a-zA-Z]+Script/g;
+
+// 使用全局匹配:
+re.exec(s); // [&apos;JavaScript&apos;]
+re.lastIndex; // 10
+
+re.exec(s); // [&apos;VBScript&apos;]
+re.lastIndex; // 20
+</blockquote></pre></div><div class="ulRank0"><ul class="ulRank0">6. 其他标识:</ul></div>
+i:忽略大小写
+m:执行多行匹配
+<h2 id="JSON">JSON</h2>
+<h4 id="data type">data type</h4>
+number
+boolean
+string
+null
+array
+object
+<h4 id="序列化">序列化</h4>
+JSON.stringify(var_object,array_property=null,indentType)
+第二个参数用于控制如何筛选对象的键值，如果我们只想输出指定的属性，可以传入Array
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>JSON.stringify(xiaoming, [&apos;name&apos;, &apos;skills&apos;], &apos;  &apos;);
+</blockquote></pre></div>
+还可以传入函数var_func(key,value)
+JSON.stringify(var_object,var_func,indentType)
+则相当于对object做了一个map之后再转换
+<h4 id="反序列化">反序列化</h4>
+JSON.parse(var_str)
+JSON.parse(var_str，var_func)</div></body>
+</html>

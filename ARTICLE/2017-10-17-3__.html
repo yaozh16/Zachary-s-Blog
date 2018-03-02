@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="2017-10-17-3 Android 学习笔记(3) HttpClient">2017-10-17-3 Android 学习笔记(3) HttpClient</h1>
+
+<h2 id="1、Get">1、Get</h2>
+<h3 id=" 不带参数的Get请求"> 不带参数的Get请求</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>HttpClient httpClient = new DefaultHttpClient();
+HttpGet httpGet = new HttpGet(&quot;http://www.w3cschool.cc/python/python-tutorial.html&quot;);
+HttpResponse httpResponse = httpClient.execute(httpGet);
+if (httpResponse.getStatusLine().getStatusCode() == 200) {
+    HttpEntity entity = httpResponse.getEntity();
+    detail = EntityUtils.toString(entity, &quot;utf-8&quot;);
+}
+</blockquote></pre></div>
+
+<h3 id="带有参数的Get请求">带有参数的Get请求</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>List&lt;BasicNameValuePair&gt; params = new LinkedList&lt;BasicNameValuePair&gt;();  
+params.add(new BasicNameValuePair(&quot;user&quot;, &quot;猪小弟&quot;));  
+params.add(new BasicNameValuePair(&quot;pawd&quot;, &quot;123&quot;));
+String param = URLEncodedUtils.format(params, &quot;UTF-8&quot;); 
+HttpGet httpGet = new HttpGet(&quot;http://www.baidu.com&quot;+&quot;?&quot;+param);
+</blockquote></pre></div>
+
+<h2 id="2、Post">2、Post</h2>
+Post 方法传入参数时，需要先导入到List<NameValuePair>中，然后通过httpPost.setEntity方法设置进去
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>HttpClient httpClient = new DefaultHttpClient();
+HttpPost httpPost = new HttpPost(url);
+List&lt;NameValuePair&gt; params = new ArrayList&lt;NameValuePair&gt;();
+params.add(new BasicNameValuePair(&quot;user&quot;, &quot;猪大哥&quot;));
+params.add(new BasicNameValuePair(&quot;pawd&quot;, &quot;123&quot;));
+UrlEncodedFormEntity entity = new UrlEncodedFormEntity(params,&quot;UTF-8&quot;);
+httpPost.setEntity(entity);
+HttpResponse httpResponse =  httpClient.execute(httpPost);//执行Post,实际上Get也可以通过这种方法实现
+if (httpResponse.getStatusLine().getStatusCode() == 200) {
+    HttpEntity entity2 = httpResponse.getEntity();
+    //EntityUtils是类名
+    detail = EntityUtils.toString(entity2, &quot;utf-8&quot;);
+}
+</blockquote></pre></div>
+
+<h2 id="3、其他">3、其他</h2>
+<div class="liRank0"><li class="liRank0">获取cookie</li></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>// 获取响应的cookie值
+cookie = httpResponse.getFirstHeader(&quot;Set-Cookie&quot;).getValue();
+</blockquote></pre></div><div class="liRank0"><li class="liRank0">发送Post请求,禁止重定向</li></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>HttpPost httpPost = new HttpPost(true_url);
+httpPost.getParams().setParameter(ClientPNames.HANDLE_REDIRECTS, false);
+</blockquote></pre></div><div class="liRank0"><li class="liRank0">设置Post提交的头信息的参数</li></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>httpPost.setHeader(&quot;User-Agent&quot;,&quot;Mozilla/5.0 (Windows NT 6.3; WOW64; Trident/7.0; rv:11.0) like Gecko&quot;);
+httpPost.setHeader(&quot;Referer&quot;, true_url);
+httpPost.setHeader(&quot;Cookie&quot;, cookie);
+</blockquote></pre></div><div class="liRank0"><li class="liRank0">设置编码方式,响应请求,获取响应状态码:</li></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>httpPost.setEntity(new UrlEncodedFormEntity(params, &quot;gb2312&quot;));
+HttpResponse response = new DefaultHttpClient().execute(httpPost);
+</blockquote></pre></div>
+
+<h2 id="4、使用HttpPut发送Put请求">4、使用HttpPut发送Put请求</h2>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>HttpPut httpPut = new HttpPut(PUTACKCODE_URL);
+httpPut.setHeader(&quot;Cookie&quot;, cookie);
+try {
+  List&lt;NameValuePair&gt; params = new ArrayList&lt;NameValuePair&gt;();
+  params.add(new BasicNameValuePair(&quot;activation_code&quot;, actCode));
+  params.add(new BasicNameValuePair(&quot;license_plate&quot;, licPlate));
+  httpPut.setEntity(new UrlEncodedFormEntity(params, &quot;UTF-8&quot;));
+  HttpResponse course_response = new DefaultHttpClient().execute(httpPut);
+  if (course_response.getStatusLine().getStatusCode() == 200) {
+      HttpEntity entity2 = course_response.getEntity();
+      JSONObject jObject = new JSONObject(EntityUtils.toString(entity2));
+      resp = Integer.parseInt(jObject.getString(&quot;status_code&quot;));
+      return resp;
+  }
+} catch (Exception e) {
+  e.printStackTrace();
+}
+</blockquote></pre></div>
+</div></body>
+</html>

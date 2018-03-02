@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="2018-2-26_selenium_Python(3)_Proxy">2018-2-26_selenium_Python(3)_Proxy</h1>
+<h2 id="Method">Method</h2>
+\[
+\frac{1}{2}
+\]
+<strong>code</strong>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>from selenium.webdriver.common.proxy import *  
+ip=rdl(zd.keys())  
+myProxy = ip  
+proxy = Proxy({  
+&apos;proxyType&apos;: ProxyType.MANUAL,  
+&apos;httpProxy&apos;: myProxy,  
+&apos;ftpProxy&apos;: myProxy,  
+&apos;sslProxy&apos;: myProxy,  
+&apos;noProxy&apos;: &apos;&apos;   
+})  
+driver=webdriver.Firefox(proxy=proxy)  
+</blockquote></pre></div></div></body>
+</html>

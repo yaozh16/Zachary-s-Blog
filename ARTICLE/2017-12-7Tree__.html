@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'>#伸展树、红黑树、B树
+##SplayTree<div class="liRank0"><li class="liRank0">目标:</li></div>
+__利用局部性__<div class="liRank0"><li class="liRank0">双层伸展：</li></div>
+仍然使用connect34,但是使v为子树根<div class="liRank0"><li class="liRank0">查找：</li></div>
+直到查找结束，每次查找都是一次旋转操作<div class="liRank0"><li class="liRank0">插入：</li></div>
+查找+join<div class="liRank0"><li class="liRank0">删除：</li></div>
+查找+BST删除
+##BTree<div class="liRank0"><li class="liRank0">目标:</li></div>
+__最小化IO所带来的时间消耗__<div class="liRank0"><li class="liRank0">阶:</li></div><div class="ulRank0"><ul class="ulRank0">1. m阶B树表示每个节点最大的子节点数目为m</ul></div><div class="ulRank0"><ul class="ulRank0">2. 关键码个数 $[rac{m+1}{2}]\le n \le m$<div class="liRank0"><li class="liRank0">查找：</li></div></ul></div><div class="ulRank0"><ul class="ulRank0">1. 层间：BST查找</ul></div><div class="ulRank0"><ul class="ulRank0">2. 层内：Vector查找<div class="liRank0"><li class="liRank0">__插入导致上溢__</li></div></ul></div><div class="ulRank0"><ul class="ulRank0">1. 分支($[rac{m}{2}],1,m-[rac{m}{2}]$)</ul></div><div class="ulRank0"><ul class="ulRank0">2. 插入节点，接入两支</ul></div><div class="ulRank0"><ul class="ulRank0">3. 新节点，仍然满足条件</ul></div>
+\[
+[\frac{m+1}{2}]\le [\frac{m}{2}]+1 \le m\\
+[\frac{m+1}{2}]\le m-[\frac{m}{2}]+1 \le m
+\]<div class="ulRank0"><ul class="ulRank0">4. 继续上滤<div class="liRank0"><li class="liRank0">__删除导致下溢__</li></div></ul></div><div class="ulRank0"><ul class="ulRank0">1. 搜索左右：合法则旋转</ul></div><div class="ulRank0"><ul class="ulRank0">2. 左右不合法(均在下溢边缘)：合并</ul></div>
+<h2 id="RBTree">RBTree</h2><div class="liRank0"><li class="liRank0">目标：实现版本保存、保持树的高度在O(logn)</li></div><div class="liRank0"><li class="liRank0">特点：与一颗(2,4)BTree对应等效</li></div><div class="liRank0"><li class="liRank0">规则：</li></div><div class="ulRank0"><ul class="ulRank0">1. 树根为B</ul></div><div class="ulRank0"><ul class="ulRank0">1. 外部节点为B</ul></div><div class="ulRank0"><ul class="ulRank0">1. 不存在RR父子<div class="liRank0"><li class="liRank0">查找：正常BST查找</li></div><div class="liRank0"><li class="liRank0">__插入__</li></div></ul></div><div class="ulRank0"><ul class="ulRank0">1. 插入R</ul></div><div class="ulRank0"><ul class="ulRank0">2. 双R修正：</ul></div>
+
+[x] 对插入的节点x( R )，父节点p( R )，祖父节点g( B )执行3+4重构
+
+[x] 新的子树根染成黑色，其余染成红色<div class="liRank0"><li class="liRank0">__删除__</li></div><div class="ulRank0"><ul class="ulRank0">1. 若为红，直接删除，结束</ul></div><div class="ulRank0"><ul class="ulRank0">2. 若为黑</ul></div>
+
+<table cellspacing='0'><tr><th> 类型  </th><th> 说明                 </th><th> 操作                                          </th><th> 补充               </th><th> 时间 </th></tr><tr><td> BB-1  </td><td> s为B，有R孩子t       </td><td> s染成p的颜色，p旋转使s成为子树根，t染黑       </td><td>                    </td><td> 1    </td></tr><tr><td> BB-2R </td><td> s为B，且孩子均B;p为R </td><td> s染红，p染黑                                  </td><td>                    </td><td> 1    </td></tr><tr><td> BB-2B </td><td> s为B，且孩子均B;p为B </td><td> s染红                                         </td><td> 上溯继续检查       </td><td> logn </td></tr><tr><td> BB-3  </td><td> s为R(则p为B)         </td><td> 首先s染黑变成子树根，再对p进行BB-1与BB-2R检查 </td><td> 染色有拓扑结构变化 </td><td> 2-3  </td></tr></table><br></div></body>
+</html>

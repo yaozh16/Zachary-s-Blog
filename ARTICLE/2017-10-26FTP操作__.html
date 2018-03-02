@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="FTP操作笔记">FTP操作笔记</h1>
+
+<h2 id="远程服务器">远程服务器</h2>
+<div class="ulRank0"><ul class="ulRank0">1. 启动Vsftpd服务其命令为： service vsftpd start 或 /etc/init.d/vsftpd start</ul></div>
+<div class="ulRank0"><ul class="ulRank0">1. 停止Vsftpd服务的命令为：service vsftpd stop 或 /etc/init.d/vsftpd stop</ul></div>
+<div class="ulRank0"><ul class="ulRank0">1. 重新启动Vsftpd服务的命令为：service vsftpd restart 或 /etc/init.d/vsftpd restart</ul></div>
+<div class="ulRank0"><ul class="ulRank0">1. 检查Vsftpd服务的运行状态：service vsftpd status</ul></div>
+
+
+上传时注意修改/etc/vsftpd.conf 
+
+write_enable=true
+
+<h2 id="用户">用户</h2>
+<div class="ulRank0"><ul class="ulRank0">1. 连接：ftp IP</ul></div>
+<div class="ulRank0"><ul class="ulRank0">1. 取得：get filename</ul></div>
+<div class="ulRank0"><ul class="ulRank0">1. 上传：put filename</ul></div>
+<div class="ulRank0"><ul class="ulRank0">1. 改变目录： cd</ul></div>
+<div class="ulRank0"><ul class="ulRank0">1. 查看目录：pwd</ul></div>
+</div></body>
+</html>

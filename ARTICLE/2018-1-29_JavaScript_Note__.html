@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="2018-1-29 JavaScript Note">2018-1-29 JavaScript Note</h1>
+
+<h2 id="basics">basics</h2>
+<h3 id="debug">debug</h3>
+alert(variable);
+console.log(variable)
+<h3 id="common">common</h3><div class="ulRank0"><ul class="ulRank0">1. JavaScript把null、undefined、0、NaN和空字符串''视为false，其他值一概视为true</ul></div><div class="ulRank0"><ul class="ulRank0">2. 'use strict';控制严格</ul></div>
+<h3 id="string">string</h3><div class="ulRank0"><ul class="ulRank0">1. `...`会是多行直接输出</ul></div><div class="ulRank0"><ul class="ulRank0">2. 模板变量填充</ul></div>
+```JavaScript
+`你好, ${name}, 你今年${age}岁了!`;
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>3. toUpperCase()<div class="ulRank0"><ul class="ulRank0">4. toLowerCase()</ul></div><div class="ulRank0"><ul class="ulRank0">5. indexOf(var_subString)</ul></div><div class="ulRank0"><ul class="ulRank0">6. substring(int_startpoint,int_trailer)</ul></div>
+<h3 id="array">array</h3><div class="ulRank0"><ul class="ulRank0">1. 直接可以修改内容和length属性，没初始化为undefined</ul></div><div class="ulRank0"><ul class="ulRank0">2. indexOf(var_item)</ul></div><div class="ulRank0"><ul class="ulRank0">3. slice(start_rank,trailer)</ul></div><div class="ulRank0"><ul class="ulRank0">4. slice(start_rank)</ul></div><div class="ulRank0"><ul class="ulRank0">5. slice()</ul></div><div class="ulRank0"><ul class="ulRank0">6. pop() //尾部删除</ul></div><div class="ulRank0"><ul class="ulRank0">7. unshift() //头部添加</ul></div><div class="ulRank0"><ul class="ulRank0">8. shift()  //头部删除</ul></div><div class="ulRank0"><ul class="ulRank0">9. sort()</ul></div><div class="ulRank0"><ul class="ulRank0">10.  reverse()</ul></div><div class="ulRank0"><ul class="ulRank0">11. splice(start_rank, num_to_delete,...[added item])</ul></div>
+</blockquote></pre></div>JavaScript
+splice(2, 0 ,1,'12','asd') //example : insert 3 item
+splice(2, 2 )              //example : delete 2 item
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>12. concat(another_array_to_connect)//返回新的array<div class="ulRank0"><ul class="ulRank0">13. join(connect_char)</ul></div><div class="ulRank0"><ul class="ulRank0">14. map(function)</ul></div>
+</blockquote></pre></div>JavaScript
+var sq=function(x){
+  return x*x;
+}
+var arr=[1,2,3,4,5,6];
+var result= arr.map(sq);  //result=[1,4,9,16,25,36]
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>15. reduce(function)
+</blockquote></pre></div>
+[x1, x2, x3, x4].reduce(f) = f(f(f(x1, x2), x3), x4)
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote><h3 id="对象">对象</h3><div class="ulRank0"><ul class="ulRank0">1. 直接用var x={key:value;...}写</ul></div><div class="ulRank0"><ul class="ulRank0">2. 可以直接delete一个属性</ul></div><div class="ulRank0"><ul class="ulRank0">3. var_key_property in var_object //检测是否在对象内有该属性</ul></div><div class="ulRank0"><ul class="ulRank0">4. hasOwnProperty(var_key_property). //检测是否在对象内非继承地拥有该属性</ul></div>
+<h3 id="Map和Set">Map和Set</h3>
+<h4 id="Map">Map</h4>
+</blockquote></pre></div>JavaScript
+var m = new Map([['Michael', 95], ['Bob', 75], ['Tracy', 85]]);
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>1. set(var_str_key,var_value)<div class="ulRank0"><ul class="ulRank0">2. has(var_str_key)</ul></div><div class="ulRank0"><ul class="ulRank0">3. get(var_str_key)</ul></div><div class="ulRank0"><ul class="ulRank0">4. delete(var_str_key)</ul></div>
+<h4 id="Set">Set</h4>
+</blockquote></pre></div>JavaScript
+var s2 = new Set([1, 2, 3]);
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>1. add(var)<div class="ulRank0"><ul class="ulRank0">2. delete(var)</ul></div>
+<h3 id="iterable">iterable</h3>
+<h4 id="for ... of">for ... of</h4>
+for ... of循环只循环集合本身的元素
+</blockquote></pre></div>
+var a = [1, 2, 3];
+for (var x of a)
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote><h4 id="for ... in">for ... in</h4>
+for ... in循环由于历史遗留问题，它遍历的实际上是对象的属性名称。
+</blockquote></pre></div>
+var a = ['A', 'B', 'C'];
+a.name = 'Hello';
+for (var x of a) {
+    console.log(x); // 'A', 'B', 'C'
+}
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote><h4 id="forEach">forEach</h4><div class="ulRank0"><ul class="ulRank0">1. Array</ul></div>
+</blockquote></pre></div>JavaScript
+'use strict';
+var a = ['A', 'B', 'C'];
+a.forEach(function (element, index, array) {
+    // element: 指向当前元素的值
+    // index: 指向当前索引
+    // array: 指向Array对象本身
+    console.log(element + ', index = ' + index);
+});
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>2. Map
+</blockquote></pre></div>JavaScript
+var m = new Map([[1, 'x'], [2, 'y'], [3, 'z']]);
+m.forEach(function (value, key, map) {
+    console.log(value);
+});
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>3. Set
+</blockquote></pre></div>JavaScript
+var a = ['A', 'B', 'C'];
+a.forEach(function (element) {
+    console.log(element);
+});
+```</div></body>
+</html>

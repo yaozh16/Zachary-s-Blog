@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="Android 学习笔记(7)Camera2API代码逻辑整理">Android 学习笔记(7)Camera2API代码逻辑整理</h1>
+
+<a class="url" href="../ATTACHMENT/Camera2Video.pdf">PDF图示</a>
+
+<h2 id="大致流程">大致流程</h2><div class="ulRank0"><ul class="ulRank0">1. <a class="url" href="#了解摄像头信息">获取CameraManager</a>类似系统级的管理对象，便于之后对多个摄像头分别处理</ul></div><div class="ulRank0"><ul class="ulRank0">1. <a class="url" href="#申请权限">申请权限</a></ul></div><div class="ulRank0"><ul class="ulRank0">1. <a class="url" href="#打开摄像头">打开摄像头</a></ul></div><div class="ulRank0"><ul class="ulRank0">1. <a class="url" href="#构造配置PreviewBuilder">构造配置PreviewBuilder</a>用于生成之后的请求(因为所有操作需要通过Request进行)</ul></div><div class="ulRank0"><ul class="ulRank0">1. <a class="url" href="#构造配置msessionpreviewstatecallback">构造配置mSessionPreviewStateCallback</a></ul></div><div class="ulRank0"><ul class="ulRank0">1. <a class="url" href="#调用mcameradevicecreatecapturesession">调用mCameraDevice.createCaptureSession</a></ul></div>
+
+<h2 id="了解摄像头信息">了解摄像头信息</h2>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>//在这里可以通过
+mCameraManager=(CameraManager)getApplicationContext().getSystemService(Context.CAMERA_SERVICE);
+mCameraManager.getCameraIdList()
+for (String cameraId : mCameraManager.getCameraIdList())
+		CameraCharacteristics characteristics = mCameraManager.getCameraCharacteristics(cameraId);    
+//获取各个摄像头信息
+
+//例如
+Integer facing = characteristics.get(CameraCharacteristics.LENS_FACING);
+</blockquote></pre></div>
+<h2 id="申请权限">申请权限</h2>
+
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>if(ActivityCompat.checkSelfPermission(/*Activity*/this,Manifest.permission.CAMERA)!= PackageManager.PERMISSION_GRANTED){
+		ActivityCompat.requestPermissions(/*Activity*/this,new String[] {Manifest.permission.CAMERA}, /*可以自己任取的requestCode，用于自己标识某一种类的申请*/1);
+}
+</blockquote></pre></div>
+
+<h2 id="打开摄像头">打开摄像头</h2>
+通过CameraId与mCameraManager打开
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>mCameraManager.openCamera(/*CameraId*/&quot;0&quot;,mStateCallback,mHandler);
+</blockquote></pre></div>
+其中后两个参数表示此次打开操作的回调函数与处理打开操作的线程的handler,
+
+其构造方面
+<h3 id="mHandler">mHandler</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>HandlerThread thread=new HandlerThread(/*name*/&quot;Camera2&quot;);
+thread.start();					//自动生成Looper
+mHandler= new Handler(thread.getLooper());
+</blockquote></pre></div>
+<h3 id="mStateCallback">mStateCallback</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>mStateCallback = new CameraDevice.StateCallback() {...}
+</blockquote></pre></div>
+其中自动生成必须要重写的函数会有
+CameraDevice类对象cameraDevice，标识打开成功/失败的摄像头，如果是成功，保存下来这个引用之后就可以使用了
+
+<h2 id="构造配置PreviewBuilder">构造配置PreviewBuilder</h2>
+由于所有的请求都需要经过Request形式发送，所以我们首先需要构造一个请求构造工厂，并按照我们的要求配置好这个工厂，
+然后就可以调用它进行request的构造，发送给照相机<div class="liRank0"><li class="liRank0">构造</li></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>mPreviewBuilder = mCameraDevice.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW);
+</blockquote></pre></div><div class="liRank0"><li class="liRank0">设置目标</li></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>mPreviewBuilder.addTarget(mSurfaceView.getHolder().getSurface());
+</blockquote></pre></div><div class="liRank0"><li class="liRank0">设置拍摄控制信息</li></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>mPreviewBuilder.set(CaptureRequest.CONTROL_AF_MODE,CaptureRequest.CONTROL_AF_MODE_CONTINUOUS_PICTURE);
+mPreviewBuilder.set(CaptureRequest.CONTROL_AE_MODE,CaptureRequest.CONTROL_AE_MODE_ON_AUTO_FLASH);
+</blockquote></pre></div><div class="liRank0"><li class="liRank0">之后调用构造CaptureRequest类对象</li></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>CaptureRequest request = mPreviewBuilder.build();
+</blockquote></pre></div>
+
+<h2 id="构造配置mSessionPreviewStateCallback">构造配置mSessionPreviewStateCallback</h2>
+这个自己随意
+<h2 id="调用mCameraDevice.createCaptureSession">调用mCameraDevice.createCaptureSession</h2>
+
+所有的会话消息都在这个Session中使用
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>mCameraDevice.createCaptureSession(
+		Arrays.asList(mSurfaceView.getHolder().getSurface(),mImageReader.getSurface()), //Surface的列表
+		mSessionPreviewStateCallback, //之前构造的Callback，成功的话在里面的onConfigued函数中会传入cameraCaptureSession对象，可以保存下来，之后操作
+		mHandler);//处理这个操作的线程的handler
+</blockquote></pre></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>//mSession是构造成功过后获得的CameraCaptureSession
+//以下为预览
+//等效于持续发送请求
+mSession.setRepeatingRequest(mPreviewBuilder.build(), mSessionCaptureCallback, mHandler);
+</blockquote></pre></div>
+</div></body>
+</html>

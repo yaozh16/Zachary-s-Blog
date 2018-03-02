@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'>
+<h1 id="Centos 7 安装gitlab">Centos 7 安装gitlab</h1>
+<h2 id="1. Install and configure the necessary dependencies">1. Install and configure the necessary dependencies</h2>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>sudo yum install -y nano lokkit curl openssh-server openssh-clients postfix cronie
+sudo service postfix start
+sudo chkconfig postfix on
+sudo lokkit -s http -s ssh
+</blockquote></pre></div>
+
+<h2 id="2. Add the GitLab package repository and install the package">2. Add the GitLab package repository and install the package</h2>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh | sudo bash
+sudo yum install -y gitlab-ce
+
+</blockquote></pre></div>
+<h2 id="3. 修改    /etc/gitlab/gitlab.rb">3. 修改    /etc/gitlab/gitlab.rb</h2>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>external url =&quot;ipaddress:port&quot;
+</blockquote></pre></div>
+<h2 id="4. 更新，开启">4. 更新，开启</h2>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>sudo gitlab-ctl reconfigure
+
+其他命令
+gitlab-ctl start
+
+gitlab-ctl stop
+
+gitlab-ctl status
+
+gitlab-ctl restart
+
+</blockquote></pre></div>
+
+ns1.alidns.com
+</div></body>
+</html>

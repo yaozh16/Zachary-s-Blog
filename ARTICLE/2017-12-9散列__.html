@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="散列">散列</h1><div class="liRank0"><li class="liRank0">call by value</li></div><div class="liRank0"><li class="liRank0">使用场景:数据来自很大的范围但是非常稀疏</li></div><div class="liRank0"><li class="liRank0">目标:压缩空间</li></div><div class="liRank0"><li class="liRank0">实现思路:value经过hashfunction转化为对应的bucket（O(1)），然后在bucket中搜索</li></div>
+<h2 id="实现">实现</h2>
+hash(key)=key%M<div class="liRank0"><li class="liRank0">装填因子$LoadFactor=rac{N}{M}$</li></div>
+<h2 id="冲突">冲突</h2>
+无法避免<div class="liRank0"><li class="liRank0">__更好的散列函数__</li></div><div class="ulRank0"><ul class="ulRank0">1. 确定(determinism)</ul></div><div class="ulRank0"><ul class="ulRank0">2. 快速(efficiency)</ul></div><div class="ulRank0"><ul class="ulRank0">3. 均匀(surjection)</ul></div><div class="ulRank0"><ul class="ulRank0">4. 满射(uniformity)<div class="liRank0"><li class="liRank0">__散列函数__</li></div></ul></div>
+
+<table cellspacing='0'><tr><th> 方法     </th><th> 示意                  </th><th> 说明                   </th><th> 补充                                                                </th></tr><tr><td> 模余法   </td><td> hash(key)=key%M       </td><td> M 为素数(覆盖充分均匀) </td><td> 存在不动点，零阶均匀                                                </td></tr><tr><td> MAD法    </td><td> hash(key)=(key*a+b)%M </td><td> M为素数,a mod M!=0     </td><td> 一阶均匀                                                            </td></tr><tr><td> 平方取中 </td><td> 取平方居中的几个数位k </td><td>                        </td><td>                                                                     </td></tr><tr><td> 折叠汇总 </td><td> 压位运算              </td><td>                        </td><td> 中间的压位数字可以有不同的读取方法:不同进制，不同位数，不同读取方向 </td></tr></table><br><div class="liRank0"><li class="liRank0">伪随机数</li></div><div class="liRank0"><li class="liRank0">hashcode</li></div><div class="ulRank0"><ul class="ulRank0">1. 数字</ul></div><div class="ulRank0"><ul class="ulRank0">1. 字符串：多项式法</ul></div>
+
+计算复杂度O(n)
+
+近似算法
+
+<h2 id="排解冲突">排解冲突</h2><div class="liRank0"><li class="liRank0">多槽位法</li></div>
+
+
+<div class="liRank0"><li class="liRank0">多链表法</li></div>
+列表存放冲突词条
+Open Hashing
+/
+Close Addressing
+
+<table cellspacing='0'><tr><th> Open Hashing                                                </th><th> Close Hashing </th></tr><tr><td> 空间不能封闭，可能动态增长且列表跳转导致的重新cache开销过大 </td><td> 桶长固定      </td></tr></table><br>
+<table cellspacing='0'><tr><th> Open Addressing    </th><th> Closeng Addressing </th></tr><tr><td> 同族可以在不同桶中 </td><td> 同族在同一桶中     </td></tr></table><br><div class="liRank0"><li class="liRank0">__线性试探（Linear probing）__</li></div>
+
+轮番质询邻居桶
+Close Hashing
+/
+Open Addressing<div class="ulRank0"><ul class="ulRank0">1. 查找：从原位置开始依次查找直到有未使用过的空桶或找到目标元素</ul></div><div class="ulRank0"><ul class="ulRank0">1. 插入：从原位置开始依次查找直到有空桶，放入</ul></div><div class="ulRank0"><ul class="ulRank0">1. 删除：标记曾经使用过再删除</ul></div>
+
+<div class="ulRank0"><ul class="ulRank0">1. 冲突累计效应</ul></div><div class="ulRank0"><ul class="ulRank0">1. cache利用效率高</ul></div>
+
+<div class="liRank0"><li class="liRank0">__平方试探（Quadratic probing）__：移动步长随冲突次数而增加</li></div>
+\[
+[hash(key)+k^2] mod M
+\]
+可能找不到
+
+装填因子不能过高（50%以下）<div class="liRank0"><li class="liRank0">__双向平方试探（Biquadratic probing）__</li></div>
+
+表长需要选模4余3的素数<div class='citation'><p class='citationP'><br>费马双平方定理：
+</p></div>
+若 $\exists$ x,y ,使素数z=x^2+y^2 则z =1 (mod 4)
+<div class="liRank0"><li class="liRank0">__rehash__</li></div>
+
+<h2 id="桶排序(BucketSort)">桶排序(BucketSort)</h2>
+预先分配桶
+<h2 id="基数排序(RadixSort)">基数排序(RadixSort)</h2>
+按照数位排序
+<h2 id="计数排序(CountingSort)">计数排序(CountingSort)</h2>
+
+<h2 id="跳转表">跳转表</h2>
+</div></body>
+</html>

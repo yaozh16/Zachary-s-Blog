@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h2 id="KMP">KMP</h2><div class="liRank0"><li class="liRank0">匹配</li></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>j=0,t=0;
+while(t&lt;m&amp;&amp;j&lt;n){
+  if(t&lt;0||P[t]==P[j]){
+    t++;j++;
+    next[j]=next[j-1]+1;
+  }else
+    t=next[t];
+}
+</blockquote></pre></div><div class="liRank0"><li class="liRank0">计算next表</li></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>next[0]=t=-1;
+j=0;
+while(j&lt;m){
+  if(t&lt;0||P[t]==P[j]){
+    t++;j++;
+  }else
+    t=next[t];
+}
+</blockquote></pre></div><div class="liRank0"><li class="liRank0">优化next表建立</li></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>next[0]=t=-1;
+j=0;
+k=0;
+while(j&lt;m){
+  if(t&lt;0||P[t]==P[j]){
+    t++;j++;
+    next[j]=P[j]!=P[t]?t:next[t];
+  }else{
+    t=next[t];
+  }
+}
+</blockquote></pre></div>
+或者
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>next[0]=t=-1;
+j=0;
+k=0;
+while(j&lt;m){
+  if(t&lt;0||P[t]==P[j]){
+    t++;j++;
+    next[j]=t;
+  }else{
+    t=next[t];
+    if(t&gt;=0&amp;&amp;P[j]==P[t])
+    t=next[t];
+  }
+}
+</blockquote></pre></div>
+<h2 id="BM（利用了失败的高概率）">BM（利用了失败的高概率）</h2>
+在字符集很大时，效果越好(移动位数大概率接近于模式串长)
+
+bad character:建立 $O(字符集大小)$ 的nextTable
+
+good suffix:建立基于suffix的nextTable
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>int* buildGS(char* pattern){
+  int m=strlen(pattern);
+  int next=new int[m];
+  memset(next,-1,m*sizeof(int));
+  int t=m-1,j=m-1;
+
+}
+</blockquote></pre></div>
+
+<h2 id="Karp-Rabin算法（串即是数）">Karp-Rabin算法（串即是数）</h2>
+
+用素数序列的字符串位数此方乘积作为其唯一对应结果
+
+进行hash
+
+对原串子串进行hash
+</div></body>
+</html>

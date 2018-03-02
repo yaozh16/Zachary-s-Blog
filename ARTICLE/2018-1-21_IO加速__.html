@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="blog in the Camp">blog in the Camp</h1>
+
+<h2 id="1-21 IO加速">1-21 IO加速</h2>
+
+看到样例程序里面PA1_1用getchar()来读取长整数，和自己之前scanf读取字符串再重新转化压位为长整数不一样，所以结合csdn学习了一下IO的加速
+<div class="liRank0"><li class="liRank0">用python<a class="url" href="../ATTACHMENT/IOAccel/gen.py">造数据</a>(1<<20个整型数)</li></div>
+<div class="liRank0"><li class="liRank0">然后写了四个版本的纯读取程序</li></div>
+&emsp;<div class="ulRank1"><ul class="ulRank1">1. <a class="url" href="../ATTACHMENT/IOAccel/V1.cpp">scanf()</a></ul></div>
+&emsp;<div class="ulRank1"><ul class="ulRank1">2. <a class="url" href="../ATTACHMENT/IOAccel/V2.cpp">fread()+重组</a>（buffsize=1<<12）</ul></div>
+&emsp;<div class="ulRank1"><ul class="ulRank1">3. <a class="url" href="../ATTACHMENT/IOAccel/V3.cpp">getchar()+重组</a></ul></div>
+&emsp;<div class="ulRank1"><ul class="ulRank1">4. <a class="url" href="../ATTACHMENT/IOAccel/V4.cpp">setvbuf()+scanf()</a>（buffsize=1<<30）</ul></div>
+<div class="liRank0"><li class="liRank0">效率比较：</li></div>
+
+&emsp;1) scanf()和setvbuf()+scanf()最慢
+
+&emsp;2）fread()几乎是scanf()四分之一
+
+&emsp;2）getchar()几乎是scanf()二分之一
+</div></body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="2018-2-6 JavaScript Note 8">2018-2-6 JavaScript Note 8</h1>
+<h2 id="JQuery">JQuery</h2>
+<h3 id="选择器">选择器</h3>
+一个选择器写出来类似$('#dom-id')<div class="liRank0"><li class="liRank0">按ID查找</li></div>
+$('#id')
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>var div = $(&apos;#abc&apos;); // jQuery对象
+var divDom = div.get(0); // 假设存在div，获取第1个DOM元素
+var another = $(divDom); // 重新把DOM包装为jQuery对象
+</blockquote></pre></div><div class="liRank0"><li class="liRank0">按tag查找```$('tagName')```</li></div>
+按tag查找只需要写上tag名称就可以了
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>var ps = $(&apos;p&apos;); // 返回所有&lt;p&gt;节点
+ps.length; // 数一数页面有多少个&lt;p&gt;节点
+</blockquote></pre></div><div class="liRank0"><li class="liRank0">按class查找```$('.className')```</li></div><div class="liRank0"><li class="liRank0">按属性查找```$('[propName=value]')```</li></div>
+&emsp;&emsp;当属性的值包含空格等特殊字符时，需要用双引号括起来。
+&emsp;&emsp;按属性查找还可以使用前缀查找或者后缀查找
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>var icons = $(&apos;[name^=icon]&apos;); // 找出所有name属性值以icon开头的DOM
+// 例如: name=&quot;icon-1&quot;, name=&quot;icon-2&quot;
+var names = $(&apos;[name$=with]&apos;); // 找出所有name属性值以with结尾的DOM
+// 例如: name=&quot;startswith&quot;, name=&quot;endswith&quot;
+</blockquote></pre></div>
+<div class="liRank0"><li class="liRank0">组合查找/多项查找(逗号分割)</li></div><div class="liRank0"><li class="liRank0">JQuery对象方法</li></div><div class="ulRank0"><ul class="ulRank0">1. find(...)//找子对象</ul></div><div class="ulRank0"><ul class="ulRank0">2. css(prop,value)//设置css</ul></div><div class="ulRank0"><ul class="ulRank0">3. get(rank)//第rank个(得到的是DOM对象，需要$(var)转化为JQuery对象)</ul></div>
+<div class="liRank0"><li class="liRank0">层级选择器```$('ancestor descendant')``` </li></div>
+可以是祖先和后代<div class="liRank0"><li class="liRank0">子选择器```$('parent>child')```</li></div>
+必须是直属父子节点<div class="liRank0"><li class="liRank0">过滤器```$('prop:filt-condition')```</li></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>$(&apos;ul.lang li:first-child&apos;); // 仅选出JavaScript
+$(&apos;ul.lang li:last-child&apos;); // 仅选出Lua
+$(&apos;ul.lang li:nth-child(2)&apos;); // 选出第N个元素，N从1开始
+$(&apos;ul.lang li:nth-child(even)&apos;); // 选出序号为偶数的元素
+$(&apos;ul.lang li:nth-child(odd)&apos;); // 选出序号为奇数的元素
+</blockquote></pre></div><div class="liRank0"><li class="liRank0">表单相关,jQuery还有一组特殊的选择器</li></div><div class="ulRank0"><ul class="ulRank0">1. :input：可以选择```<input>```，```<textarea>```，```<select>```和```<button>```；</ul></div><div class="ulRank0"><ul class="ulRank0">1. :file：可以选择```<input type="file">```，和```input[type=file]```一样；</ul></div><div class="ulRank0"><ul class="ulRank0">1. :checkbox：可以选择复选框，和```input[type=checkbox]```一样；</ul></div><div class="ulRank0"><ul class="ulRank0">1. :radio：可以选择单选框，和```input[type=radio]```一样；</ul></div><div class="ulRank0"><ul class="ulRank0">1. :focus：可以选择当前输入焦点的元素，例如把光标放到一个```<input>```上，用```$('input:focus')```就可以选出；</ul></div><div class="ulRank0"><ul class="ulRank0">1. :checked：选择当前勾上的单选框和复选框，用这个选择器可以立刻获得用户选择的项目，如```$('input[type=radio]:checked')```；</ul></div><div class="ulRank0"><ul class="ulRank0">1.  :enabled：可以选择可以正常输入的```<input>```、```<select>```</ul></div>
+    等，也就是没有灰掉的输入；<div class="ulRank0"><ul class="ulRank0">1.  :disabled：和:enabled正好相反，选择那些不能输入的。<div class="liRank0"><li class="liRank0">此外，jQuery还有很多有用的选择器，例如，选出可见的或隐藏的元素：</li></div></ul></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>$(&apos;div:visible&apos;); // 所有可见的div
+$(&apos;div:hidden&apos;); // 所有隐藏的div
+</blockquote></pre></div><div class="liRank0"><li class="liRank0"><strong>方法</strong></li></div><div class="ulRank0"><ul class="ulRank0">1. next()/prev()    同一层级之间的对象的移动</ul></div><div class="ulRank0"><ul class="ulRank0">2. find(...)</ul></div><div class="ulRank0"><ul class="ulRank0">3. filter(...)    传入的是一个条件或者函数</ul></div><div class="ulRank0"><ul class="ulRank0">4. serialize()转为字符串</ul></div>
+一个jQuery对象如果包含了不止一个DOM节点，first()、last()和slice()方法可以返回一个新的jQuery对象，把不需要的DOM节点去掉<div class="ulRank0"><ul class="ulRank0">5. html()/html(...)获取/设置html</ul></div><div class="ulRank0"><ul class="ulRank0">6. text()/text(...)获取/设置text</ul></div><div class="ulRank0"><ul class="ulRank0">7. css(prop)/css(prop,value)获取/设置属性</ul></div>
+例如```css('color', 'red')```
+注意一个jQuery对象可以包含0个或任意个DOM对象，它的方法实际上会作用在对应的每个DOM节点上
+为了和JavaScript保持一致，CSS属性可以用'background-color'和'backgroundColor'两种格式<div class="ulRank0"><ul class="ulRank0">8. addClass(className)</ul></div><div class="ulRank0"><ul class="ulRank0">9. hide()/show()</ul></div>
+可以没有参数，也可以加入msec参数控制速度<div class="ulRank0"><ul class="ulRank0">10. 获取信息</ul></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>// 浏览器可视窗口大小:
+$(window).width(); // 800
+$(window).height(); // 600
+
+// HTML文档大小:
+$(document).width(); // 800
+$(document).height(); // 3500
+
+// 某个div的大小:
+var div = $(&apos;#test-div&apos;);
+div.width(); // 600
+div.height(); // 300
+div.width(400); // 设置CSS属性 width: 400px，是否生效要看CSS是否有效
+div.height(&apos;200px&apos;); // 设置CSS属性 height: 200px，是否生效要看CSS是否有效
+</blockquote></pre></div><div class="ulRank0"><ul class="ulRank0">11. attr()和removeAttr()方法用于操作DOM节点的属性</ul></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>// &lt;div id=&quot;test-div&quot; name=&quot;Test&quot; start=&quot;1&quot;&gt;...&lt;/div&gt;
+var div = $(&apos;#test-div&apos;);
+div.attr(&apos;data&apos;); // undefined, 属性不存在
+div.attr(&apos;name&apos;); // &apos;Test&apos;
+div.attr(&apos;name&apos;, &apos;Hello&apos;); // div的name属性变为&apos;Hello&apos;
+div.removeAttr(&apos;name&apos;); // 删除name属性
+div.attr(&apos;name&apos;); // undefined
+</blockquote></pre></div><div class="ulRank0"><ul class="ulRank0">12. prop()方法和attr()类似，但是HTML5规定有一种属性在DOM节点中可以没有值，只有出现与不出现两种(如'checked')</ul></div>
+attr()和prop()对于属性checked处理有所不同：
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>var radio = $(&apos;#test-radio&apos;);
+radio.attr(&apos;checked&apos;); // &apos;checked&apos;
+radio.prop(&apos;checked&apos;); // true
+</blockquote></pre></div>
+prop()返回值更合理一些。不过，用is()方法判断更好：
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>var radio = $(&apos;#test-radio&apos;);
+radio.is(&apos;:checked&apos;); // true
+</blockquote></pre></div>
+类似的属性还有selected，处理时最好用is(':selected')。<div class="ulRank0"><ul class="ulRank0">13. 操作表单</ul></div>
+对于表单元素，jQuery对象统一提供val()方法获取和设置对应的value属性<div class="ulRank0"><ul class="ulRank0">14. append()/prepend()修改DOM结构(调用append()/prepend()传入HTML片段、原始的DOM对象、jQuery对象和函数对象)</ul></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>// 创建DOM对象:
+var ps = document.createElement(&apos;li&apos;);
+ps.innerHTML = &apos;&lt;span&gt;Pascal&lt;/span&gt;&apos;;
+// 添加DOM对象:
+ul.append(ps);
+
+// 添加jQuery对象:
+ul.append($(&apos;#scheme&apos;));
+
+// 添加函数对象:
+ul.append(function (index, html) {
+    return &apos;&lt;li&gt;&lt;span&gt;Language - &apos; + index + &apos;&lt;/span&gt;&lt;/li&gt;&apos;;
+});
+</blockquote></pre></div>
+&emsp;```append()```把DOM添加到最后，```prepend()```则把DOM添加到最前。
+如果要添加的DOM节点已经存在于HTML文档中，它会首先从文档移除，然后再添加，也就是说，用append()，你可以移动一个DOM节点。
+<div class="liRank0"><li class="liRank0">把新节点插入到指定位置after()方法</li></div><div class="liRank0"><li class="liRank0">删除DOM节点，拿到jQuery对象后直接调用remove()方法就可以了。</li></div>
+
+<h2 id="事件">事件</h2>
+<h4 id="on(event,function)">on(event,function)</h4>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>var a = $(&apos;#test-link&apos;);
+a.on(&apos;click&apos;, function () {
+    alert(&apos;Hello!&apos;);
+});
+</blockquote></pre></div>
+<h4 id="标准事件">标准事件</h4><div class="liRank0"><li class="liRank0">鼠标事件</li></div>
+click: 鼠标单击时触发；
+dblclick：鼠标双击时触发；
+mouseenter：鼠标进入时触发；
+mouseleave：鼠标移出时触发；
+mousemove：鼠标在DOM内部移动时触发；
+hover：鼠标进入和退出时触发两个函数，相当于mouseenter加上mouseleave。
+<div class="liRank0"><li class="liRank0">键盘事件</li></div>
+键盘事件仅作用在当前焦点的DOM上，通常是```<input>```和```<textarea>```。
+keydown：键盘按下时触发；
+keyup：键盘松开时触发；
+keypress：按一次键后触发。<div class="liRank0"><li class="liRank0">其他事件</li></div>
+focus：当DOM获得焦点时触发；
+blur：当DOM失去焦点时触发；
+change：当```<input>```、```<select>```或```<textarea>```的内容改变时触发；
+submit：当```<form>```提交时触发；
+ready：当页面被载入并且DOM树完成初始化后触发。
+&emsp;&emsp;其中，ready仅作用于document对象。由于ready事件在DOM完成初始化后触发，且只触发一次，所以非常适合用来写其他的初始化代码。
+&emsp;&emsp;初始化的几种写法:
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>$(document).on(&apos;ready&apos;, function () {
+            $(&apos;#testForm&apos;).on(&apos;submit&apos;, function () {
+                alert(&apos;submit!&apos;);
+            });
+        });
+</blockquote></pre></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>$(document).ready(function () {
+    // on(&apos;submit&apos;, function)也可以简化:
+    $(&apos;#testForm&apos;).submit(function () {
+        alert(&apos;submit!&apos;);
+    });
+});
+</blockquote></pre></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>$(function () {
+    // init...
+});
+</blockquote></pre></div>
+完全可以反复绑定事件处理函数，它们会依次执行：
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>$(function () {
+    console.log(&apos;init A...&apos;);
+});
+$(function () {
+    console.log(&apos;init B...&apos;);
+});
+$(function () {
+    console.log(&apos;init C...&apos;);
+});
+</blockquote></pre></div>
+<h3 id="事件参数">事件参数</h3>
+
+有些事件，如mousemove和keypress，我们需要获取鼠标位置和按键的值，否则监听这些事件就没什么意义了。所有事件都会传入Event对象作为参数，可以从Event对象上获取到更多的信息.
+<h3 id="取消绑定">取消绑定</h3>
+
+一个已被绑定的事件可以解除绑定，通过off('click', function)实现
+省略function则取消该对象所有该事件绑定函数
+省略绑定类型则取消该对象所有绑定函数
+<h3 id="事件触发条件">事件触发条件</h3>
+一个需要注意的问题是，事件的触发总是由用户操作引发的
+JS代码修改不会导致触发，如果需要触发，则可以使用trigger函数
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>input.trigger(&apos;change&apos;)
+</blockquote></pre></div>
+<h3 id="浏览器安全限制">浏览器安全限制</h3>
+
+在浏览器中，有些JavaScript代码只有在用户触发下才能执行，例如，window.open()函数
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>// 无法弹出新窗口，将被浏览器屏蔽:
+$(function () {
+    window.open(&apos;/&apos;);
+});
+</blockquote></pre></div>
+这些“敏感代码”只能由用户操作来触发：
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>var button1 = $(&apos;#testPopupButton1&apos;);
+var button2 = $(&apos;#testPopupButton2&apos;);
+
+function popupTestWindow() {
+    window.open(&apos;/&apos;);
+}
+
+button1.click(function () {
+    popupTestWindow();
+});
+
+button2.click(function () {
+    // 不立刻执行popupTestWindow()，100毫秒后执行:
+    setTimeout(popupTestWindow, 100);
+});
+</blockquote></pre></div>
+当用户点击button1时，click事件被触发，由于popupTestWindow()在click事件处理函数内执行，这是浏览器允许的，而button2的click事件并未立刻执行popupTestWindow()，延迟执行的popupTestWindow()将被浏览器拦截。
+
+<h3 id="动画">动画</h3><div class="ulRank0"><ul class="ulRank0">1. hide(msec)/show(msec)/toggle(msec)</ul></div><div class="ulRank0"><ul class="ulRank0">2. slideUp/slideDown/slideToggle</ul></div><div class="ulRank0"><ul class="ulRank0">3. fadeIn/fadeOut/fadeToggle</ul></div><div class="ulRank0"><ul class="ulRank0">4. 自定义动画animate(state,time,function_to_run_when_finished)</ul></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>var div = $(&apos;#test-animate&apos;);
+div.animate({
+    opacity: 0.25,
+    width: &apos;256px&apos;,
+    height: &apos;256px&apos;
+}, 3000, function () {
+    console.log(&apos;动画已结束&apos;);
+    // 恢复至初始状态:
+    $(this).css(&apos;opacity&apos;, &apos;1.0&apos;).css(&apos;width&apos;, &apos;128px&apos;).css(&apos;height&apos;, &apos;128px&apos;);
+});
+</blockquote></pre></div><div class="ulRank0"><ul class="ulRank0">5. delay(msec)</ul></div>
+<h2 id="JQuery插件">JQuery插件</h2>
+<h3 id="拓展写法">拓展写法</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>//例如写加亮
+$.fn.highlight1=function(){
+  this.css(&apos;backgroundColor&apos;, &apos;#fffceb&apos;).css(&apos;color&apos;, &apos;#d85030&apos;);
+  return this;//为了之后能链式调用方法
+}
+//之后就可以
+$(&apos;#test-highlight1 span&apos;).highlight1();
+</blockquote></pre></div>
+<h3 id="默认参数">默认参数</h3>
+使用jQuery提供的辅助方法$.extend(target, obj1, obj2, ...)，它把多个object对象的属性合并到第一个target对象中，遇到同名属性，总是使用靠后的对象的值，也就是越往后优先级越高
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>// 把默认值和用户传入的options合并到对象{}中并返回:
+var opts = $.extend({}, {
+    backgroundColor: &apos;#00a8e6&apos;,
+    color: &apos;#ffffff&apos;
+}, options);
+</blockquote></pre></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>$.fn.highlight = function (options) {
+    // 合并默认值和用户设定值:
+    var opts = $.extend({}, $.fn.highlight.defaults, options);
+    this.css(&apos;backgroundColor&apos;, opts.backgroundColor).css(&apos;color&apos;, opts.color);
+    return this;
+}
+
+// 设定默认值:
+$.fn.highlight.defaults = {
+    color: &apos;#d85030&apos;,
+    backgroundColor: &apos;#fff8de&apos;
+}
+</blockquote></pre></div>
+最终，我们得出编写一个jQuery插件的原则：<div class="ulRank0"><ul class="ulRank0">1. 给$.fn绑定函数，实现插件的代码逻辑；</ul></div><div class="ulRank0"><ul class="ulRank0">2. 插件函数最后要return this;以支持链式调用；</ul></div><div class="ulRank0"><ul class="ulRank0">3. 插件函数要有默认值，绑定在$.fn.```<pluginName>```.defaults上;</ul></div><div class="ulRank0"><ul class="ulRank0">4. 用户在调用时可传入设定值以便覆盖默认值。</ul></div>
+<h3 id="针对特定元素的扩展">针对特定元素的扩展</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>$.fn.external = function () {
+    // return返回的each()返回结果，支持链式调用:
+    return this.filter(&apos;a&apos;).each(function () {
+        // 注意: each()内部的回调函数的this绑定为DOM本身!
+        var a = $(this);
+        var url = a.attr(&apos;href&apos;);
+        if (url &amp;&amp; (url.indexOf(&apos;http://&apos;)===0||url.indexOf(&apos;https://&apos;)===0)) {
+            a.attr(&apos;href&apos;, &apos;#0&apos;)
+             .removeAttr(&apos;target&apos;)
+             .append(&apos; &lt;i class=&quot;uk-icon-external-link&quot;&gt;&lt;/i&gt;&apos;)
+             .click(function () {
+                if(confirm(&apos;你确定要前往&apos; + url + &apos;？&apos;)) {
+                    window.open(url);
+                }
+            });
+        }
+    });
+}
+</blockquote></pre></div></div></body>
+</html>

@@ -19,15 +19,8 @@ div.index_head{
   -webkit-border-radius: 35px;
 }
 div.index_headCover{
-  //background:rgba(255, 255, 255, 0.5);
-  //width:80%;
-  //height: 10%;
   background-repeat:no-repeat;
   background-size:cover;
-  -webkit-filter:blur(15px);
-  -moz-filter:blur(15px);
-  -o-filter:blur(15px);
-  -ms-filter:blur(15px);
   filter:blur(15px);
   position:absolute;
   left:0;
@@ -38,46 +31,6 @@ div#displayDiv{
   margin-left: 20%;
   margin-right: 20%;
 }
-div.index_list{
-  list-style-type: none;
-}
-div.index_itembox{
-  outline: none;
-  padding: 30px;
-  font-size: 30px;
-  display: block;
-  margin: 20px;
-  background-color: rgba(170, 227, 221, 0.19);
-  -webkit-border-radius: 15px;
-}
-
-div.index_itembox:hover{
-  background-color: rgba(0, 103, 92, 0.50);
-}
-button.index_itemBtn{
-  padding: 30px;
-  font-size: 30px;
-  display: block;
-  margin-left: 20px;
-  margin-right: 20px;
-  border: none;
-  background-color: rgba(170, 227, 221, 0.19);
-  -webkit-border-radius: 15px;
-  color: #ffffff;
-}
-div.index_itembox:hover a.index_item{
-  color: #ffffff;
-}
-button.index_itemBtn:hover{
-  color: #ffffff;
-  color: white;
-  text-decoration: none;
-}
-a.index_item{
-  color: white;
-  text-decoration: none;
-}
-
 button.backButton{
   display: block;
   border: none;
@@ -91,5 +44,5 @@ button.backButton{
 button.backButton:hover{
   color:white;
   background-color: rgba(6, 31, 163, 0.77);
-  -webkit-border-radius: 15px;
+  border-radius: 15px;
 }

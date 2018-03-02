@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="2018-2-2 JavaScript Note 5">2018-2-2 JavaScript Note 5</h1>
+
+<h2 id="面向对象">面向对象</h2>
+<h4 id="构造">构造</h4><div class="ulRank0"><ul class="ulRank0">1. 直接用{ ... }创建一个对象</ul></div><div class="ulRank0"><ul class="ulRank0">2. 构造函数(注意调用的new)</ul></div>
+<div class="image"><image src="assets/2018-2-2_JavaScript_Note_5-a445f.png" title=""></image></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>function Student(name) {
+    this.name = name;
+    this.hello = function () {
+        alert(&apos;Hello, &apos; + this.name + &apos;!&apos;);
+    }
+}
+var xiaoming = new Student(&apos;小明&apos;);
+xiaoming.name; // &apos;小明&apos;
+xiaoming.hello(); // Hello, 小明!
+</blockquote></pre></div>
+也可以
+<div class="image"><image src="assets/2018-2-2_JavaScript_Note_5-93e48.png" title=""></image></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>function Student(name) {
+    this.name = name;
+}
+
+Student.prototype.hello = function () {
+    alert(&apos;Hello, &apos; + this.name + &apos;!&apos;);
+};
+
+</blockquote></pre></div>
+<h4 id="原型继承">原型继承</h4>
+JavaScript的原型继承实现方式就是：<div class="ulRank0"><ul class="ulRank0">1. 定义新的构造函数，并在内部用call()调用希望“继承”的构造函数，并绑定this；</ul></div><div class="ulRank0"><ul class="ulRank0">2. 借助中间函数F实现原型链继承，最好通过封装的inherits函数完成；</ul></div><div class="ulRank0"><ul class="ulRank0">3. 继续在新的构造函数的原型上定义新方法。</ul></div>
+<div class="image"><image src="assets/2018-2-2_JavaScript_Note_5-7e7ac.png" title=""></image></div>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>// PrimaryStudent构造函数:
+function PrimaryStudent(props) {
+    Student.call(this, props);
+    this.grade = props.grade || 1;
+}
+
+// 空函数F:
+function F() {
+}
+
+// 把F的原型指向Student.prototype:
+F.prototype = Student.prototype;
+
+// 把PrimaryStudent的原型指向一个新的F对象，F对象的原型正好指向Student.prototype:
+PrimaryStudent.prototype = new F();
+
+// 把PrimaryStudent原型的构造函数修复为PrimaryStudent:
+PrimaryStudent.prototype.constructor = PrimaryStudent;
+
+// 继续在PrimaryStudent原型（就是new F()对象）上定义方法：
+PrimaryStudent.prototype.getGrade = function () {
+    return this.grade;
+};
+
+// 创建xiaoming:
+var xiaoming = new PrimaryStudent({
+    name: &apos;小明&apos;,
+    grade: 2
+});
+xiaoming.name; // &apos;小明&apos;
+xiaoming.grade; // 2
+
+// 验证原型:
+xiaoming.__proto__ === PrimaryStudent.prototype; // true
+xiaoming.__proto__.__proto__ === Student.prototype; // true
+
+// 验证继承关系:
+xiaoming instanceof PrimaryStudent; // true
+xiaoming instanceof Student; // true
+</blockquote></pre></div>
+<strong>可以写一个inherit函数封装操作</strong>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>function inherits(Child, Parent) {
+    var F = function () {};
+    F.prototype = Parent.prototype;
+    Child.prototype = new F();
+    Child.prototype.constructor = Child;
+}
+</blockquote></pre></div>
+<h4 id="class继承">class继承</h4>
+不再需要复杂操作
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>class Student {
+    constructor(name) {
+        this.name = name;
+    }
+//注意没有function关键字
+    hello() {
+        alert(&apos;Hello, &apos; + this.name + &apos;!&apos;);
+    }
+}
+</blockquote></pre></div>
+继承
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>class PrimaryStudent extends Student {
+    constructor(name, grade) {
+        super(name); // 记得用super调用父类的构造方法!
+        this.grade = grade;
+    }
+
+    myGrade() {
+        alert(&apos;I am at grade &apos; + this.grade);
+    }
+}
+
+</blockquote></pre></div></div></body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="2018/1/24 Tensorflow学习(1)">2018/1/24 Tensorflow学习(1)</h1>
+<h2 id=" Tutorial 1"> Tutorial 1</h2>
+<h3 id="1. dataset">1. dataset</h3>
+<class 'tensorflow.contrib.learn.python.learn.datasets.base.Datasets'>
+<h3 id="2. 使用placeholder为输入输出做占位，之后的标准输入输出都直接以字典形式传入">2. 使用placeholder为输入输出做占位，之后的标准输入输出都直接以字典形式传入</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>x = tf.placeholder(tf.float32, [None, 784])
+y_ = tf.placeholder(tf.float32, [None, 10])
+</blockquote></pre></div>
+<h3 id="3. 创建中间参数的形式，以及输出的形式">3. 创建中间参数的形式，以及输出的形式</h3>
+对于一层的网络
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>W = tf.Variable(tf.zeros([784, 10]))        <h1 id="784 x  10">784 x  10</h1>
+b = tf.Variable(tf.zeros([10]))             <h1 id="1   x  10">1   x  10</h1>
+y = tf.nn.softmax(tf.matmul(x, W) + b)
+</blockquote></pre></div>
+<h3 id="4. 构造信息熵，之后就是使得这个数最小化">4. 构造信息熵，之后就是使得这个数最小化</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>cross_entropy = tf.reduce_mean(-tf.reduce_sum(y_ * tf.log(y), reduction_indices=[1]))
+</blockquote></pre></div>
+上面的reduction_indices[1]表示为一次方
+<h3 id="5. 确定迭代方法">5. 确定迭代方法</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>train_step = tf.train.GradientDescentOptimizer(1.0).minimize(cross_entropy)
+</blockquote></pre></div>
+<h3 id="6. 初始化参数">6. 初始化参数</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>init = tf.global_variables_initializer()
+</blockquote></pre></div>
+<h3 id="7. 开始运行、导入输入输出">7. 开始运行、导入输入输出</h3>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>sess = tf.Session()
+sess.run(init)
+</blockquote></pre></div>
+迭代导入输入输出
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>for i in range(1000):
+    <h1 id="aquire new data from the dataset">aquire new data from the dataset</h1>
+    batch_xs, batch_ys = mnist.train.next_batch(100)
+    <h1 id="run a round：">run a round：</h1>
+    <h1 id="use feed_dict to replace placeholder">use feed_dict to replace placeholder</h1>
+    <h1 id="use train_step to dicide param modification">use train_step to dicide param modification</h1>
+    sess.run(train_step, feed_dict={x: batch_xs, y_: batch_ys})
+</blockquote></pre></div>
+</div></body>
+</html>

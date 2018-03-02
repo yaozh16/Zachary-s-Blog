@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="Android学习笔记(5)百度语音识别(2)Demo中的调用方法">Android学习笔记(5)百度语音识别(2)Demo中的调用方法</h1>
+
+<h2 id="目录">目录</h2>
+<a class="url" href="https://github.com/yaozh16/Zachary-s-Blog/blob/master/ARTICLE/#1初始化并注册输出事件">1、初始化并注册输出事件</a>
+<h2 id="使用">使用</h2>
+
+<h3 id="1、初始化并注册输出事件">1、初始化并注册输出事件</h3>
+<a class="url" href="https://github.com/yaozh16/Zachary-s-Blog/blob/master/ARTICLE/#目录">目录</a>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>IRecogListener listener = new MessageStatusRecogListener(handler);
+// 可以传入IRecogListener的实现类，也可以如SDK，传入EventListener实现类
+// 如果传入IRecogListener类，在RecogEventAdapter为您做了大多数的json解析。
+MyRecognizer myRecognizer = new MyRecognizer(this, listener); // this是Activity或其它Context类
+</blockquote></pre></div>
+
+<h3 id="待续">待续</h3>
+</div></body>
+</html>

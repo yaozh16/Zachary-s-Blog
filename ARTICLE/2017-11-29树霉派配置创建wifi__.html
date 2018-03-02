@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'>1.git clone https://github.com/oblique/create_ap.git
+2.cd create_ap
+3.sudo make install就这样安装好了
+4.接下来安装依赖库sudo apt-get install util-linux procps hostapd iproute2 iw haveged dnsmasq
+5.就这么简单几个命令就能安装好全部环境
+6.接下来保证你的网线插在pi3上并且能上网就行了。输入下面的命令启动无线AP：
+sudo create_ap wlan0 eth0 热点名 密码
+7.开机自启，添加到
+/etc/rc.local
+</div></body>
+</html>

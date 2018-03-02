@@ -1,0 +1,75 @@
+div.searchDiv{
+  font-family: "STKaiti", "Josefin Sans", "Microsoft YaHei", "微软雅黑", "Purisa";
+  list-style-type: none;
+  background: rgba(240, 223, 108, 0.65);
+  padding: 10px;
+  border-radius: 20px;
+  display: block;
+  position:relative;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+div.searchColumnDiv{
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.44);
+  padding: 1%;
+  border-radius: 20px;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 2%;
+  margin-right: 2%;
+  width: 94%;
+}
+div.searchColumnDiv input{
+  font-family: inherit;
+  height: 40px;
+  font-size: 20px;
+  display: block;
+  outline:none;
+  border: 0px;
+  font-weight: bold;
+  background: rgba(214, 218, 167, 0.44);
+  width: 100%;
+  border-radius: inherit;
+  text-align: center;
+}
+div.floatWarning{
+  margin-left: 10%;
+}
+div.searchBtnDiv button{
+  font-family: inherit;
+}
+div.index_list{
+  font-family: "STKaiti", "Josefin Sans", "Microsoft YaHei", "微软雅黑", "Purisa";
+  list-style-type: none;
+}
+div.index_itembox{
+  font-family: inherit;
+  outline: none;
+  padding: 30px;
+  font-size: 30px;
+  display: block;
+  margin: 20px;
+  background-color: rgba(0, 103, 92, 0.50);
+  border-radius: 15px;
+}
+
+div.index_itembox:hover{
+  background-color: rgba(0, 41, 103, 0.5);
+}
+button.index_itemBtn{
+  padding: 30px;
+  font-size: 30px;
+  display: block;
+  margin-left: 20px;
+  margin-right: 20px;
+  border: none;
+  border-radius: 15px;
+}
+div.index_itembox:hover a.index_item{
+  color: #ffffff;
+}
+a.index_item{
+  color: white;
+  text-decoration: none;
+}

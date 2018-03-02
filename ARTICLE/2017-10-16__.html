@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css">
+  <script type='text/x-mathjax-config'> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script>
+  <script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+</head>
+
+<body>
+  <div class='content'>
+    <h1 id="Java 文件读写">Java 文件读写</h1>
+    <h2 id="目录">目录</h2>
+    <a class="url" href="#文件读入">文件读入</a>
+
+    <a class="url" href="#文件输出">文件输出</a>
+
+    <h2 id="文件读入">文件读入</h2>
+    <div class='codeBlock'><pre class='codeBlockPre'><blockquote>File f=new File(&quot;Test.txt&quot;);
+// 打开文件(可以是目录，利用f.isDirectory() 判断和f.list()获取目录下文件信息)
+
+FileInputStream fin=new FileInputStream(f);
+// 打开输入流
+
+InputStreamReader freader=new InputStreamReader(fin,&quot;UTF-8&quot;);
+// 注意编码控制
+
+StringBuffer buffer = new StringBuffer();
+while (reader.ready()) {
+      buffer.append((char) reader.read());
+      // 转成char加到StringBuffer对象中
+}
+
+freader.close();
+// 关闭读取流
+
+fin.close();
+// 关闭输入流,释放系统资源
+</blockquote></pre></div>
+
+    <h2 id="文件输出">文件输出</h2>
+    <div class='codeBlock'><pre class='codeBlockPre'><blockquote>File f = new File(&quot;a.txt&quot;);
+FileOutputStream fop = new FileOutputStream(f);
+// 构建FileOutputStream对象,文件不存在会自动新建
+    
+OutputStreamWriter writer = new OutputStreamWriter(fop, &quot;UTF-8&quot;);
+// 构建OutputStreamWriter对象,参数可以指定编码,默认为操作系统默认编码,windows上是gbk
+    
+writer.append(&quot;中文输入&quot;);
+// 写入到缓冲区
+    
+writer.append(&quot;\r\n&quot;);
+//换行
+
+writer.append(&quot;English&quot;);
+// 刷新缓存冲,写入到文件,如果下面已经没有写入的内容了,直接close也会写入
+    
+writer.close();
+//关闭写入流,同时会把缓冲区内容写入文件,所以上面的注释掉
+    
+fop.close();
+// 关闭输出流,释放系统资源
+</blockquote></pre></div>
+
+    <div class="image">
+      <image src="../ATTACHMENT/2017-10-16-1.png" title="示意图"></image>
+    </div>
+  </div>
+</body>
+
+</html>

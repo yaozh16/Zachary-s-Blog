@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="2018-2-26 selenium&amp;Python Waits">2018-2-26 selenium&amp;Python Waits</h1>
+<h2 id="Explicit Waits">Explicit Waits</h2>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
+driver = webdriver.Firefox()
+driver.get(&quot;http://somedomain/url_that_delays_loading&quot;)
+try:
+  <h1 id="checked every 500ms automatically">checked every 500ms automatically</h1>
+  element=WebDriverWait(driver,10).until(EC.presence_of_element_located((By.ID, &quot;myDynamicElement&quot;)))
+finally:<div class="liRank0"><li class="liRank0">driver.quit()</li></div>
+</blockquote></pre></div>
+####Expected Conditions<div class="liRank0"><li class="liRank0">title_is</li></div><div class="liRank0"><li class="liRank0">title_contains</li></div><div class="liRank0"><li class="liRank0">presence_of_element_located</li></div><div class="liRank0"><li class="liRank0">visibility_of_element_located</li></div><div class="liRank0"><li class="liRank0">visibility_of</li></div><div class="liRank0"><li class="liRank0">presence_of_all_elements_located</li></div><div class="liRank0"><li class="liRank0">text_to_be_present_in_element</li></div><div class="liRank0"><li class="liRank0">text_to_be_present_in_element_value</li></div><div class="liRank0"><li class="liRank0">frame_to_be_available_and_switch_to_it</li></div><div class="liRank0"><li class="liRank0">invisibility_of_element_located</li></div><div class="liRank0"><li class="liRank0">element_to_be_clickable</li></div><div class="liRank0"><li class="liRank0">staleness_of</li></div><div class="liRank0"><li class="liRank0">element_to_be_selected</li></div><div class="liRank0"><li class="liRank0">element_located_to_be_selected</li></div><div class="liRank0"><li class="liRank0">element_selection_state_to_be</li></div><div class="liRank0"><li class="liRank0">element_located_selection_state_to_be</li></div><div class="liRank0"><li class="liRank0">alert_is_present</li></div>
+__自己设置条件__:实现```__call__```
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>class element_has_css_class(object):
+  &quot;&quot;&quot;An expectation for checking that an element has a particular css class.
+
+  locator - used to find the element
+  returns the WebElement once it has the particular css class
+  &quot;&quot;&quot;
+  def __init__(self, locator, css_class):
+    self.locator = locator
+    self.css_class = css_class
+
+  def __call__(self, driver):
+    element = driver.find_element(*self.locator)   <h1 id="Finding the referenced element">Finding the referenced element</h1>
+    if self.css_class in element.get_attribute(&quot;class&quot;):
+        return element
+    else:
+        return False
+
+<h1 id="Wait until an element with id=&amp;apos;myNewInput&amp;apos; has class &amp;apos;myCSSClass&amp;apos;">Wait until an element with id=&amp;apos;myNewInput&amp;apos; has class &amp;apos;myCSSClass&amp;apos;</h1>
+wait = WebDriverWait(driver, 10)
+element = wait.until(element_has_css_class((By.ID, &apos;myNewInput&apos;), &quot;myCSSClass&quot;))
+</blockquote></pre></div>
+<h2 id="Implicit Waits">Implicit Waits</h2>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>from selenium import webdriver
+
+driver = webdriver.Firefox()
+driver.implicitly_wait(10) <h1 id="seconds">seconds</h1>
+driver.get(&quot;http://somedomain/url_that_delays_loading&quot;)
+myDynamicElement = driver.find_element_by_id(&quot;myDynamicElement&quot;)
+</blockquote></pre></div></div></body>
+</html>
