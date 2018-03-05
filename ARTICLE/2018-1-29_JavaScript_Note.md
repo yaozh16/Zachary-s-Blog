@@ -1,5 +1,4 @@
 # 2018-1-29 JavaScript Note
-
 ## basics
 ### debug
 alert(variable);

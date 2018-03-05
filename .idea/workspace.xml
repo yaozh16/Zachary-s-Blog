@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="572d11cf-8e1f-45e2-be58-6ffd90c0649b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ARTICLE/2017-10-18.md" afterPath="$PROJECT_DIR$/ARTICLE/2017-10-18.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ARTICLE/2018-2-26_selenium_Python(3)_Proxy.html" afterPath="$PROJECT_DIR$/ARTICLE/2018-2-26_selenium_Python(3)_Proxy.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ARTICLE/2018-2-26_selenium_Python(3)_Proxy.md" afterPath="$PROJECT_DIR$/ARTICLE/2018-2-26_selenium_Python(3)_Proxy.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/index_styles.css" afterPath="$PROJECT_DIR$/css/index_styles.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/treeFrame.html" afterPath="$PROJECT_DIR$/treeFrame.html" />
-    </list>
+    <list default="true" id="572d11cf-8e1f-45e2-be58-6ffd90c0649b" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -83,7 +75,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="65" />
     <option name="y" value="-4" />
     <option name="width" value="1855" />
@@ -206,7 +198,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1855" height="1084" extended-state="6" />
+    <frame x="65" y="-4" width="1855" height="1084" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />

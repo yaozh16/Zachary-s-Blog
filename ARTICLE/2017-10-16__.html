@@ -1,24 +1,14 @@
 <!DOCTYPE html>
 <html>
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css"><script type='text/x-mathjax-config'>  MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script><script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script></head>
+<body><div class='content'><h1 id="Java 文件读写">Java 文件读写</h1>
+<h2 id="目录">目录</h2>
+<a class="url" href="#文件读入">文件读入</a>
 
-<head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" type="text/css" media="all" href="../css/article_styles.css">
-  <script type='text/x-mathjax-config'> MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$']]}});</script>
-  <script type='text/javascript' src='http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
-</head>
+<a class="url" href="#文件输出">文件输出</a>
 
-<body>
-  <div class='content'>
-    <h1 id="Java 文件读写">Java 文件读写</h1>
-    <h2 id="目录">目录</h2>
-    <a class="url" href="#文件读入">文件读入</a>
-
-    <a class="url" href="#文件输出">文件输出</a>
-
-    <h2 id="文件读入">文件读入</h2>
-    <div class='codeBlock'><pre class='codeBlockPre'><blockquote>File f=new File(&quot;Test.txt&quot;);
+<h2 id="文件读入">文件读入</h2>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>File f=new File(&quot;Test.txt&quot;);
 // 打开文件(可以是目录，利用f.isDirectory() 判断和f.list()获取目录下文件信息)
 
 FileInputStream fin=new FileInputStream(f);
@@ -40,8 +30,8 @@ fin.close();
 // 关闭输入流,释放系统资源
 </blockquote></pre></div>
 
-    <h2 id="文件输出">文件输出</h2>
-    <div class='codeBlock'><pre class='codeBlockPre'><blockquote>File f = new File(&quot;a.txt&quot;);
+<h2 id="文件输出">文件输出</h2>
+<div class='codeBlock'><pre class='codeBlockPre'><blockquote>File f = new File(&quot;a.txt&quot;);
 FileOutputStream fop = new FileOutputStream(f);
 // 构建FileOutputStream对象,文件不存在会自动新建
     
@@ -64,10 +54,6 @@ fop.close();
 // 关闭输出流,释放系统资源
 </blockquote></pre></div>
 
-    <div class="image">
-      <image src="../ATTACHMENT/2017-10-16-1.png" title="示意图"></image>
-    </div>
-  </div>
-</body>
-
+<div class="image"><image src="../ATTACHMENT/2017-10-16-1.png" title="示意图"></image></div>
+</div></body>
 </html>
