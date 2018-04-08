@@ -2,106 +2,110 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width">
-  <title>Home</title>
-  <link rel="stylesheet" type="text/css" media="all" href="css/index_styles.css">
-  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js">
-  </script>
-  <script>
-    var changeiFrameHeight = function() {
-      var ifm = document.getElementById("displayFrm");
-      var iwin = ifm.contentWindow || ifm.contentDocument.parentWindow;
-      var idoc = iwin.document;
-      var contentHeight;
-      if (idoc.body) { //W3C
-        contentHeight = Math.max(idoc.body.scrollHeight, idoc.body.offsetHeight);
-      } else if (idoc.documentElement) { //IE
-        contentHeight = Math.max(idoc.documentElement.scrollHeight, idoc.documentElement.offsetHeight);
-      }
-      ifm.height=contentHeight+80;
-      if (idoc.title == "Nav") {
-        var x = $('div#displayDiv')
-        x.css('margin-left', '20%');
-        x.css('margin-right', '20%');
-        idoc.body.style.backgroundColor = 'transparent';
-      } else {
-        var x = $('div#displayDiv')
-        x.css('margin-left',  '0');
-        x.css('margin-right', '0');
-        idoc.body.style.backgroundColor = 'rgb(255,255,255,0.5)';
-      }
-    }
-    window.onscroll = function() {
-        var x=$('div#backToTopDiv');
-        var scrollHeight=document.documentElement.scrollTop||document.body.scrollTop
-        if (scrollHeight > 150) {
-          x.css('display', 'block');
-        } else {
-          x.css('display','none');
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" media="all" href="css/index_styles.css">
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js">
+    </script>
+    <script>
+        var changeiFrameHeight = function() {
+            var ifm = document.getElementById("displayFrm");
+            var iwin = ifm.contentWindow || ifm.contentDocument.parentWindow;
+            var idoc = iwin.document;
+            var contentHeight;
+            if (idoc.body) { //W3C
+                contentHeight = Math.max(idoc.body.scrollHeight, idoc.body.offsetHeight);
+            } else if (idoc.documentElement) { //IE
+                contentHeight = Math.max(idoc.documentElement.scrollHeight, idoc.documentElement.offsetHeight);
+            }
+            ifm.height = contentHeight + 80;
+            if (idoc.title == "Nav") {
+                var x = $('div#displayDiv')
+                x.css('margin-left', '20%');
+                x.css('margin-right', '20%');
+                idoc.body.style.backgroundColor = 'transparent';
+            } else {
+                var x = $('div#displayDiv')
+                x.css('margin-left', '0');
+                x.css('margin-right', '0');
+                idoc.body.style.backgroundColor = 'rgb(255,255,255,0.5)';
+            }
         }
-    }
-    window.onload = function() {
-      window.oncontextmenu = function(event) {
-        var audio = document.getElementById('mp3Btn');
-        if (audio.paused) {
-          audio.play();
-        } else {
-          audio.pause();
+        window.onscroll = function() {
+            var x = $('div#backToTopDiv');
+            var scrollHeight = document.documentElement.scrollTop || document.body.scrollTop
+            if (scrollHeight > 150) {
+                x.css('display', 'block');
+            } else {
+                x.css('display', 'none');
+            }
         }
-        return false;
-      }
-      window.onresize = function() {
-        changeiFrameHeight();
-      }
-    }
+        window.onload = function() {
+            window.oncontextmenu = function(event) {
+                var audio = document.getElementById('mp3Btn');
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+                return false;
+            }
+            window.onresize = function() {
+                changeiFrameHeight();
+            }
+        }
 
-    function backToTop() {
-      (function smoothscroll() {
-        var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-        if (currentScroll > 0) {
-          window.requestAnimationFrame(smoothscroll);
-          window.scrollTo(0, currentScroll - (currentScroll / 5));
+        function backToTop() {
+            (function smoothscroll() {
+                var currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+                if (currentScroll > 0) {
+                    window.requestAnimationFrame(smoothscroll);
+                    window.scrollTo(0, currentScroll - (currentScroll / 5));
+                }
+            })();
         }
-      })();
-    }
-    function backToNav() {
-      document.getElementById('displayFrm').src="treeFrame.html";
-    }
-    function switchDisplayPage(url){
-      document.getElementById('displayFrm').src=url;
-    }
-  </script>
+
+        function backToNav() {
+            document.getElementById('displayFrm').src = "treeFrame.html";
+        }
+
+        function switchDisplayPage(url) {
+            document.getElementById('displayFrm').src = url;
+        }
+    </script>
 </head>
 
 <body class="index_body">
-  <div>
-    <audio id="mp3Btn" style="width:99%;padding:10px;" autoplay loop controls>
+    <div>
+        <audio id="mp3Btn" style="width:99%;padding:10px;" autoplay loop controls>
         <source src="music/Moonstruck_Dance.mp3" type="audio/mpeg" />
   </audio>
-  </div>
-  <div class="index_head">
-    <div class="index_headCover"></div>
-    <div class="index_headTopic">
-      welcome to Zachary's person note page.
     </div>
-  </div>
-  <div id="displayDiv">
-    <iframe id="displayFrm" src="treeFrame.html" frameborder="0" scrolling="no" seamless="yes" width="100%" onload="changeiFrameHeight()" onchange="changeiFrameHeight()" >
-    </iframe>  
-  </div>
-  <div id="backToTopDiv" style="position:fixed;bottom:80px;right: 40px;">
-  <button onclick="backToTop()" class="backButton" title="回顶部">
+    <div class="index_head">
+        <div class="index_headCover"></div>
+        <div class="index_headTopic">
+            welcome to Zachary's person note page.
+        </div>
+    </div>
+    <div id="displayDiv">
+        <iframe id="displayFrm" src="treeFrame.html" frameborder="0" scrolling="no" seamless="yes" width="100%" onload="changeiFrameHeight()" onchange="changeiFrameHeight()">
+    </iframe>
+    </div>
+    <div id="backToTopDiv" style="position:fixed;bottom:80px;right: 40px;">
+        <button onclick="backToTop()" class="backButton" title="回顶部">
   返回顶部
   </button>
-  </div>
-  <div id="backToNavDiv" style="position:fixed;bottom:20px;right: 40px;">
-    <button onclick="backToNav()" class="backButton" title="回导航栏">
+    </div>
+    <div id="backToNavDiv" style="position:fixed;bottom:20px;right: 40px;">
+        <button onclick="backToNav()" class="backButton" title="回导航栏">
     返回主页
     </button>
-  </div>
-<div style="text-align: center; color:rgba(203, 43, 43,1);font-size:30px;"><p>© 2018. All rights reserved by yaozh16. </p>
-</div>
+    </div>
+    <div style="text-align: center; color:rgba(203, 43, 43,1);font-size:30px;">
+        <p>© 2018. All rights reserved by yaozh16. </p>
+    </div>
 
 </body>
+
 </html>
