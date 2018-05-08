@@ -1,0 +1,1933 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>2018-5-7_UOJ再开发第一阶段工作报告</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/yaozh16/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      <link rel="stylesheet" href="file:////home/yaozh16/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/mermaid/mermaid.css">
+      
+      
+      
+      
+      <script type="text/javascript" src="file:////home/yaozh16/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/mermaid/mermaid.min.js"></script>
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+html body {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Josefin Sans";
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  overflow: initial;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+html body > :first-child {
+  margin-top: 0;
+}
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5,
+html body h6 {
+  line-height: 1.2;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  color: #000;
+}
+html body h1 {
+  font-size: 2.25em;
+  font-weight: 300;
+  padding-bottom: 0.3em;
+}
+html body h2 {
+  font-size: 1.75em;
+  font-weight: 400;
+  padding-bottom: 0.3em;
+}
+html body h3 {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+html body h4 {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+html body h5 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+html body h6 {
+  font-size: 1em;
+  font-weight: 600;
+}
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5 {
+  font-weight: 600;
+}
+html body h5 {
+  font-size: 1em;
+}
+html body h6 {
+  color: #5c5c5c;
+}
+html body strong {
+  color: #000;
+}
+html body del {
+  color: #5c5c5c;
+}
+html body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+html body a {
+  color: #08c;
+  text-decoration: none;
+}
+html body a:hover {
+  color: #00a3f5;
+  text-decoration: none;
+}
+html body img {
+  max-width: 100%;
+}
+html body > p {
+  margin-top: 0;
+  margin-bottom: 16px;
+  word-wrap: break-word;
+}
+html body > ol,
+html body > ul {
+  margin-bottom: 16px;
+}
+html body ol,
+html body ul {
+  padding-left: 2em;
+}
+html body ol.no-list,
+html body ul.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+html body ol ol,
+html body ol ul,
+html body ul ol,
+html body ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+html body li {
+  margin-bottom: 0;
+}
+html body li.task-list-item {
+  list-style: none;
+}
+html body li > p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+html body .task-list-item-checkbox {
+  margin: 0 0.2em 0.25em -1.8em;
+  vertical-align: middle;
+}
+html body .task-list-item-checkbox:hover {
+  cursor: pointer;
+}
+html body blockquote {
+  margin: 16px 0;
+  font-size: inherit;
+  padding: 0 15px;
+  color: #5c5c5c;
+  border-left: 4px solid #d6d6d6;
+}
+html body blockquote > :first-child {
+  margin-top: 0;
+}
+html body blockquote > :last-child {
+  margin-bottom: 0;
+}
+html body hr {
+  height: 4px;
+  margin: 32px 0;
+  background-color: #d6d6d6;
+  border: 0 none;
+}
+html body table {
+  margin: 10px 0 15px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+html body table th {
+  font-weight: bold;
+  color: #000;
+}
+html body table td,
+html body table th {
+  border: 1px solid #d6d6d6;
+  padding: 6px 13px;
+}
+html body dl {
+  padding: 0;
+}
+html body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+html body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+html body code {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: 0.85em !important;
+  color: #000;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  padding: 0.2em 0;
+}
+html body code::after,
+html body code::before {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+html body pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 0.85em !important;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+html body .highlight {
+  margin-bottom: 16px;
+}
+html body .highlight pre,
+html body pre {
+  padding: 1em;
+  overflow: auto;
+  font-size: 0.85em !important;
+  line-height: 1.45;
+  border: #d6d6d6;
+  border-radius: 3px;
+}
+html body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+html body pre code,
+html body pre tt {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+html body pre code:after,
+html body pre code:before,
+html body pre tt:after,
+html body pre tt:before {
+  content: normal;
+}
+html body blockquote,
+html body dl,
+html body ol,
+html body p,
+html body pre,
+html body ul {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+html body kbd {
+  color: #000;
+  border: 1px solid #d6d6d6;
+  border-bottom: 2px solid #c7c7c7;
+  padding: 2px 4px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+}
+@media print {
+  html body {
+    background-color: #fff;
+  }
+  html body h1,
+  html body h2,
+  html body h3,
+  html body h4,
+  html body h5,
+  html body h6 {
+    color: #000;
+    page-break-after: avoid;
+  }
+  html body blockquote {
+    color: #5c5c5c;
+  }
+  html body pre {
+    page-break-inside: avoid;
+  }
+  html body table {
+    display: table;
+  }
+  html body img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  html body code,
+  html body pre {
+    word-wrap: break-word;
+    white-space: pre;
+  }
+}
+.markdown-preview {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.markdown-preview .newpage,
+.markdown-preview .pagebreak {
+  page-break-before: always;
+}
+.markdown-preview pre.line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+.markdown-preview pre.line-numbers > code {
+  position: relative;
+}
+.markdown-preview pre.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 1em;
+  font-size: 100%;
+  left: 0;
+  width: 3em;
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.markdown-preview pre.line-numbers .line-numbers-rows > span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+}
+.markdown-preview pre.line-numbers .line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+.markdown-preview .mathjax-exps .MathJax_Display {
+  text-align: center !important;
+}
+.markdown-preview:not([for="preview"]) .code-chunk .btn-group {
+  display: none;
+}
+.markdown-preview:not([for="preview"]) .code-chunk .status {
+  display: none;
+}
+.markdown-preview:not([for="preview"]) .code-chunk .output-div {
+  margin-bottom: 16px;
+}
+.scrollbar-style::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar-style::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+.scrollbar-style::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(150, 150, 150, 0.66);
+  border: 4px solid rgba(150, 150, 150, 0.66);
+  background-clip: content-box;
+}
+html body[for="html-export"]:not([data-presentation-mode]) {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+  position: relative;
+  top: 0;
+}
+@media screen and (min-width: 914px) {
+  html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+    padding: 2em calc(-407%);
+  }
+}
+@media screen and (max-width: 914px) {
+  html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+    padding: 2em;
+  }
+}
+@media screen and (max-width: 450px) {
+  html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+    font-size: 14px !important;
+    padding: 1em;
+  }
+}
+@media print {
+  html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn {
+    display: none;
+  }
+}
+html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn {
+  position: fixed;
+  bottom: 8px;
+  left: 8px;
+  font-size: 28px;
+  cursor: pointer;
+  color: inherit;
+  z-index: 99;
+  width: 32px;
+  text-align: center;
+  opacity: 0.4;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn {
+  opacity: 1;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  padding: 32px 0 48px;
+  font-size: 14px;
+  box-shadow: 0 0 4px rgba(150, 150, 150, 0.33);
+  box-sizing: border-box;
+  overflow: auto;
+  background-color: inherit;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar {
+  width: 8px;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(150, 150, 150, 0.66);
+  border: 4px solid rgba(150, 150, 150, 0.66);
+  background-clip: content-box;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a {
+  text-decoration: none;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul {
+  padding: 0 1.6em;
+  margin-top: 0.8em;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li {
+  margin-bottom: 0.8em;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul {
+  list-style-type: none;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+  left: 300px;
+  width: calc(-200%);
+  padding: 2em calc(-557%);
+  margin: 0;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 1274px) {
+  html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+    padding: 2em;
+  }
+}
+@media screen and (max-width: 450px) {
+  html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+    background: red;
+    width: 100%;
+  }
+}
+html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview {
+  left: 50%;
+  transform: translateX(-50%);
+}
+html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc {
+  display: none;
+}
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <h1 class="mume-header" id="uoj%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A">UOJ再开发：第一阶段工作报告</h1>
+
+<h2 class="mume-header" id="%E3%80%87-%E7%9B%AE%E5%BD%95">〇、目录</h2>
+
+<ul>
+<li><a href="#%E4%B8%80-uoj%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E6%95%B4%E7%90%86">一、UOJ工作流程整理</a><br>
+  <a href="#1judge-client%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE">1.judge client工作流程图</a><br>
+  <a href="#2main_judger%E4%B8%8Ejudger%E6%A6%82%E8%BF%B0">2.main_judger与judger概述</a><br>
+  <a href="#3judger%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E9%80%BB%E8%BE%91">3.judger工作流程逻辑</a><br>
+  <a href="#4test_point%E6%A0%A1%E9%AA%8C%E7%AD%94%E6%A1%88%E5%B7%A5%E4%BD%9C%E9%80%BB%E8%BE%91">4.test_point校验答案工作逻辑</a></li>
+<li><a href="#%E4%BA%8C-uoj%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%BC%80%E5%8F%91%E6%89%80%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%BA%93">二、UOJ使用及开发所涉及到的工具与库</a><br>
+  <a href="#1chkcppvalcpp%E7%AD%89%E7%9A%84%E7%BC%96%E5%86%99">1. chk.cpp/val.cpp等的编写</a><br>
+  <a href="#2docker">2. docker</a><br>
+  <a href="#3svn">3. svn</a></li>
+<li><a href="#%E4%B8%89-uoj%E8%AF%84%E6%B5%8B%E5%AE%9E%E8%B7%B5">三、UOJ评测实践</a><br>
+  <a href="#0%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">0.文件系统</a><br>
+  <a href="#1%E7%AE%80%E5%8D%95-ab-problem">1.简单 A+B problem</a><br>
+  <a href="#2%E6%95%99%E5%B0%8F%E6%98%8E%E5%AE%9E%E7%8E%B0-ab-problem">2.教小明实现A+B problem</a></li>
+<li><a href="#%E5%9B%9B-%E7%BB%A7%E7%BB%AD%E5%BC%80%E5%8F%91%E8%AF%84%E6%B5%8B%E6%9C%BA">四、继续开发评测机</a><br>
+ <a href="#%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%8F%AF%E4%BB%A5%E5%81%9A%E7%9A%84%E6%96%B9%E5%90%91">接下来可以做的方向</a></li>
+<li><a href="#%E4%BA%94-%E5%85%B6%E4%BB%96%E5%B7%A5%E4%BD%9C">五、其他工作</a><br>
+ <a href="#1uoj%E7%BD%91%E9%A1%B5%E7%AB%AF%E5%BC%80%E5%8F%91xdebug%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8">1. uoj网页端开发：xdebug配置与使用</a><br>
+ <a href="#2-%E7%BE%A4%E7%BB%84%E7%AE%A1%E7%90%86">2. UOJ群组管理(sql设计、js代码、php代码已完成)</a><br>
+   已经完成管理员校验同意入组、授权、建组、增删人员、查询等功能<br>
+   已经完成用户查询功能，暂时未写报名，大概还需要一到两天完成<br>
+   <a href="#6%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88">点击这里</a>看管理界面</li>
+</ul>
+<h2 class="mume-header" id="%E4%B8%80-uoj%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E6%95%B4%E7%90%86">一、UOJ工作流程整理</h2>
+
+<h3 class="mume-header" id="1judge-client%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE">1.judge client工作流程图</h3>
+
+<div class="mermaid">graph TD
+  A[main]==load jconf==>B[init]
+  B==>C[start_judger_server]
+  C-->D1["socket_server_loop"]
+  C-->D2["judger_loop"]
+  subgraph socket_server_thread
+    D1-->E1[socket receive data]
+    E1--"json"-->F1["taskQ.put(task)"]
+    F1--"task['cmd'] == 'stop'"-->G1[exit thread]
+    F1--"task['cmd'] != 'stop':"-->D1
+  end
+  
+  subgraph main_thread
+    D2--"ok set to False"-->E2["loop start<br>fetch_new = True"]
+    E2--"not ok"-->F2[another loop start]
+    F2--"taskQ not empty"-->G2["handle_task()<br>"]
+    G2-.->J["update<br>stop"]  
+    G2--"socket_server_thread alive"-->H2["send_and_fetch()"]
+    H2--"false<br>sleep(2)"-->F2
+    H2--"true<br>(connection available)"-->I["res = judge()<br>ok = send_and_fetch(result=res,fetch_new=fetch_new)"]
+    I--"ok = True"-->E2
+  end
+  E1-.->G2
+  I-.->K1["judge()"]
+  K1-->K2[clean_up_folder]
+  K1-->K3[update_problem_data]
+  K1-->K4[uoj_download]
+  K2-->K5[fconf]
+  K3-->K5
+  K5-.->L1[start]
+  K5-->K6[execute main_judger]
+  K6-->K7[submission_judged]
+  subgraph report_thread
+    L1-->L2[report_loop]
+    L2-->L3[check cur_status]
+    L3-->L2
+    L3-->L4[join]
+  end
+  K7-.->L4
+  K7-->K8[get_judger_result<br>time\score\error\detail]
+  style A fill:#ed6,stroke:#333,stroke-width:2px;
+  style B fill:#ed6,stroke:#333,stroke-width:2px;
+  style C fill:#ed6,stroke:#333,stroke-width:2px;
+  style D2 fill:#ed6,stroke:#333,stroke-width:2px;
+  style E2 fill:#ed6,stroke:#333,stroke-width:2px;
+  style K1 fill:#ed6,stroke:#333,stroke-width:2px;
+</div><h3 class="mume-header" id="2main_judger%E4%B8%8Ejudger%E6%A6%82%E8%BF%B0">2.main_judger与judger概述</h3>
+
+<ul>
+<li>功能</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">可执行文件</th>
+<th style="text-align:left">功能说明</th>
+<th style="text-align:left">其他说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">main_judger</td>
+<td style="text-align:left">统筹参数</td>
+<td style="text-align:left">通过run_program调用judger</td>
+</tr>
+<tr>
+<td style="text-align:left">judger</td>
+<td style="text-align:left">实际评测</td>
+<td style="text-align:left">包括编译、测试等</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>为了安全性考虑，main_judger与judger均通过run_program等uoj库函数进行进程调用</li>
+</ul>
+<h3 class="mume-header" id="3judger%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E9%80%BB%E8%BE%91">3.judger工作流程逻辑</h3>
+
+<ul>
+<li>在svn同步(文件系统见后面)之后，我们自己写的<code>judger.cpp</code>与<code>uoj_judger.h</code>还有其他输入输出文件、val.cpp、chk.cpp、problem.conf等传到相应目录。在配置下，其中judger.cpp、val.cpp、chk.cpp等在我们在网页端发送指令后开始编译，生成judger、val、checker等可执行文件</li>
+<li>每次有一提交（假设为zip提交），则服务器将选手提交的zip文件解压到<code>/home/local_main_judger/work</code>路径下（当然路径内先进行清理过了）</li>
+<li>然后在<code>/var/svn/problem/[problem_id]/cur/[problem_id]/1</code>路径下运行我们之前编译的judger：</li>
+</ul>
+<div class="mermaid">graph TD
+  A[获取数据]-->A1[n_tests]
+  A[获取数据]-->A2[n_ex_tests]
+  A[获取数据]-->A3[n_subtasks]
+  subgraph compile
+    B0[report]-->B
+    B[compile with\without implementer]-->B1[report]
+    B[compile with\without implementer]-->B2[error]
+  end
+  A1-->B0
+  A2-->B0
+  A3-->B0
+  subgraph subTask=0
+    C0[report]-->C["test_point(i)"]
+    C-->C1[add_point_info]
+    C1--loop-->C
+    C1-->C2[report]
+  end
+  subgraph subTask>0
+    D0[report]-->D["blabla"]
+    D-->D2[report]
+  end
+  B1--subTask=0-->C0
+  B1--subTask=0-->D0
+  C2-->E[end_judge_ok]
+  D2-->E
+</div><h3 class="mume-header" id="4test_point%E6%A0%A1%E9%AA%8C%E7%AD%94%E6%A1%88%E5%B7%A5%E4%BD%9C%E9%80%BB%E8%BE%91">4.test_point校验答案工作逻辑</h3>
+
+<div class="mermaid">graph TD
+  A["config"]
+  A--if needed-->B[run_validator]
+  B-->B0[valid]
+  B0--if not submit_answer-->C[run_submission_program]
+  C-->C0[file_hide_token]
+  C0-->C1["check whether successfully run and finished"]
+  C1-->C2["success(AC)"]
+  B0--if submit_answer-->C2
+  C2-->D[run_checker]
+  D--AC-->D1[set info string]
+  C1--error-->D2[return PointInfo]
+  D--error-->D2
+  D1-->D2
+</div><h2 class="mume-header" id="%E4%BA%8C-uoj%E4%BD%BF%E7%94%A8%E5%8F%8A%E5%BC%80%E5%8F%91%E6%89%80%E6%B6%89%E5%8F%8A%E5%88%B0%E7%9A%84%E5%B7%A5%E5%85%B7%E4%B8%8E%E5%BA%93">二、UOJ使用及开发所涉及到的工具与库</h2>
+
+<h3 class="mume-header" id="1chkcppvalcpp%E7%AD%89%E7%9A%84%E7%BC%96%E5%86%99">1.chk.cpp/val.cpp等的编写</h3>
+
+<ul>
+<li>主要都是使用<code>testlib.h</code></li>
+<li>使用前初始化、使用时注意采用testlib的流</li>
+<li>示例</li>
+</ul>
+<p><em>chk.cpp ： 校验选手输出结果是否正确的</em></p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"testlib.h"</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span><span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">registerTestlibCmd</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> pans<span class="token punctuation">,</span>jans<span class="token punctuation">;</span>
+    pans<span class="token operator">=</span>ouf<span class="token punctuation">.</span><span class="token function">readInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>      
+    jans<span class="token operator">=</span>ans<span class="token punctuation">.</span><span class="token function">readInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>pans <span class="token operator">==</span> jans<span class="token punctuation">)</span>
+        <span class="token function">quitf</span><span class="token punctuation">(</span>_ok<span class="token punctuation">,</span> <span class="token string">"Correct."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span>
+        <span class="token function">quitf</span><span class="token punctuation">(</span>_wa <span class="token punctuation">,</span> <span class="token string">"WA! expect=%d recieve=%d"</span><span class="token punctuation">,</span> jans<span class="token punctuation">,</span> pans<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><p><em>val.cpp ：对hack模式下某个输入先进行格式验证与数据合理性验证</em></p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp">
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"testlib.h"</span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token function">registerValidation</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    inf<span class="token punctuation">.</span><span class="token function">readInt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1000000000</span><span class="token punctuation">,</span><span class="token string">"A"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    inf<span class="token punctuation">.</span><span class="token function">readSpace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    inf<span class="token punctuation">.</span><span class="token function">readInt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1000000000</span><span class="token punctuation">,</span><span class="token string">"B"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    inf<span class="token punctuation">.</span><span class="token function">readEoln</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    inf<span class="token punctuation">.</span><span class="token function">readEof</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h3 class="mume-header" id="2docker">2.docker</h3>
+
+<ul>
+<li>类似虚拟机，可以非常方便地创建系统镜像并装载，对于像我这种装东西之后容易忘记卸而导致环境越来越脏的家伙来说还是很方便的。</li>
+<li>docker的镜像一般自动在dockerhub上的源下载，有点类似git</li>
+<li>docker的image是静态的，如果运行需要创建容器并装载</li>
+<li>container被干掉对image没有影响，但是装载时就仍然是image的状态了，这点和git也是相同的</li>
+<li>一些常用基本命令<br>
+start container<br>
+attach container<br>
+rename container<br>
+commit container<br>
+tag image<br>
+run image</li>
+<li>docker run 目前接触到的参数</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">参数</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">-p [port1]:[port2]  [port3]:[port4] ...</td>
+<td style="text-align:left">对端口的映射</td>
+</tr>
+<tr>
+<td style="text-align:left">--add-cap [配置]</td>
+<td style="text-align:left">添加配置（这一点很坑，一开始就没给SYS_PTRACE权限导致gdb无法运行然后一直ce：因为评测机在test_point阶段的评测是利用了fork并且设置了进程监控）</td>
+</tr>
+<tr>
+<td style="text-align:left">--name=[name]</td>
+<td style="text-align:left">设置名字</td>
+</tr>
+<tr>
+<td style="text-align:left">-it</td>
+<td style="text-align:left">等价与马上attach新产生的容器</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>uoj系统装载在docker中，由于安装的ubuntu为精简版，所以很多依赖都需要自己安装</li>
+</ul>
+<h3 class="mume-header" id="3svn">3.svn</h3>
+
+<ul>
+<li>和git不太一样，中心式的，每次ci都是传给服务器</li>
+<li>svn只是在第一次co的时候需要认证，之后根据uuid可以省去认证</li>
+<li>服务器端权限配置</li>
+</ul>
+<ol>
+<li>在项目目录的“conf/”目录下面有.conf文件,记录对于不同类型用户的主要权限、密码数据库和authez数据库（其实就是文本文件）的路径<br>
+权限主要就是none、read、write</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-"><code>anon-access = none
+auth-access = write
+password-db = passwd
+</code></pre><ol start="2">
+<li>数据库</li>
+</ol>
+<p>1)密码数据库就是 user=passwd 的格式:</p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>[users]
+our-root = abc
+userA = 666
+</code></pre><p>2)authez数据库是对权限的细分:</p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>[aliases]
+# joe = /C=XZ/ST=Dessert/L=Snake City/O=Snake Oil, Ltd./OU=Research Institute/CN=Joe Average
+# &#x5206;&#x7EC4;&#x4FE1;&#x606F;
+[groups]
+harry_and_sally = harry,sally
+harry_sally_and_joe = harry,sally,&amp;joe
+
+#/foo/bar &#x76EE;&#x5F55;&#xFF1A;harry&#x53EF;&#x4EE5;&#x8BFB;&#x5199;&#xFF0C;joe&#x53EF;&#x4EE5;&#x8BFB;, &#x5176;&#x4ED6;&#x4EBA;&#x4E0D;&#x7ED9;&#x6743;&#x9650;
+[/foo/bar]
+harry = rw
+&amp;joe = r
+* =
+#/baz/fuz &#x76EE;&#x5F55;&#xFF1A;harry_and_sally&#x53EF;&#x4EE5;&#x8BFB;&#x5199;&#xFF0C;&#x5176;&#x4ED6;&#x4EBA;&#x53EA;&#x80FD;&#x8BFB;
+[repository:/baz/fuz]
+@harry_and_sally = rw
+* = r
+</code></pre><ul>
+<li>客户端常用命令<br>
+svn co [svn_path]<br>
+svn add [file_path]<br>
+svn commit<br>
+svn ci<br>
+svn up</li>
+<li>uoj项目中主要有三个svn目录，在<code>/var/svn</code>目录下</li>
+</ul>
+<ol>
+<li>uoj</li>
+<li>problem</li>
+<li>judge_client</li>
+</ol>
+<p>比如如果要复制uoj目录进行网页端修改，可以先修改这个目录的svn的passwd后在shell中</p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>svn co svn:\\[docker_ip_address]\var\uoj --username yaozh16
+</code></pre><h3 class="mume-header" id="4-mysql">4. mysql</h3>
+
+<ul>
+<li>uoj上密码为root</li>
+<li>启动</li>
+</ul>
+<pre data-role="codeBlock" data-info="" class="language-"><code>mysql -u root -p
+</code></pre><ul>
+<li>常用命令</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">说明</th>
+<th style="text-align:left">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">显示所有数据库</td>
+<td style="text-align:left">show databases;</td>
+</tr>
+<tr>
+<td style="text-align:left">显示当前数据库所有表</td>
+<td style="text-align:left">show tables;</td>
+</tr>
+<tr>
+<td style="text-align:left">装载数据库</td>
+<td style="text-align:left">use [databaseName];</td>
+</tr>
+<tr>
+<td style="text-align:left">显示数据表的结构</td>
+<td style="text-align:left">describe [tableName];</td>
+</tr>
+<tr>
+<td style="text-align:left">建库</td>
+<td style="text-align:left">create database [databaseName];</td>
+</tr>
+<tr>
+<td style="text-align:left">建表</td>
+<td style="text-align:left">create table [tableName] (字段设定列表);</td>
+</tr>
+<tr>
+<td style="text-align:left">删库</td>
+<td style="text-align:left">drop database [databaseName];</td>
+</tr>
+<tr>
+<td style="text-align:left">删表</td>
+<td style="text-align:left">drop table [tableName]；</td>
+</tr>
+<tr>
+<td style="text-align:left">将表中记录清空</td>
+<td style="text-align:left">delete from [tableName];</td>
+</tr>
+<tr>
+<td style="text-align:left">显示表中的记录</td>
+<td style="text-align:left">select * from [table]</td>
+</tr>
+</tbody>
+</table>
+<p>建表例子(例子来自菜鸟教程)</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">`</span>runoob_tbl<span class="token punctuation">`</span><span class="token punctuation">(</span>
+   <span class="token punctuation">`</span>runoob_id<span class="token punctuation">`</span> <span class="token keyword">INT</span> <span class="token keyword">UNSIGNED</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span>
+   <span class="token punctuation">`</span>runoob_title<span class="token punctuation">`</span> <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+   <span class="token punctuation">`</span>runoob_author<span class="token punctuation">`</span> <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+   <span class="token punctuation">`</span>submission_date<span class="token punctuation">`</span> <span class="token keyword">DATE</span><span class="token punctuation">,</span>
+   <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span> <span class="token punctuation">`</span>runoob_id<span class="token punctuation">`</span> <span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8<span class="token punctuation">;</span>
+</pre><h2 class="mume-header" id="%E4%B8%89-uoj%E8%AF%84%E6%B5%8B%E5%AE%9E%E8%B7%B5">三、UOJ评测实践</h2>
+
+<h3 class="mume-header" id="0%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">0.文件系统</h3>
+
+<p>svn co一个problem后（假设id是k），需要建立如下文件系统</p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>k(directory)
+|-1(directory)
+  |-chk.cpp
+  |-problem.conf
+  |-val.cpp
+  |-judger.cpp
+  |-testlib.h
+  |-uoj_judger.h
+  |-in_1.insuffix(text file)
+  |-in_2.insuffix(text file)
+  |-out_2.outsuffix(text file)
+  |-out_2.outsuffix(text file)
+  |-download(directory)
+     |-&#x63D0;&#x4F9B;&#x7ED9;&#x540C;&#x5B66;&#x4E0B;&#x8F7D;&#x7684;&#x6587;&#x4EF6;&#x90FD;&#x5728;&#x8FD9;&#x91CC;&#xFF0C;&#x4F1A;&#x88AB;&#x6253;&#x5305;&#x6210;problemk.zip
+</code></pre><p>经过编译之后，会增加</p>
+<pre data-role="codeBlock" data-info="" class="language-"><code>|-1(directory)
+  |-checker(executable)
+  |-validator(executable)
+  |-judger(executable)
+</code></pre><h3 class="mume-header" id="1%E7%AE%80%E5%8D%95-ab-problem">1.简单 A+B problem</h3>
+
+<h4 class="mume-header" id="1-problemconf">(1) problem.conf</h4>
+
+<pre data-role="codeBlock" data-info="" class="language-"><code>use_builtin_judger on
+use_builtin_checker ncmp
+n_tests 10
+n_ex_tests 0
+n_sample_tests 0
+input_pre www
+input_suf in
+output_pre www
+output_suf out
+time_limit 1
+memory_limit 256
+output_limit 64
+</code></pre><p>然后写好每个对应的<code>www[k].in</code> <code>www[k].out</code>等就可以了，连<code>judger</code>都不需要自己写（只要同学的代码是通过文本编辑框输入提交的——这时候编译过程总内建的judger只会处理文本编辑框返回的.code文件）</p>
+<h3 class="mume-header" id="2%E6%95%99%E5%B0%8F%E6%98%8E%E5%AE%9E%E7%8E%B0-ab-problem">2.教小明实现 A+B problem</h3>
+
+<p>稍稍麻烦一点点</p>
+<blockquote>
+<p>目标:助教写main文件，且每次使用不同的main.cpp与选手的同一个input.h编译与评测</p>
+</blockquote>
+<h4 class="mume-header" id="0%E4%B8%BB%E8%A6%81%E6%80%9D%E8%B7%AF">(0)主要思路</h4>
+
+<ul>
+<li>这个题目需要每一次评测的时候都将相应的主函数入口切换，也就是每次都要用不同的main.cpp。</li>
+<li>在原本默认main_judger的基础上，我们需要修改我们的judger为：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">原本</th>
+<th style="text-align:left">修改后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">先编译，后对不同组数据进行测试</td>
+<td style="text-align:left">每一组测试前，移动相应的main.cpp，编译、测试一组数据</td>
+</tr>
+</tbody>
+</table>
+<p>更多详细内容可以看下面</p>
+<h4 class="mume-header" id="1%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">(1)文件系统</h4>
+
+<p>chk.cpp其实可以不用写，只要内建也行，这里演示所以使用自己的chk.cpp。<br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-d774b.png" alt=""></p>
+<h4 class="mume-header" id="2problemconf">(2)problem.conf</h4>
+
+<p>配置<br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-8be45.png" alt=""></p>
+<h4 class="mume-header" id="3judgercpp">(3)judger.cpp</h4>
+
+<p>可以看下面注释</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"uoj_judger.h"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;sstream></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<span class="token keyword">void</span> <span class="token function">ordinary_test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">int</span> n <span class="token operator">=</span> <span class="token function">conf_int</span><span class="token punctuation">(</span><span class="token string">"n_tests"</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//读取的参数，现在从词典中取出</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">//开始每一轮测试</span>
+        string<span class="token operator">&amp;</span> path<span class="token operator">=</span>work_path<span class="token punctuation">;</span>
+        ostringstream os<span class="token punctuation">;</span> <span class="token comment">//构造一个输出字符串流</span>
+        <span class="token comment">// 主要是上层编译judger的时候没有用c++11选项所以用to_string会编译出错</span>
+        os<span class="token operator">&lt;&lt;</span><span class="token string">"main"</span><span class="token operator">&lt;&lt;</span>i<span class="token punctuation">;</span>
+        string name<span class="token operator">=</span>os<span class="token punctuation">.</span><span class="token function">str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//编译生成可执行文件名字</span>
+        os<span class="token operator">&lt;&lt;</span><span class="token string">".cpp"</span><span class="token punctuation">;</span>
+        string main_file<span class="token operator">=</span>os<span class="token punctuation">.</span><span class="token function">str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//需要移动的main文件名</span>
+        <span class="token comment">//运行时，judger在/var/uoj/i(问题编号)目录</span>
+        <span class="token comment">//此时 name为main1，main2等形式</span>
+        <span class="token comment">//此时 main_file为main1.cpp，main2.cpp等形式</span>
+        <span class="token function">system</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token string">"cp "</span><span class="token operator">+</span>main_file<span class="token operator">+</span> <span class="token string">" "</span><span class="token operator">+</span>path<span class="token operator">+</span><span class="token string">"/"</span><span class="token operator">+</span>main_file<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//复制相对应的文件到工作目录</span>
+
+        <span class="token function">report_judge_status_f</span><span class="token punctuation">(</span><span class="token string">"Compiling Test #%d"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//通知消息到选手的网页端，会提示正在编译</span>
+        
+        <span class="token comment">//编译，结果存在c_ret中</span>
+        <span class="token comment">//run_compiler也起到了参数控制作用，本身还是调用run_program</span>
+        RunCompilerResult c_ret <span class="token operator">=</span>  
+        <span class="token function">run_compiler</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                    <span class="token string">"/usr/bin/g++-4.8"</span><span class="token punctuation">,</span> 
+                    <span class="token string">"-o"</span><span class="token punctuation">,</span> 
+                    name<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                    main_file<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 
+                    <span class="token string">"-x"</span><span class="token punctuation">,</span> 
+                    <span class="token string">"c++"</span><span class="token punctuation">,</span>  
+                    <span class="token string">"-lm"</span><span class="token punctuation">,</span> 
+                    <span class="token string">"-O2"</span><span class="token punctuation">,</span> 
+                    <span class="token string">"-DONLINE_JUDGE"</span><span class="token punctuation">,</span> 
+                    <span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>c_ret<span class="token punctuation">.</span>succeeded<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">//编译没有成功</span>
+            <span class="token comment">//告知选手编译出错</span>
+            <span class="token function">report_judge_status_f</span><span class="token punctuation">(</span><span class="token string">"Compile Test #%d Failed"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//创建一个测试点信息，出错性质为comile error，result一栏中输出b编译具体出错信息</span>
+            PointInfo po<span class="token operator">=</span><span class="token function">PointInfo</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token string">"compile error"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">,</span>c_ret<span class="token punctuation">.</span>info<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">add_point_info</span><span class="token punctuation">(</span>po<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//等待之后一起传回网页端</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token punctuation">{</span>
+          <span class="token comment">//报告正在测试</span>
+            <span class="token function">report_judge_status_f</span><span class="token punctuation">(</span><span class="token string">"Judging Test #%d"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//测试该点，使用的配置是在uoj_judger.h中读取</span>
+            <span class="token comment">//返回信息为一个测试点</span>
+            PointInfo po <span class="token operator">=</span> <span class="token function">test_point</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">//该点的得分按比例转化为一定的总得分中的占比</span>
+            <span class="token comment">//第二个参数是该点得满分的时候应该使总分增加多少</span>
+            po<span class="token punctuation">.</span>scr <span class="token operator">=</span> <span class="token function">scale_score</span><span class="token punctuation">(</span>po<span class="token punctuation">.</span>scr<span class="token punctuation">,</span> <span class="token function">conf_int</span><span class="token punctuation">(</span><span class="token string">"point_score"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> <span class="token number">100</span> <span class="token operator">/</span> n<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">add_point_info</span><span class="token punctuation">(</span>po<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//等待之后一起传回网页端</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+	<span class="token function">end_judge_ok</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//结束测试，把各个PointInfo传回</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token function">judger_init</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//uoj_judger.h中，读取参数配置，并进行各种参数的初始化</span>
+	<span class="token function">ordinary_test</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h4 class="mume-header" id="4chkcpp">(4)chk.cpp</h4>
+
+<p>这里本来用builtin_checker就可以了，但是下面做个示范<br>
+testlib.h中初始化了流，我们需要调用这些流获取数据<br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-258cd.png" alt=""></p>
+<h4 class="mume-header" id="5maincpp">(5)main.cpp</h4>
+
+<p>这个本来没什么写的，但是演示一下也可以</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token comment">//main1.cpp测试加法</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"input.h"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  Input in<span class="token punctuation">;</span>
+  std<span class="token operator">::</span>cout<span class="token operator">&lt;&lt;</span>in<span class="token punctuation">.</span>x<span class="token operator">+</span>in<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token comment">//main2.cpp测试乘法</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"input.h"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  Input in<span class="token punctuation">;</span>
+  std<span class="token operator">::</span>cout<span class="token operator">&lt;&lt;</span>in<span class="token punctuation">.</span>x<span class="token operator">*</span>in<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token comment">//main3.cpp测试减法</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">"input.h"</span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  Input in<span class="token punctuation">;</span>
+  std<span class="token operator">::</span>cout<span class="token operator">&lt;&lt;</span>in<span class="token punctuation">.</span>x<span class="token operator">-</span>in<span class="token punctuation">.</span>y<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</pre><h4 class="mume-header" id="6%E5%85%B6%E4%BB%96">(6)其他</h4>
+
+<p>输入输出的数据是自己静态写的，但是根据UOJ judger的工作特性，可以临时生成<br>
+例如可以编写好标准的程序，然后编译为可执行文件（不妨叫他std_program吧）<br>
+然后在judger.cpp的编译操作那一步，可以这样写（假设include了相关的标准库头文件,并且给下面变量已经赋值好了）</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp"><span class="token comment">//临时生成input，防止选手静态if else方法过测试 </span>
+<span class="token function">system</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token function">string</span><span class="token punctuation">(</span><span class="token string">"echo"</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token function">to_string</span><span class="token punctuation">(</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span><span class="token function">to_string</span><span class="token punctuation">(</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">">"</span><span class="token operator">+</span>input_file<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">//对临时生成的input文件，使用标准程序，生成对应的输出文件</span>
+<span class="token function">system</span><span class="token punctuation">(</span><span class="token punctuation">(</span>std_program_path<span class="token operator">+</span><span class="token string">" &lt;"</span><span class="token operator">+</span>input_file<span class="token operator">+</span><span class="token string">" >"</span><span class="token operator">+</span>output_file<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">c_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><h4 class="mume-header" id="7%E6%93%8D%E4%BD%9C">(7)操作</h4>
+
+<div class="mermaid">graph TD;
+  A[svn ci 同步]==>C[网页端进入数据管理界面点击svn同步命令同步]
+  C==>B[之后就可以正常工作,选手可以提交数据]
+</div><h2 class="mume-header" id="%E5%9B%9B-%E7%BB%A7%E7%BB%AD%E5%BC%80%E5%8F%91%E8%AF%84%E6%B5%8B%E6%9C%BA">四、继续开发评测机</h2>
+
+<h3 class="mume-header" id="%E6%8E%A5%E4%B8%8B%E6%9D%A5%E5%8F%AF%E4%BB%A5%E5%81%9A%E7%9A%84%E6%96%B9%E5%90%91">接下来可以做的方向</h3>
+
+<ol>
+<li><code>important</code>python对run_program做封装（生成一个python module）</li>
+<li><code>important</code>python对uoj_judger做封装，写成一个class好一点</li>
+<li><code>not important</code>修改php网页端表单让配置更加清晰简单</li>
+</ol>
+<h2 class="mume-header" id="%E4%BA%94-%E5%85%B6%E4%BB%96%E5%B7%A5%E4%BD%9C">五、其他工作</h2>
+
+<p> <a href="#1uoj%E7%BD%91%E9%A1%B5%E7%AB%AF%E5%BC%80%E5%8F%91xdebug%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8">1. uoj网页端开发：xdebug配置与使用</a><br>
+ <a href="#2-%E7%BE%A4%E7%BB%84%E7%AE%A1%E7%90%86">2. UOJ群组管理(sql设计、js代码、php代码已完成)</a><br>
+   已经完成管理员校验同意入组、群组授权、建组、增删人员、查询等功能<br>
+   已经完成用户查询功能，暂时未写主动报名，大概还需要一到两天完成<br>
+   <a href="#6%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88">点击这里</a>看管理界面</p>
+<h3 class="mume-header" id="1uoj%E7%BD%91%E9%A1%B5%E7%AB%AF%E5%BC%80%E5%8F%91xdebug%E9%85%8D%E7%BD%AE%E4%B8%8E%E4%BD%BF%E7%94%A8">1.uoj网页端开发：xdebug配置与使用</h3>
+
+<ul>
+<li>服务器端：</li>
+</ul>
+<ol>
+<li>下载xdebug，编译安装<code>make &amp; make install</code></li>
+<li>修改<code>php.ini</code>添加配置</li>
+</ol>
+<pre data-role="codeBlock" data-info="" class="language-"><code>zend_extension= /usr/lib/php5/20121212/xdebug.so  #xdebug.so&#x8DEF;&#x5F84;
+xdebug.profiler_enable=on      
+xdebug.trace_output_dir=&quot;/home/yaozh16/xdebug_trace&quot;  #trace&#x8DEF;&#x5F84;
+xdebug.profiler_output_dir=&quot;/home/yaozh16/xdebug_profiler&quot; #&#x914D;&#x7F6E;&#x8DEF;&#x5F84;
+xdebug.remote_enable=1 # &#x5141;&#x8BB8;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;
+xdebug.remote_handler=dbgp
+xdebug.remote_mode=req
+xdebug.remote_host=172.18.0.1  #&#x8C03;&#x8BD5;&#x5BA2;&#x6237;&#x7AEF;&#x7684;ip&#x7684;&#x5730;&#x5740;
+xdebug.remote_port=9000        # &#x8C03;&#x8BD5;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x7AEF;&#x53E3;
+xdebug.idekey=&quot;PHPSTORM&quot;       #&#x8C03;&#x8BD5;&#x5BA2;&#x6237;&#x7AEF;key
+</code></pre><ol start="3">
+<li>重启apache</li>
+</ol>
+<ul>
+<li>客户端phpstorm配置</li>
+</ul>
+<ol>
+<li>svn co方法获取uoj仓库，phpstorm装载项目</li>
+<li>打开phpstorms设置，按照之前在服务器上php.ini上设置的端口选择<br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-a0c02.png" alt=""></li>
+<li>在server，创建server，配置host,debugger,mapping。这是为了之后调试的时候顺利在文件的指定位置暂停等<br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-22d10.png" alt=""></li>
+<li>编辑或者创建项目的debug configuration,选择web page（或者web application）选好我们刚才创建的server<br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-0b2b0.png" alt=""></li>
+</ol>
+<h3 class="mume-header" id="2-uoj%E7%BE%A4%E7%BB%84%E7%AE%A1%E7%90%86">2. UOJ群组管理</h3>
+
+<h4 class="mume-header" id="2-1-uojform%E7%B1%BB">2-1 UOJForm类</h4>
+
+<pre data-role="codeBlock" data-info="php" class="language-php"><span class="token keyword">function</span> <span class="token function">addTextArea</span><span class="token punctuation">(</span>
+      <span class="token variable">$name</span><span class="token punctuation">,</span> 
+      <span class="token variable">$label_text</span><span class="token punctuation">,</span> <span class="token comment">//其中的标签的名字</span>
+      <span class="token variable">$default_value</span><span class="token punctuation">,</span> 
+      <span class="token comment">//function($str, &amp;$vdata),</span>
+      <span class="token comment">//返回值为非空字符串时标识出错，</span>
+      <span class="token comment">//返回为''则继续执行$form->handle</span>
+      <span class="token comment">//其中可以修改$vdata的某个字域，这样可以之后handle调用的时候获得这部分信息</span>
+      <span class="token variable">$validator_php</span><span class="token punctuation">,</span> 
+      <span class="token variable">$validator_js</span><span class="token punctuation">)</span>
+<span class="token comment">//另外还要指定$form的handle</span>
+<span class="token variable">$form</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">handle</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token variable">$vdata</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token comment">//通过验证，执行操作</span>
+<span class="token punctuation">}</span>
+</pre><p>当点了提交之后</p>
+<h4 class="mume-header" id="2-2-newadddelcmdform%E7%B1%BB%E6%98%AFuojform%E7%9A%84%E5%AD%90%E7%B1%BB">2-2 newAddDelCmdForm类是UOJForm的子类</h4>
+
+<pre data-role="codeBlock" data-info="php" class="language-php"><span class="token keyword">function</span> <span class="token function">newAddDelCmdForm</span><span class="token punctuation">(</span><span class="token variable">$form_name</span><span class="token punctuation">,</span> <span class="token variable">$validate</span><span class="token punctuation">,</span> <span class="token variable">$handle</span><span class="token punctuation">,</span> <span class="token variable">$final</span> <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> 
+<span class="token comment">//其中</span>
+<span class="token variable">$handle</span><span class="token punctuation">(</span><span class="token variable">$cmd</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'type'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$cmd</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'obj'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment">//操作 +/-，obj是字段（如人名）</span>
+</pre><p>在mysql中的problems_permissions表中增加或者删掉表项</p>
+<table>
+<thead>
+<tr>
+<th>problem_id</th>
+<th>username</th>
+</tr>
+</thead>
+<tbody></tbody>
+</table>
+<p>最后同一更新密码svnRefreshPasswordOfProblem()</p>
+<h4 class="mume-header" id="2-3-%E5%A6%82%E6%9E%9C%E8%A6%81%E4%BF%AE%E6%94%B9%E4%B8%BA%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AA%E6%8C%89%E7%85%A7group%E6%93%8D%E4%BD%9C%E7%9A%84%E5%BC%80%E5%85%B3">2-3 如果要修改为增加一个按照group操作的开关</h4>
+
+<ol>
+<li>mysql添加一个group_info表</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">group_id</th>
+<th style="text-align:left">group_name</th>
+<th style="text-align:left">username</th>
+<th style="text-align:left">group_type</th>
+<th style="text-align:left">is_admin</th>
+<th style="text-align:left">state</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">class1</td>
+<td style="text-align:left">TA</td>
+<td style="text-align:left">open</td>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">in</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">class1</td>
+<td style="text-align:left">student_X</td>
+<td style="text-align:left">open</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">in</td>
+</tr>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">class2</td>
+<td style="text-align:left">student_X</td>
+<td style="text-align:left">need_autherize</td>
+<td style="text-align:left">no</td>
+<td style="text-align:left">waiting</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">group_type</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">open</td>
+<td style="text-align:left">自由加入</td>
+</tr>
+<tr>
+<td style="text-align:left">need_autherize</td>
+<td style="text-align:left">需要群组管理员认证加入</td>
+</tr>
+<tr>
+<td style="text-align:left">close</td>
+<td style="text-align:left">不允许加入</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">is_admin</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">yes</td>
+<td style="text-align:left">自由加入</td>
+</tr>
+<tr>
+<td style="text-align:left">no</td>
+<td style="text-align:left">需要群组管理员认证加入</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">state</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">in</td>
+<td style="text-align:left">在群组中</td>
+</tr>
+<tr>
+<td style="text-align:left">waiting</td>
+<td style="text-align:left">仅在need_autherize使用，等待认证</td>
+</tr>
+</tbody>
+</table>
+<p>sql建表语句如下</p>
+<pre data-role="codeBlock" data-info="sql" class="language-sql"><span class="token keyword">use</span> app_uoj233<span class="token punctuation">;</span>
+<span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> <span class="token punctuation">`</span>group_info<span class="token punctuation">`</span><span class="token punctuation">(</span>
+   <span class="token punctuation">`</span>group_id<span class="token punctuation">`</span> <span class="token keyword">INT</span> <span class="token keyword">UNSIGNED</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span>
+   <span class="token punctuation">`</span>group_name<span class="token punctuation">`</span> <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+   <span class="token punctuation">`</span>username<span class="token punctuation">`</span> <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+   <span class="token punctuation">`</span>group_type<span class="token punctuation">`</span> <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+   <span class="token punctuation">`</span>is_admin<span class="token punctuation">`</span> <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+   <span class="token punctuation">`</span>state<span class="token punctuation">`</span> <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+   <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token punctuation">(</span> <span class="token punctuation">`</span>group_id<span class="token punctuation">`</span> <span class="token punctuation">)</span>
+<span class="token punctuation">)</span><span class="token keyword">ENGINE</span><span class="token operator">=</span><span class="token keyword">InnoDB</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CHARSET</span><span class="token operator">=</span>utf8<span class="token punctuation">;</span>
+</pre><ol start="2">
+<li>在网页的问题管理这边同样添加一个form</li>
+</ol>
+<pre data-role="codeBlock" data-info="php" class="language-php"><span class="token comment">//这个最好放在/app/uoj-validate-lib.php</span>
+<span class="token keyword">function</span> <span class="token function">validateGroupname</span><span class="token punctuation">(</span><span class="token variable">$group_name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">return</span> <span class="token function">is_string</span><span class="token punctuation">(</span><span class="token variable">$group_name</span><span class="token punctuation">)</span> <span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">//这个放在/app/uoj-query-lib.php</span>
+<span class="token comment">//查询返回所有在群组中的人</span>
+<span class="token keyword">function</span> <span class="token function">queryGroup</span><span class="token punctuation">(</span><span class="token variable">$group_name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">validateGroupname</span><span class="token punctuation">(</span><span class="token variable">$group_name</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">return</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"select * from group_info where group_name='<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$group_name</span><span class="token punctuation">}</span></span>' and state='in'"</span><span class="token punctuation">,</span> <span class="token constant">MYSQL_ASSOC</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">//这个放在/app/controllers/problem_managers_manage.php</span>
+<span class="token variable">$managers_group_form</span> <span class="token operator">=</span> <span class="token function">newAddDelCmdForm</span><span class="token punctuation">(</span><span class="token single-quoted-string string">'managers_group'</span><span class="token punctuation">,</span>
+    <span class="token comment">//$validate</span>
+    <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token variable">$group_name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">validateGroupname</span><span class="token punctuation">(</span><span class="token variable">$group_name</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token operator">!</span><span class="token function">queryGroup</span><span class="token punctuation">(</span><span class="token variable">$group_name</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">return</span> <span class="token double-quoted-string string">"不存在名为<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$group_name</span><span class="token punctuation">}</span></span>的组"</span><span class="token punctuation">;</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">return</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">//handle</span>
+		<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">,</span> <span class="token variable">$group_name</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">global</span> <span class="token variable">$problem</span><span class="token punctuation">;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$type</span> <span class="token operator">==</span> <span class="token single-quoted-string string">'+'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+				<span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token function">queryGroup</span><span class="token punctuation">(</span><span class="token variable">$group_name</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token variable">$key</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$username</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+					<span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"insert into problems_permissions (problem_id, username) values (${problem['id']}, '<span class="token interpolation"><span class="token variable">$username</span></span>')"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+				<span class="token punctuation">}</span>
+			<span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$type</span> <span class="token operator">==</span> <span class="token single-quoted-string string">'-'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token function">queryGroup</span><span class="token punctuation">(</span><span class="token variable">$group_name</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token variable">$key</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$username</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"delete from problems_permissions where problem_id = ${problem['id']} and username = '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$username</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+		<span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token comment">//final</span>
+		<span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+			<span class="token keyword">global</span> <span class="token variable">$problem</span><span class="token punctuation">;</span>
+			<span class="token function">svnRefreshPasswordOfProblem</span><span class="token punctuation">(</span><span class="token variable">$problem</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">//启动</span>
+	<span class="token variable">$managers_group_form</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">runAtServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  
+  
+<span class="token comment">//注意在/app/controllers/problem_managers_manage.php底下合适的位置需要加一句</span>
+managers_group_form<span class="token operator">-</span><span class="token operator">></span><span class="token function">printHTML</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p><img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-f1b0a.png" alt=""></p>
+<div align="center" class="mume-header" id="2-4-%E7%AE%A1%E7%90%86%E5%91%98%E6%89%B9%E9%87%8F%E8%AE%BE%E7%BD%AEgroup">
+效果图
+</div>
+#### 2-4 管理员批量设置group
+
+<h5 class="mume-header" id="0%E8%AE%BE%E8%AE%A1">0.设计</h5>
+
+<ol>
+<li>表单元件</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">元件</th>
+<th style="text-align:left">类型</th>
+<th style="text-align:left">内容</th>
+<th style="text-align:left">应用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">group_operation</td>
+<td style="text-align:left">select</td>
+<td style="text-align:left">add/del/query/modify/create</td>
+<td style="text-align:left">全部</td>
+</tr>
+<tr>
+<td style="text-align:left">group_select</td>
+<td style="text-align:left">select</td>
+<td style="text-align:left">已有的群组</td>
+<td style="text-align:left">查询群组、增删人员</td>
+</tr>
+<tr>
+<td style="text-align:left">group_is_admin</td>
+<td style="text-align:left">select</td>
+<td style="text-align:left">权限</td>
+<td style="text-align:left">增改人员</td>
+</tr>
+<tr>
+<td style="text-align:left">group_query_state</td>
+<td style="text-align:left">select</td>
+<td style="text-align:left">根据in或者waiting等状态筛选</td>
+<td style="text-align:left">查询群组</td>
+</tr>
+<tr>
+<td style="text-align:left">group_type</td>
+<td style="text-align:left">select</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">创建群组</td>
+</tr>
+<tr>
+<td style="text-align:left">group_name</td>
+<td style="text-align:left">input</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">创建群组</td>
+</tr>
+<tr>
+<td style="text-align:left">username</td>
+<td style="text-align:left">textarea</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">查询群组、增删人员</td>
+</tr>
+</tbody>
+</table>
+<ol start="2">
+<li>功能</li>
+</ol>
+<ul>
+<li>创建群组</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">元件</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">group_operation</td>
+<td style="text-align:left">in</td>
+</tr>
+<tr>
+<td style="text-align:left">group_name</td>
+<td style="text-align:left">in</td>
+</tr>
+<tr>
+<td style="text-align:left">group_type</td>
+<td style="text-align:left">in</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>查询群组</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">元件</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">group_operation</td>
+<td style="text-align:left">in</td>
+</tr>
+<tr>
+<td style="text-align:left">group_select</td>
+<td style="text-align:left">in</td>
+</tr>
+<tr>
+<td style="text-align:left">group_query_state</td>
+<td style="text-align:left">in</td>
+</tr>
+<tr>
+<td style="text-align:left">username</td>
+<td style="text-align:left">out</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>群组增改人员</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">元件</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">group_operation</td>
+<td style="text-align:left">in</td>
+</tr>
+<tr>
+<td style="text-align:left">group_select</td>
+<td style="text-align:left">in</td>
+</tr>
+<tr>
+<td style="text-align:left">group_is_admin</td>
+<td style="text-align:left">in</td>
+</tr>
+<tr>
+<td style="text-align:left">username</td>
+<td style="text-align:left">in</td>
+</tr>
+</tbody>
+</table>
+<p>在增加人员前会删除原有的同一群组、同一人的其他条目，所以始终保证只有一条</p>
+<ul>
+<li>群组删除人员</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">元件</th>
+<th style="text-align:left">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">group_operation</td>
+<td style="text-align:left">in</td>
+</tr>
+<tr>
+<td style="text-align:left">group_select</td>
+<td style="text-align:left">in</td>
+</tr>
+<tr>
+<td style="text-align:left">username</td>
+<td style="text-align:left">in</td>
+</tr>
+</tbody>
+</table>
+<h5 class="mume-header" id="1%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C">1.准备工作</h5>
+
+<p>我们准备将设置页面设在左边的组管理<br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-deb2d.png" alt=""><br>
+本来还要创建一个php，但是既然本身super-都在一起，我们就不破坏代码整齐了，也就在<code>/super_manage.php</code>里面写新代码<br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-c16fe.png" alt=""></p>
+<h5 class="mume-header" id="2-%E5%88%9B%E5%BB%BA%E8%BE%B9%E6%A0%8F">2. 创建边栏</h5>
+
+<p><img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-6216a.png" alt=""></p>
+<h5 class="mume-header" id="3%E7%95%99%E4%B8%8B%E9%A1%B5%E9%9D%A2%E7%A9%BA%E9%97%B4">3.留下页面空间</h5>
+
+<pre data-role="codeBlock" data-info="php" class="language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token variable">$cur_tab</span> <span class="token operator">===</span> <span class="token single-quoted-string string">'group'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token delimiter important">?></span>
+</pre><p>如图<br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-b2b52.png" alt=""></p>
+<h5 class="mume-header" id="4-%E6%B7%BB%E5%8A%A0%E9%A1%B5%E9%9D%A2%E5%86%85%E5%AE%B9">4. 添加页面内容</h5>
+
+<p>现在页面是空白的，我们需要创建表单<br>
+由于出于安全考虑，我们的增删操作表单必须是post加密提交，但是直接使用原有的UOJFORM则有问题会导致直接die()掉而无法保存<code>$_POST</code>的数据，下一次返回的结果又需要信息，所以这里采用的方法是使用一个1s的cookie，从而实现查询</p>
+<pre data-role="codeBlock" data-info="php" class="language-php"><span class="token variable">$group_form</span> <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">UOJForm</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_form"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$query_group</span><span class="token operator">=</span><span class="token double-quoted-string string">""</span><span class="token punctuation">;</span><span class="token comment">//cookie中上次查询的组</span>
+  <span class="token variable">$query_user</span><span class="token operator">=</span><span class="token double-quoted-string string">""</span><span class="token punctuation">;</span><span class="token comment">//cookie中上次查询的组的memeber的信息</span>
+  <span class="token variable">$query_group_state</span><span class="token operator">=</span><span class="token double-quoted-string string">"all"</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token global">$_COOKIE</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isset</span><span class="token punctuation">(</span><span class="token global">$_COOKIE</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_query'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token variable">$query_group</span> <span class="token operator">=</span> <span class="token global">$_COOKIE</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_query'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token variable">$query_group_state</span> <span class="token operator">=</span> <span class="token global">$_COOKIE</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_query_state'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$query_group_state</span><span class="token operator">==</span><span class="token double-quoted-string string">"all"</span><span class="token punctuation">)</span>
+              <span class="token variable">$result</span><span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"select * from group_info where group_name='<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$query_group</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">else</span>
+              <span class="token variable">$result</span><span class="token operator">=</span> <span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"select * from group_info where group_name='<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$query_group</span><span class="token punctuation">}</span></span>' and state='<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$query_group_state</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$result</span> <span class="token keyword">as</span> <span class="token variable">$item</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token variable">$query_text</span><span class="token punctuation">.</span><span class="token operator">=</span><span class="token variable">$item</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token double-quoted-string string">"\n"</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token variable">$result</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$query_group_state</span><span class="token operator">==</span><span class="token double-quoted-string string">"all"</span><span class="token punctuation">)</span>
+                  <span class="token variable">$group_form_error_msg</span><span class="token operator">=</span><span class="token double-quoted-string string">"<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$query_group</span><span class="token punctuation">}</span></span>组没有任何用户"</span><span class="token punctuation">;</span>
+              <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$query_group_state</span><span class="token operator">==</span><span class="token double-quoted-string string">"waiting"</span><span class="token punctuation">)</span>
+                  <span class="token variable">$group_form_error_msg</span><span class="token operator">=</span><span class="token double-quoted-string string">"<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$query_group</span><span class="token punctuation">}</span></span>组没有任何待授权用户"</span><span class="token punctuation">;</span>
+              <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$query_group_state</span><span class="token operator">==</span><span class="token double-quoted-string string">"all"</span><span class="token punctuation">)</span>
+                  <span class="token variable">$group_form_error_msg</span><span class="token operator">=</span><span class="token double-quoted-string string">"<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$query_group</span><span class="token punctuation">}</span></span>组没有任何群组中用户"</span><span class="token punctuation">;</span>
+              <span class="token global">$_COOKIE</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"group_form_error_msg"</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">$group_form_error_msg</span><span class="token punctuation">;</span><span class="token comment">//1s的cookie</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+  <span class="token variable">$group_form</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">addSelect</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group-operation"</span><span class="token punctuation">,</span><span class="token keyword">array</span><span class="token punctuation">(</span>
+      <span class="token single-quoted-string string">'query'</span><span class="token operator">=</span><span class="token operator">></span> <span class="token single-quoted-string string">'查询'</span><span class="token punctuation">,</span>
+      <span class="token single-quoted-string string">'add'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token single-quoted-string string">'添加'</span><span class="token punctuation">,</span>
+      <span class="token single-quoted-string string">'del'</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token single-quoted-string string">'删除'</span><span class="token punctuation">,</span>
+      <span class="token single-quoted-string string">'modify'</span><span class="token operator">=</span><span class="token operator">></span><span class="token single-quoted-string string">'修改权限'</span><span class="token punctuation">,</span>
+      <span class="token single-quoted-string string">'create'</span><span class="token operator">=</span><span class="token operator">></span><span class="token single-quoted-string string">'创建群组'</span>
+  <span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token single-quoted-string string">'操作类型'</span><span class="token punctuation">,</span><span class="token single-quoted-string string">'query'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$all_groups</span><span class="token operator">=</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$all_groups</span><span class="token punctuation">[</span><span class="token double-quoted-string string">""</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token double-quoted-string string">""</span><span class="token punctuation">;</span>
+  <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"select * from group_info"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token variable">$each</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token variable">$all_groups</span><span class="token punctuation">[</span><span class="token variable">$each</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_name'</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token variable">$each</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_name'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token variable">$group_form</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">addSelect</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_select"</span><span class="token punctuation">,</span><span class="token variable">$all_groups</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"选择群组"</span><span class="token punctuation">,</span><span class="token variable">$query_group</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$group_form</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">addSelect</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_query_state"</span><span class="token punctuation">,</span><span class="token keyword">array</span><span class="token punctuation">(</span>
+          <span class="token single-quoted-string string">'all'</span><span class="token operator">=</span><span class="token operator">></span><span class="token double-quoted-string string">"全部"</span><span class="token punctuation">,</span>
+          <span class="token single-quoted-string string">'in'</span><span class="token operator">=</span><span class="token operator">></span><span class="token double-quoted-string string">"在群组中"</span><span class="token punctuation">,</span>
+          <span class="token single-quoted-string string">'waiting'</span><span class="token operator">=</span><span class="token operator">></span><span class="token double-quoted-string string">"等待验证"</span>
+  <span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"状态筛选"</span><span class="token punctuation">,</span><span class="token variable">$query_group_state</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$group_form</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">addSelect</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_is_admin"</span><span class="token punctuation">,</span><span class="token keyword">array</span><span class="token punctuation">(</span>
+          <span class="token single-quoted-string string">'yes'</span><span class="token operator">=</span><span class="token operator">></span><span class="token double-quoted-string string">"群组管理员"</span><span class="token punctuation">,</span>
+          <span class="token single-quoted-string string">'no'</span><span class="token operator">=</span><span class="token operator">></span><span class="token double-quoted-string string">"一般组员"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"设置权限"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"no"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$group_form</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">addSelect</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_type"</span><span class="token punctuation">,</span><span class="token keyword">array</span><span class="token punctuation">(</span>
+          <span class="token single-quoted-string string">'open'</span><span class="token operator">=</span><span class="token operator">></span><span class="token double-quoted-string string">"开放自由加入"</span><span class="token punctuation">,</span>
+          <span class="token single-quoted-string string">'need_autherize'</span><span class="token operator">=</span><span class="token operator">></span><span class="token double-quoted-string string">"需要验证"</span><span class="token punctuation">,</span>
+          <span class="token single-quoted-string string">'close'</span><span class="token operator">=</span><span class="token operator">></span><span class="token double-quoted-string string">"关闭加入"</span>
+  <span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"群组类型"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"open"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$group_form</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">addInput</span><span class="token punctuation">(</span>	<span class="token double-quoted-string string">"group_form_group_name"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"text"</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'群组名称'</span><span class="token punctuation">,</span> <span class="token double-quoted-string string">""</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token variable">$vdata</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">validateGroupname</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token keyword">return</span> <span class="token double-quoted-string string">"组名<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$str</span><span class="token punctuation">}</span></span>非法,请检查！"</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          <span class="token variable">$vdata</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_name'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$str</span> <span class="token punctuation">;</span>
+          <span class="token keyword">return</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$group_form</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">addTextArea</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_form_users"</span><span class="token punctuation">,</span> <span class="token single-quoted-string string">'用户'</span><span class="token punctuation">,</span> <span class="token variable">$query_text</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span><span class="token variable">$vdata</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group-operation'</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token double-quoted-string string">"query"</span><span class="token punctuation">)</span>
+          <span class="token keyword">return</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
+      <span class="token variable">$users</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token function">explode</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"\n"</span><span class="token punctuation">,</span> <span class="token variable">$str</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token variable">$line_id</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token variable">$raw_line</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+          <span class="token variable">$username</span> <span class="token operator">=</span> <span class="token function">trim</span><span class="token punctuation">(</span><span class="token variable">$raw_line</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//移除空格等</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$username</span> <span class="token operator">==</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+              <span class="token keyword">continue</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          <span class="token comment">//检查对象是否存在</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">queryUser</span><span class="token punctuation">(</span><span class="token variable">$username</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token keyword">return</span> <span class="token double-quoted-string string">"User <span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$username</span><span class="token punctuation">}</span></span> 不存在，请检查输入！（出错：第<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$line_id</span><span class="token punctuation">}</span></span>行）"</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          <span class="token variable">$users</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$username</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token variable">$vdata</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'users'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$users</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token single-quoted-string string">''</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token variable">$group_form</span><span class="token operator">-</span><span class="token operator">></span><span class="token property">handle</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token operator">&amp;</span><span class="token variable">$vdata</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token comment">//通过验证，执行操作</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group-operation'</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token double-quoted-string string">"add"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token variable">$local_group_name</span><span class="token operator">=</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_select'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$local_group_name</span><span class="token operator">==</span><span class="token double-quoted-string string">""</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token function">setcookie</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_form_error_msg"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"请选择一个组名！"</span><span class="token punctuation">,</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//1s的cookie</span>
+              <span class="token keyword">return</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          <span class="token variable">$base</span><span class="token operator">=</span><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">selectFirst</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"select * from group_info where group_name='<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$local_group_name</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$vdata</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"users"</span><span class="token punctuation">]</span> <span class="token keyword">as</span> <span class="token variable">$index</span> <span class="token operator">=</span><span class="token operator">></span><span class="token variable">$username</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token operator">&lt;</span><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">selectCount</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"select * from group_info where group_name ='<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$local_group_name</span><span class="token punctuation">}</span></span>' and username = '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$username</span><span class="token punctuation">}</span></span>' and state='waiting'"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                  <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"delete from group_info where group_name = '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$local_group_name</span><span class="token punctuation">}</span></span>' and username = '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$username</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+              <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token operator">==</span><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">selectCount</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"select * from group_info where group_name ='<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$local_group_name</span><span class="token punctuation">}</span></span>' and username = '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$username</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                  <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"insert into group_info (group_name, username,group_type,is_admin, state) 
+                        values ('<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$local_group_name</span><span class="token punctuation">}</span></span>', '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$username</span><span class="token punctuation">}</span></span>','<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$base</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_type'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>','<span class="token interpolation"><span class="token punctuation">{</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_is_admin'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>','in')"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group-operation'</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token double-quoted-string string">"del"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token variable">$local_group_name</span><span class="token operator">=</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_select'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$local_group_name</span><span class="token operator">==</span><span class="token double-quoted-string string">""</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token function">setcookie</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_form_error_msg"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"请选择一个组名！"</span><span class="token punctuation">,</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//1s的cookie</span>
+              <span class="token keyword">return</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          <span class="token variable">$base</span><span class="token operator">=</span><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">selectFirst</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"select * from group_info where group_name='<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$local_group_name</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$vdata</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"users"</span><span class="token punctuation">]</span> <span class="token keyword">as</span> <span class="token variable">$index</span> <span class="token operator">=</span><span class="token operator">></span><span class="token variable">$username</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"delete from group_info where group_name = '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$local_group_name</span><span class="token punctuation">}</span></span>' and username = '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$username</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group-operation'</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token double-quoted-string string">"query"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token function">setcookie</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_query"</span><span class="token punctuation">,</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"group_select"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//1s的cookie</span>
+          <span class="token function">setcookie</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_query_state"</span><span class="token punctuation">,</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"group_query_state"</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//1s的cookie</span>
+      <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group-operation'</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token double-quoted-string string">"modify"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token variable">$local_group_name</span><span class="token operator">=</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_select'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$local_group_name</span><span class="token operator">==</span><span class="token double-quoted-string string">""</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token function">setcookie</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_form_error_msg"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"请选择一个组名！"</span><span class="token punctuation">,</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//1s的cookie</span>
+              <span class="token keyword">return</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+          <span class="token variable">$base</span><span class="token operator">=</span><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">selectFirst</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"select * from group_info where group_name='<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$local_group_name</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token keyword">foreach</span> <span class="token punctuation">(</span><span class="token variable">$vdata</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"users"</span><span class="token punctuation">]</span> <span class="token keyword">as</span> <span class="token variable">$index</span> <span class="token operator">=</span><span class="token operator">></span><span class="token variable">$username</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"delete from group_info where group_name = '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$local_group_name</span><span class="token punctuation">}</span></span>' and username = '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$username</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token operator">==</span><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">selectCount</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"select * from group_info where group_name ='<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$local_group_name</span><span class="token punctuation">}</span></span>' and username = '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$username</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                  <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"insert into group_info (group_name, username,group_type,is_admin, state) 
+                        values ('<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$local_group_name</span><span class="token punctuation">}</span></span>', '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$username</span><span class="token punctuation">}</span></span>','<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$base</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_type'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>','<span class="token interpolation"><span class="token punctuation">{</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_is_admin'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>','in')"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+              <span class="token punctuation">}</span>
+          <span class="token punctuation">}</span>
+
+      <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group-operation'</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token double-quoted-string string">"create"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          <span class="token variable">$cur_username</span><span class="token operator">=</span><span class="token global">$_COOKIE</span><span class="token punctuation">[</span><span class="token double-quoted-string string">"uoj_username"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+          <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token scope">DB<span class="token punctuation">::</span></span><span class="token function">select</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"count * from group_info where group_name='<span class="token interpolation"><span class="token punctuation">{</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_name'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>'"</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+              <span class="token function">mysql_query</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"insert into group_info (group_name, username,group_type,is_admin, state) 
+                        values ('<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$vdata</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_name'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>', '<span class="token interpolation"><span class="token punctuation">{</span><span class="token variable">$cur_username</span><span class="token punctuation">}</span></span>','<span class="token interpolation"><span class="token punctuation">{</span><span class="token global">$_POST</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_type'</span><span class="token punctuation">]</span><span class="token punctuation">}</span></span>','yes','in')"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+              <span class="token function">setcookie</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_form_error_msg"</span><span class="token punctuation">,</span><span class="token double-quoted-string string">"{$vdata["</span>group_name<span class="token double-quoted-string string">"]}群组已经存在，请新创建一个组名！"</span><span class="token punctuation">,</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//1s的cookie</span>
+          <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token variable">$group_form</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">runAtServer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><h5 class="mume-header" id="5%E5%B1%95%E7%A4%BA%E9%A1%B5%E9%9D%A2">5.展示页面</h5>
+
+<pre data-role="codeBlock" data-info="php" class="language-php"><span class="token comment">//在底端记得添加</span>
+<span class="token delimiter important">&lt;?php</span> <span class="token keyword">elseif</span> <span class="token punctuation">(</span><span class="token variable">$cur_tab</span> <span class="token operator">===</span> <span class="token single-quoted-string string">'group'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token delimiter important">?></span>
+
+
+                <span class="token operator">&lt;</span>script language<span class="token operator">=</span><span class="token double-quoted-string string">"javascript"</span><span class="token operator">></span><span class="token punctuation">;</span>
+                window<span class="token punctuation">.</span>onload<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    <span class="token keyword">var</span> group_operation<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementsByName</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group-operation"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">var</span> group_select<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementsByName</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_select"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">var</span> group_query_state<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementsByName</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_query_state"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">var</span> group_is_admin<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementsByName</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_is_admin"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">var</span> group_type<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementsByName</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_type"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">var</span> group_form_group_name<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementsByName</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_form_group_name"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">var</span> group_form_users<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementsByName</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"group_form_users"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+                    <span class="token keyword">var</span> clear_display<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        <span class="token keyword">var</span> div_group_select<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_select"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">var</span> div_group_query_state<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_query_state"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">var</span> div_group_type<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_type"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">var</span> div_group_is_admin<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_is_admin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">var</span> div_group_form_group_name<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_form_group_name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">var</span> div_group_form_users<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_form_users"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        div_group_select<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"none"</span><span class="token punctuation">;</span>
+                        div_group_query_state<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"none"</span><span class="token punctuation">;</span>
+                        div_group_type<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"none"</span><span class="token punctuation">;</span>
+                        div_group_is_admin<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"none"</span><span class="token punctuation">;</span>
+                        div_group_form_group_name<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"none"</span><span class="token punctuation">;</span>
+                        div_group_form_users<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"none"</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    <span class="token function">clear_display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    group_operation<span class="token punctuation">.</span>onchange<span class="token operator">=</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                        <span class="token keyword">var</span> div_group_select<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_select"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">var</span> div_group_query_state<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_query_state"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">var</span> div_group_type<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_type"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">var</span> div_group_is_admin<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_is_admin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">var</span> div_group_form_group_name<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_form_group_name"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">var</span> div_group_form_users<span class="token operator">=</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_form_users"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                        <span class="token keyword">var</span> oper<span class="token operator">=</span>this<span class="token punctuation">.</span>options<span class="token punctuation">[</span>this<span class="token punctuation">.</span>selectedIndex<span class="token punctuation">]</span><span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+                        <span class="token keyword">if</span><span class="token punctuation">(</span>oper<span class="token operator">===</span><span class="token double-quoted-string string">"query"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                            <span class="token function">clear_display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            div_group_select<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                            div_group_query_state<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                            div_group_form_users<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>oper<span class="token operator">===</span><span class="token double-quoted-string string">"add"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                            <span class="token function">clear_display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            div_group_select<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                            div_group_is_admin<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                            div_group_form_users<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>oper<span class="token operator">===</span><span class="token double-quoted-string string">"del"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                            <span class="token function">clear_display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            div_group_select<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                            div_group_form_users<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>oper<span class="token operator">===</span><span class="token double-quoted-string string">"modify"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                            <span class="token function">clear_display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            div_group_select<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                            div_group_is_admin<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                            div_group_form_users<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>oper<span class="token operator">===</span><span class="token double-quoted-string string">"create"</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                            <span class="token function">clear_display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            div_group_form_group_name<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                            div_group_type<span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">}</span>
+                        
+                        document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_form_msg"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"none"</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    group_operation<span class="token punctuation">.</span><span class="token function">onchange</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token double-quoted-string string">"div-group_form_msg"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>display<span class="token operator">=</span><span class="token double-quoted-string string">"inherit"</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+                <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
+                <span class="token operator">&lt;</span>br<span class="token operator">></span>
+                <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token double-quoted-string string">"div-group_form_msg"</span> align<span class="token operator">=</span><span class="token double-quoted-string string">"center"</span><span class="token operator">></span><span class="token operator">&lt;</span>font color<span class="token operator">=</span><span class="token double-quoted-string string">"red"</span><span class="token operator">></span>
+                        <span class="token delimiter important">&lt;?php</span> <span class="token keyword">echo</span> <span class="token global">$_COOKIE</span><span class="token punctuation">[</span><span class="token single-quoted-string string">'group_form_error_msg'</span><span class="token punctuation">]</span>  <span class="token delimiter important">?></span>
+                    <span class="token operator">&lt;</span><span class="token operator">/</span>font<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+            <span class="token operator">&lt;</span>br<span class="token operator">></span>
+            <span class="token operator">&lt;</span>br<span class="token operator">></span>
+                <span class="token delimiter important">&lt;?php</span>
+                <span class="token variable">$group_form</span><span class="token operator">-</span><span class="token operator">></span><span class="token function">printHTML</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token delimiter important">?></span>
+            
+</pre><h5 class="mume-header" id="6%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88">6.效果预览</h5>
+
+<div align="center">效果</div>
+<p><img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-02a46.png" alt=""><br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-149c1.png" alt=""><br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-dfec6.png" alt=""><br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-b7d58.png" alt=""><br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-6cd70.png" alt=""><br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-cc890.png" alt=""><br>
+<img src="assets/2018-5-7_UOJ%E5%86%8D%E5%BC%80%E5%8F%91%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%E5%B7%A5%E4%BD%9C%E6%8A%A5%E5%91%8A-b1c1f.png" alt=""></p>
+
+      </div>
+      
+      
+    </body>
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false 
+}
+mermaidAPI.initialize(window['MERMAID_CONFIG'] || {})
+
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  </html>
