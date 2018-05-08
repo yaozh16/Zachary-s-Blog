@@ -5,13 +5,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:////home/yaozh16/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
-      <link rel="stylesheet" href="file:////home/yaozh16/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/mermaid/mermaid.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.css">
       
       
       
       
-      <script type="text/javascript" src="file:////home/yaozh16/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/mermaid/mermaid.min.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.0.0/mermaid.min.js"></script>
       
       
       
@@ -945,8 +945,8 @@ problem.conf</li>
   B-->B0[valid]
   B0--if not submit_answer-->C[run_submission_program]
   C-->C0[file_hide_token]
-  C0-->C1[check whether AC]
-  C1-->C2[AC]
+  C0-->C1["check whether successfully run and finished"]
+  C1-->C2["success(AC)"]
   B0--if submit_answer-->C2
   C2-->D[run_checker]
   D--AC-->D1[set info string]
