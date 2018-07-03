@@ -1,11 +1,12 @@
 <!DOCTYPE html>
   <html>
     <head>
-      <title>2017-10-18</title>
+      <title>2017-10-18-1 Android学习笔记(4) 学习百度语音识别SDK使用(1)</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
-      <link rel="stylesheet" href="file:////home/yaozh16/.atom/packages/markdown-preview-enhanced/node_modules/@shd101wyy/mume/dependencies/katex/katex.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+      
       
       
       
@@ -206,6 +207,472 @@ code.language-yaml {
 .language-bash .token.keyword {
   color: #0086b3;
 }html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+html body {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Josefin Sans";
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  overflow: initial;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+html body > :first-child {
+  margin-top: 0;
+}
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5,
+html body h6 {
+  line-height: 1.2;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  color: #000;
+}
+html body h1 {
+  font-size: 2.25em;
+  font-weight: 300;
+  padding-bottom: 0.3em;
+}
+html body h2 {
+  font-size: 1.75em;
+  font-weight: 400;
+  padding-bottom: 0.3em;
+}
+html body h3 {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+html body h4 {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+html body h5 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+html body h6 {
+  font-size: 1em;
+  font-weight: 600;
+}
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5 {
+  font-weight: 600;
+}
+html body h5 {
+  font-size: 1em;
+}
+html body h6 {
+  color: #5c5c5c;
+}
+html body strong {
+  color: #000;
+}
+html body del {
+  color: #5c5c5c;
+}
+html body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+html body a {
+  color: #08c;
+  text-decoration: none;
+}
+html body a:hover {
+  color: #00a3f5;
+  text-decoration: none;
+}
+html body img {
+  max-width: 100%;
+}
+html body > p {
+  margin-top: 0;
+  margin-bottom: 16px;
+  word-wrap: break-word;
+}
+html body > ol,
+html body > ul {
+  margin-bottom: 16px;
+}
+html body ol,
+html body ul {
+  padding-left: 2em;
+}
+html body ol.no-list,
+html body ul.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+html body ol ol,
+html body ol ul,
+html body ul ol,
+html body ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+html body li {
+  margin-bottom: 0;
+}
+html body li.task-list-item {
+  list-style: none;
+}
+html body li > p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+html body .task-list-item-checkbox {
+  margin: 0 0.2em 0.25em -1.8em;
+  vertical-align: middle;
+}
+html body .task-list-item-checkbox:hover {
+  cursor: pointer;
+}
+html body blockquote {
+  margin: 16px 0;
+  font-size: inherit;
+  padding: 0 15px;
+  color: #5c5c5c;
+  border-left: 4px solid #d6d6d6;
+}
+html body blockquote > :first-child {
+  margin-top: 0;
+}
+html body blockquote > :last-child {
+  margin-bottom: 0;
+}
+html body hr {
+  height: 4px;
+  margin: 32px 0;
+  background-color: #d6d6d6;
+  border: 0 none;
+}
+html body table {
+  margin: 10px 0 15px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+html body table th {
+  font-weight: bold;
+  color: #000;
+}
+html body table td,
+html body table th {
+  border: 1px solid #d6d6d6;
+  padding: 6px 13px;
+}
+html body dl {
+  padding: 0;
+}
+html body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+html body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+html body code {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: 0.85em !important;
+  color: #000;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  padding: 0.2em 0;
+}
+html body code::after,
+html body code::before {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+html body pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 0.85em !important;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+html body .highlight {
+  margin-bottom: 16px;
+}
+html body .highlight pre,
+html body pre {
+  padding: 1em;
+  overflow: auto;
+  font-size: 0.85em !important;
+  line-height: 1.45;
+  border: #d6d6d6;
+  border-radius: 3px;
+}
+html body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+html body pre code,
+html body pre tt {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+html body pre code:after,
+html body pre code:before,
+html body pre tt:after,
+html body pre tt:before {
+  content: normal;
+}
+html body blockquote,
+html body dl,
+html body ol,
+html body p,
+html body pre,
+html body ul {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+html body kbd {
+  color: #000;
+  border: 1px solid #d6d6d6;
+  border-bottom: 2px solid #c7c7c7;
+  padding: 2px 4px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+}
+@media print {
+  html body {
+    background-color: #fff;
+  }
+  html body h1,
+  html body h2,
+  html body h3,
+  html body h4,
+  html body h5,
+  html body h6 {
+    color: #000;
+    page-break-after: avoid;
+  }
+  html body blockquote {
+    color: #5c5c5c;
+  }
+  html body pre {
+    page-break-inside: avoid;
+  }
+  html body table {
+    display: table;
+  }
+  html body img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  html body code,
+  html body pre {
+    word-wrap: break-word;
+    white-space: pre;
+  }
+}
+.markdown-preview {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.markdown-preview .newpage,
+.markdown-preview .pagebreak {
+  page-break-before: always;
+}
+.markdown-preview pre.line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+.markdown-preview pre.line-numbers > code {
+  position: relative;
+}
+.markdown-preview pre.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 1em;
+  font-size: 100%;
+  left: 0;
+  width: 3em;
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.markdown-preview pre.line-numbers .line-numbers-rows > span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+}
+.markdown-preview pre.line-numbers .line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+.markdown-preview .mathjax-exps .MathJax_Display {
+  text-align: center !important;
+}
+.markdown-preview:not([for="preview"]) .code-chunk .btn-group {
+  display: none;
+}
+.markdown-preview:not([for="preview"]) .code-chunk .status {
+  display: none;
+}
+.markdown-preview:not([for="preview"]) .code-chunk .output-div {
+  margin-bottom: 16px;
+}
+.scrollbar-style::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar-style::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+.scrollbar-style::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(150, 150, 150, 0.66);
+  border: 4px solid rgba(150, 150, 150, 0.66);
+  background-clip: content-box;
+}
+html body[for="html-export"]:not([data-presentation-mode]) {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+  position: relative;
+  top: 0;
+}
+@media screen and (min-width: 914px) {
+  html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+    padding: 2em calc(-407%);
+  }
+}
+@media screen and (max-width: 914px) {
+  html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+    padding: 2em;
+  }
+}
+@media screen and (max-width: 450px) {
+  html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+    font-size: 14px !important;
+    padding: 1em;
+  }
+}
+@media print {
+  html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn {
+    display: none;
+  }
+}
+html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn {
+  position: fixed;
+  bottom: 8px;
+  left: 8px;
+  font-size: 28px;
+  cursor: pointer;
+  color: inherit;
+  z-index: 99;
+  width: 32px;
+  text-align: center;
+  opacity: 0.4;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn {
+  opacity: 1;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  padding: 32px 0 48px;
+  font-size: 14px;
+  box-shadow: 0 0 4px rgba(150, 150, 150, 0.33);
+  box-sizing: border-box;
+  overflow: auto;
+  background-color: inherit;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar {
+  width: 8px;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(150, 150, 150, 0.66);
+  border: 4px solid rgba(150, 150, 150, 0.66);
+  background-clip: content-box;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a {
+  text-decoration: none;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul {
+  padding: 0 1.6em;
+  margin-top: 0.8em;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li {
+  margin-bottom: 0.8em;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul {
+  list-style-type: none;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+  left: 300px;
+  width: calc(-200%);
+  padding: 2em calc(-557%);
+  margin: 0;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 1274px) {
+  html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+    padding: 2em;
+  }
+}
+@media screen and (max-width: 450px) {
+  html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+    background: red;
+    width: 100%;
+  }
+}
+html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview {
+  left: 50%;
+  transform: translateX(-50%);
+}
+html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc {
+  display: none;
+}
  
       </style>
     </head>
@@ -219,28 +686,25 @@ code.language-yaml {
 <li>下载<a href="../ATTACHMENT/bdasr/bdasr_V3_20170801_60da871.jar">jar</a>和<a href="../ATTACHMENT/bdasr/JniLibs">其他几个文件</a><br>
 将其分别放在</li>
 </ol>
-<pre class="language-">app/libs/bdasr_V3_20170801_60da871.jar
+<pre data-role="codeBlock" data-info="" class="language-"><code>app/libs/bdasr_V3_20170801_60da871.jar
 app/src/main/JniLibs
-</pre>
-<p>目录下<br>
+</code></pre><p>目录下<br>
 2. 然后修改app/src/build.gradle,在dependencies {...}添加</p>
-<pre class="language-">dependencies {
+<pre data-role="codeBlock" data-info="" class="language-"><code>dependencies {
   ...
   compile files(&apos;libs/bdasr_V3_20170801_60da871.jar&apos;)
 }
-</pre>
-<p>重新sync<br>
+</code></pre><p>重新sync<br>
 3. 修改app/src/main/AndroidManifest.xml</p>
 <p>manifest层下添加</p>
-<pre class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.INTERNET<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+<pre data-role="codeBlock" data-info="xml" class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.INTERNET<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.CAMERA<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.RECORD_AUDIO<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.ACCESS_NETWORK_STATE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.READ_PHONE_STATE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>uses-permission</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>android.permission.WRITE_EXTERNAL_STORAGE<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
-</pre>
-<p>在application层下添加</p>
-<pre class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta-data</span>
+</pre><p>在application层下添加</p>
+<pre data-role="codeBlock" data-info="xml" class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta-data</span>
     <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.baidu.speech.APP_ID<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>yourAPP_ID<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta-data</span>
@@ -250,8 +714,7 @@ app/src/main/JniLibs
     <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.baidu.speech.SECRET_KEY<span class="token punctuation">"</span></span>
     <span class="token attr-name"><span class="token namespace">android:</span>value</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>yourSECRET_KEY<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>service</span> <span class="token attr-name"><span class="token namespace">android:</span>name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.baidu.speech.VoiceRecognitionService<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">android:</span>exported</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>  
-</pre>
-<h2 class="mume-header" id="%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF">基本思路</h2>
+</pre><h2 class="mume-header" id="%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF">基本思路</h2>
 
 <blockquote>
 <p>1、构造一个Eventmanager</p>
@@ -268,25 +731,25 @@ app/src/main/JniLibs
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><a href="#1%E5%88%9D%E5%A7%8B%E5%8C%96">初始化</a></td>
+<td style="text-align:left"><a href="#1%E3%80%81%E5%88%9D%E5%A7%8B%E5%8C%96">初始化</a></td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#2%E6%B3%A8%E5%86%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BE%93%E5%87%BA%E4%BA%8B%E4%BB%B6%E7%B1%BB">注册自己的输出事件类</a></td>
+<td style="text-align:left"><a href="#2%E3%80%81%E6%B3%A8%E5%86%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BE%93%E5%87%BA%E4%BA%8B%E4%BB%B6%E7%B1%BB">注册自己的输出事件类</a></td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#3%E5%90%91sdk%E5%8F%91%E9%80%81%E5%BC%80%E5%A7%8B%E4%BA%8B%E4%BB%B6">向sdk发送开始事件</a></td>
+<td style="text-align:left"><a href="#3%E3%80%81%E5%90%91SDK%E5%8F%91%E9%80%81%E5%BC%80%E5%A7%8B%E4%BA%8B%E4%BB%B6">向SDK发送开始事件</a></td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#4%E5%9B%9E%E8%B0%83%E4%BA%8B%E4%BB%B6">回调事件</a></td>
+<td style="text-align:left"><a href="#4%E3%80%81%E5%9B%9E%E8%B0%83%E4%BA%8B%E4%BB%B6">回调事件</a></td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#5%E4%BA%8B%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E9%80%80%E5%87%BA">事件管理器退出</a></td>
+<td style="text-align:left"><a href="#5%E3%80%81%E4%BA%8B%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E9%80%80%E5%87%BA">事件管理器退出</a></td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#6%E7%A6%BB%E7%BA%BF%E5%91%BD%E4%BB%A4%E8%AF%8D">离线命令词</a></td>
+<td style="text-align:left"><a href="#6%E3%80%81%E7%A6%BB%E7%BA%BF%E5%91%BD%E4%BB%A4%E8%AF%8D">离线命令词</a></td>
 </tr>
 <tr>
-<td style="text-align:left"><a href="#7%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">输入输出参数</a></td>
+<td style="text-align:left"><a href="#7%E3%80%81%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">输入输出参数</a></td>
 </tr>
 </tbody>
 </table>
@@ -298,7 +761,7 @@ app/src/main/JniLibs
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left"><a href="#%E9%9B%86%E6%88%90">集成</a></td>
+<td style="text-align:left">集成</td>
 </tr>
 </tbody>
 </table>
@@ -308,65 +771,60 @@ app/src/main/JniLibs
 <p>SDK 中，通过工厂创建语音识别的事件管理器。</p>
 <p>注意识别事件管理器只能维持一个，请勿同时使用多个实例。</p>
 <p>即创建一个新的识别事件管理器后，之前的那个设置为null。并不再使用。</p>
-<pre class="language-java">EventManager asr <span class="token operator">=</span> EventManagerFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">"asr"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// this是Activity或其它Context类</span>
-</pre>
-<h2 class="mume-header" id="2-%E6%B3%A8%E5%86%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BE%93%E5%87%BA%E4%BA%8B%E4%BB%B6%E7%B1%BB">2、注册自己的输出事件类</h2>
+<pre data-role="codeBlock" data-info="java" class="language-java">EventManager asr <span class="token operator">=</span> EventManagerFactory<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token string">"asr"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// this是Activity或其它Context类</span>
+</pre><h2 class="mume-header" id="2-%E6%B3%A8%E5%86%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BE%93%E5%87%BA%E4%BA%8B%E4%BB%B6%E7%B1%BB">2、注册自己的输出事件类</h2>
 
 <p><a href="#%E7%9B%AE%E5%BD%95">返回目录</a></p>
 <p>SDK 中，需要实现EventListener的输出事件回调接口。该类需要处理SDK在识别过程中的回调事件。</p>
-<pre class="language-java">EventListener yourListener <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EventListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre data-role="codeBlock" data-info="java" class="language-java">EventListener yourListener <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EventListener</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token annotation punctuation">@Override</span>
   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">onEvent</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> String params<span class="token punctuation">,</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data<span class="token punctuation">,</span> <span class="token keyword">int</span> offset<span class="token punctuation">,</span> <span class="token keyword">int</span> length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">if</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>CALLBACK_EVENT_ASR_READY<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 引擎就绪，可以说话，一般在收到此事件后通过UI通知用户可以说话了</span>
+    <span class="token comment">// 引擎就绪，可以说话，一般在收到此事件后通过UI通知用户可以说话了</span>
     <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>CALLBACK_EVENT_ASR_FINISH<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">// 识别结束</span>
+    <span class="token comment">// 识别结束</span>
     <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>CALLBACK_EVENT_ASR_BEGIN<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">//检测到识别开始</span>
+    <span class="token comment">//检测到识别开始</span>
     <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>CALLBACK_EVENT_ASR_END<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">//检测到识别结束</span>
+    <span class="token comment">//检测到识别结束</span>
     <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>name<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>CALLBACK_EVENT_ASR_PARTIAL<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">//识别结果</span>
-    <span class="token comment" spellcheck="true">//params 中就是 json格式内容，</span>
-    <span class="token comment" spellcheck="true">//具体内容看#7</span>
+    <span class="token comment">//识别结果</span>
+    <span class="token comment">//params 中就是 json格式内容，</span>
+    <span class="token comment">//具体内容看#7</span>
     <span class="token punctuation">}</span>
-  <span class="token comment" spellcheck="true">// ... 支持的输出事件和事件支持的事件参数见“输入和输出参数”一节</span>
+  <span class="token comment">// ... 支持的输出事件和事件支持的事件参数见“输入和输出参数”一节</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 asr<span class="token punctuation">.</span><span class="token function">registerListener</span><span class="token punctuation">(</span>yourListener<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre>
-<h2 class="mume-header" id="3-%E5%90%91sdk%E5%8F%91%E9%80%81%E5%BC%80%E5%A7%8B%E4%BA%8B%E4%BB%B6">3、向SDK发送开始事件</h2>
+</pre><h2 class="mume-header" id="3-%E5%90%91sdk%E5%8F%91%E9%80%81%E5%BC%80%E5%A7%8B%E4%BA%8B%E4%BB%B6">3、向SDK发送开始事件</h2>
 
 <p><a href="#%E7%9B%AE%E5%BD%95">返回目录</a></p>
 <p>开始事件的参数可以参见” 输入和输出参数 “。</p>
 <p>SDK中，您需要根据文档或者demo确定您的输入参数。</p>
 <p>DEMO中有UI界面简化选择和测试过程。demo中，在点击“开始录音”按钮后，您可以在界面或者日志中看见ASR_START事件的json格式的参数。</p>
-<pre class="language-java"><span class="token comment" spellcheck="true">// asr params(反馈请带上此行日志):</span>
-<span class="token comment" spellcheck="true">//{"accept-audio-data":false,"disable-punctuation":false,"accept-audio-volume":true,"pid":1736}</span>
-<span class="token comment" spellcheck="true">// 其中</span>
-<span class="token comment" spellcheck="true">//{"accept-audio-data":false,"disable-punctuation":false,"accept-audio-volume":true,"pid":1736}为ASR_START 事件的参数</span>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">// asr params(反馈请带上此行日志):</span>
+<span class="token comment">//{"accept-audio-data":false,"disable-punctuation":false,"accept-audio-volume":true,"pid":1736}</span>
+<span class="token comment">// 其中</span>
+<span class="token comment">//{"accept-audio-data":false,"disable-punctuation":false,"accept-audio-volume":true,"pid":1736}为ASR_START 事件的参数</span>
 String json <span class="token operator">=</span> "<span class="token punctuation">{</span>\"accept<span class="token operator">-</span>audio<span class="token operator">-</span>data\"<span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
                 \"disable<span class="token operator">-</span>punctuation\"<span class="token operator">:</span><span class="token boolean">false</span><span class="token punctuation">,</span>
                 \"accept<span class="token operator">-</span>audio<span class="token operator">-</span>volume\"<span class="token operator">:</span><span class="token boolean">true</span><span class="token punctuation">,</span>
                 \<span class="token string">"pid\":1736}"</span><span class="token punctuation">;</span>
 asr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>ASR_START<span class="token punctuation">,</span> json<span class="token punctuation">,</span> null<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre>
-<p>实际上asr.send的参数为(String s,String s1,byte[],int i, int i1)</p>
-<pre class="language-java"><span class="token comment" spellcheck="true">//所以还可以这样:先写成HashMap再转为json String</span>
-Map<span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token operator">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</pre><p>实际上asr.send的参数为(String s,String s1,byte[],int i, int i1)</p>
+<pre data-role="codeBlock" data-info="java" class="language-java"><span class="token comment">//所以还可以这样:先写成HashMap再转为json String</span>
+Map<span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">></span></span> params <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LinkedHashMap</span><span class="token generics function"><span class="token punctuation">&lt;</span>String<span class="token punctuation">,</span> Object<span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 params<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>ACCEPT_AUDIO_VOLUME<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 params<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>VAD<span class="token punctuation">,</span>SpeechConstant<span class="token punctuation">.</span>VAD_DNN<span class="token punctuation">)</span><span class="token punctuation">;</span>
 params<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>DECODER<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 asr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>event<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">JSONObject</span><span class="token punctuation">(</span>params<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> null<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre>
-<h3 class="mume-header" id="4-%E5%9B%9E%E8%B0%83%E4%BA%8B%E4%BB%B6">4、回调事件</h3>
+</pre><h3 class="mume-header" id="4-%E5%9B%9E%E8%B0%83%E4%BA%8B%E4%BB%B6">4、回调事件</h3>
 
 <p><a href="#%E7%9B%AE%E5%BD%95">返回目录</a></p>
 <p>SDK中，回调事件在您实现的EventListener中获取。</p>
-<pre class="language-">@Override
+<pre data-role="codeBlock" data-info="" class="language-"><code>@Override
 public void onEvent(String name, String params, byte[] data, int offset, int length)
-</pre>
-<p>OnEvent中， name是输出事件名，params该事件的参数，(data,offset, length) 三者一起组成额外数据。</p>
+</code></pre><p>OnEvent中， name是输出事件名，params该事件的参数，(data,offset, length) 三者一起组成额外数据。</p>
 <p>如回调的音频数据，从data[offset] 开始至data[offset + length] 结束，长度为length。</p>
 <h3 class="mume-header" id="5-%E4%BA%8B%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E9%80%80%E5%87%BA">5、事件管理器退出</h3>
 
@@ -378,23 +836,22 @@ public void onEvent(String name, String params, byte[] data, int offset, int len
 <p>离线命令词功能需要首先实现之前的在线识别功能的代码。<br>
 离线引擎加载需要在EventManager初始化之后，识别事件之前。<br>
 在SDK中，</p>
-<pre class="language-java">HashMap map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>DECODER<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 0:在线 2.离在线融合(在线优先)</span>
-map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>ASR_OFFLINE_ENGINE_GRAMMER_FILE_PATH<span class="token punctuation">,</span> <span class="token string">"/sdcard/yourpath/baidu_speech_grammar.bsg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 设置离线命令词文件路径</span>
-<span class="token comment" spellcheck="true">// 下面这段可选，用于生成SLOT_DATA参数， 用于动态覆盖ASR_OFFLINE_ENGINE_GRAMMER_FILE_PATH文件的词条部分</span>
+<pre data-role="codeBlock" data-info="java" class="language-java">HashMap map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>DECODER<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0:在线 2.离在线融合(在线优先)</span>
+map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>ASR_OFFLINE_ENGINE_GRAMMER_FILE_PATH<span class="token punctuation">,</span> <span class="token string">"/sdcard/yourpath/baidu_speech_grammar.bsg"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置离线命令词文件路径</span>
+<span class="token comment">// 下面这段可选，用于生成SLOT_DATA参数， 用于动态覆盖ASR_OFFLINE_ENGINE_GRAMMER_FILE_PATH文件的词条部分</span>
 JSONObject  json <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JSONObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
 json<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">JSONArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"王自强"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"叶问"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 json<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"appname"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">JSONArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"手百"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token string">"度秘"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        
 map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>SLOT_DATA<span class="token punctuation">,</span> json<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// SLOT_DATA 参数添加完毕</span>
-<span class="token comment" spellcheck="true">// 加载离线引擎，使用离线命令词时使用，请在整个离线识别任务结束之后卸载离线引擎</span>
+<span class="token comment">// SLOT_DATA 参数添加完毕</span>
+<span class="token comment">// 加载离线引擎，使用离线命令词时使用，请在整个离线识别任务结束之后卸载离线引擎</span>
 asr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>ASR_KWS_LOAD_ENGINE<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">JSONObject</span><span class="token punctuation">(</span>map<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">// 此处开始你的识别流程，注意离线必须断网生效或者SDK无法连接百度服务器时生效，只能识别bsg文件里定义的短语。</span>
+<span class="token comment">// 此处开始你的识别流程，注意离线必须断网生效或者SDK无法连接百度服务器时生效，只能识别bsg文件里定义的短语。</span>
 
-<span class="token comment" spellcheck="true">// 不再需要识别功能后，卸载离线引擎。再次需要识别功能的话，可以重复以上步骤。即依旧需要EventManager初始化之后，识别事件之前加载离线引擎。</span>
+<span class="token comment">// 不再需要识别功能后，卸载离线引擎。再次需要识别功能的话，可以重复以上步骤。即依旧需要EventManager初始化之后，识别事件之前加载离线引擎。</span>
 asr<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>SpeechConstant<span class="token punctuation">.</span>ASR_KWS_UNLOAD_ENGINE<span class="token punctuation">,</span> null<span class="token punctuation">,</span> null<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</pre>
-<h3 class="mume-header" id="7-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">7、输入输出参数</h3>
+</pre><h3 class="mume-header" id="7-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">7、输入输出参数</h3>
 
 <p><a href="#%E7%9B%AE%E5%BD%95">返回目录</a></p>
 <h3 class="mume-header" id="%E5%AD%90%E7%9B%AE%E5%BD%95">子目录</h3>
@@ -1192,65 +1649,14 @@ asr<span class="token punctuation">.</span><span class="token function">send</sp
 </ul>
 
       </div>
-      <div class="md-sidebar-toc"><ul>
-<li><a href="#android%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B04-%E5%AD%A6%E4%B9%A0%E7%99%BE%E5%BA%A6%E8%AF%AD%E9%9F%B3%E8%AF%86%E5%88%ABsdk%E4%BD%BF%E7%94%A81">Android学习笔记(4) 学习百度语音识别SDK使用(1)</a>
-<ul>
-<li><a href="#%E9%A2%84%E5%A4%87%E5%A4%84%E7%90%86%E5%BA%93">预备处理：库</a></li>
-<li><a href="#%E5%9F%BA%E6%9C%AC%E6%80%9D%E8%B7%AF">基本思路</a></li>
-<li><a href="#%E7%9B%AE%E5%BD%95">目录</a></li>
-<li><a href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96">1、初始化</a></li>
-<li><a href="#2-%E6%B3%A8%E5%86%8C%E8%87%AA%E5%B7%B1%E7%9A%84%E8%BE%93%E5%87%BA%E4%BA%8B%E4%BB%B6%E7%B1%BB">2、注册自己的输出事件类</a></li>
-<li><a href="#3-%E5%90%91sdk%E5%8F%91%E9%80%81%E5%BC%80%E5%A7%8B%E4%BA%8B%E4%BB%B6">3、向SDK发送开始事件</a>
-<ul>
-<li><a href="#4-%E5%9B%9E%E8%B0%83%E4%BA%8B%E4%BB%B6">4、回调事件</a></li>
-<li><a href="#5-%E4%BA%8B%E4%BB%B6%E7%AE%A1%E7%90%86%E5%99%A8%E9%80%80%E5%87%BA">5、事件管理器退出</a></li>
-<li><a href="#6-%E7%A6%BB%E7%BA%BF%E5%91%BD%E4%BB%A4%E8%AF%8D">6、离线命令词</a></li>
-<li><a href="#7-%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">7、输入输出参数</a></li>
-<li><a href="#%E5%AD%90%E7%9B%AE%E5%BD%95">子目录</a></li>
-<li><a href="#%E8%AF%86%E5%88%AB%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6">识别输入事件</a></li>
-<li><a href="#asr_start-%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6%E5%8F%82%E6%95%B0">ASR_START 输入事件参数</a></li>
-<li><a href="#asr_kws_load_engine-%E8%BE%93%E5%85%A5%E4%BA%8B%E4%BB%B6%E5%8F%82%E6%95%B0">ASR_KWS_LOAD_ENGINE 输入事件参数</a></li>
-<li><a href="#pid%E5%8F%82%E6%95%B0">PID参数</a></li>
-<li><a href="#%E8%BE%93%E5%87%BA%E5%8F%82%E6%95%B0">输出参数</a></li>
-</ul>
-</li>
-<li><a href="#%E9%9B%86%E6%88%90">集成</a></li>
-</ul>
-</li>
-</ul>
-</div>
-      <a id="sidebar-toc-btn">≡</a>
+      
+      
     </body>
     
     
     
     
     
-    <script>
-(function bindTaskListEvent() {
-  var taskListItemCheckboxes = document.body.getElementsByClassName('task-list-item-checkbox')
-  for (var i = 0; i < taskListItemCheckboxes.length; i++) {
-    var checkbox = taskListItemCheckboxes[i]
-    var li = checkbox.parentElement
-    if (li.tagName !== 'LI') li = li.parentElement
-    if (li.tagName === 'LI') {
-      li.classList.add('task-list-item')
-    }
-  }
-}())    
-</script>
     
-<script>
-
-var sidebarTOCBtn = document.getElementById('sidebar-toc-btn')
-sidebarTOCBtn.addEventListener('click', function(event) {
-  event.stopPropagation()
-  if (document.body.hasAttribute('html-show-sidebar-toc')) {
-    document.body.removeAttribute('html-show-sidebar-toc')
-  } else {
-    document.body.setAttribute('html-show-sidebar-toc', true)
-  }
-})
-</script>
-      
+    
   </html>

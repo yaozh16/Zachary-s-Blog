@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>2018-04-17_压缩解压</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css">
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      <style> 
+      /**
+ * prism.js Github theme based on GitHub's theme.
+ * @author Sam Clarke
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #333;
+  background: none;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+
+  -moz-tab-size: 8;
+  -o-tab-size: 8;
+  tab-size: 8;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: .8em;
+  overflow: auto;
+  /* border: 1px solid #ddd; */
+  border-radius: 3px;
+  /* background: #fff; */
+  background: #f5f5f5;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+  background: #f5f5f5;
+}
+
+.token.comment,
+.token.blockquote {
+  color: #969896;
+}
+
+.token.cdata {
+  color: #183691;
+}
+
+.token.doctype,
+.token.punctuation,
+.token.variable,
+.token.macro.property {
+  color: #333;
+}
+
+.token.operator,
+.token.important,
+.token.keyword,
+.token.rule,
+.token.builtin {
+  color: #a71d5d;
+}
+
+.token.string,
+.token.url,
+.token.regex,
+.token.attr-value {
+  color: #183691;
+}
+
+.token.property,
+.token.number,
+.token.boolean,
+.token.entity,
+.token.atrule,
+.token.constant,
+.token.symbol,
+.token.command,
+.token.code {
+  color: #0086b3;
+}
+
+.token.tag,
+.token.selector,
+.token.prolog {
+  color: #63a35c;
+}
+
+.token.function,
+.token.namespace,
+.token.pseudo-element,
+.token.class,
+.token.class-name,
+.token.pseudo-class,
+.token.id,
+.token.url-reference .token.variable,
+.token.attr-name {
+  color: #795da3;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.token.title,
+.token.title .token.punctuation {
+  font-weight: bold;
+  color: #1d3e81;
+}
+
+.token.list {
+  color: #ed6a43;
+}
+
+.token.inserted {
+  background-color: #eaffea;
+  color: #55a532;
+}
+
+.token.deleted {
+  background-color: #ffecec;
+  color: #bd2c00;
+}
+
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+
+/* JSON */
+.language-json .token.property {
+  color: #183691;
+}
+
+.language-markup .token.tag .token.punctuation {
+  color: #333;
+}
+
+/* CSS */
+code.language-css,
+.language-css .token.function {
+  color: #0086b3;
+}
+
+/* YAML */
+.language-yaml .token.atrule {
+  color: #63a35c;
+}
+
+code.language-yaml {
+  color: #183691;
+}
+
+/* Ruby */
+.language-ruby .token.function {
+  color: #333;
+}
+
+/* Markdown */
+.language-markdown .token.url {
+  color: #795da3;
+}
+
+/* Makefile */
+.language-makefile .token.symbol {
+  color: #795da3;
+}
+
+.language-makefile .token.variable {
+  color: #183691;
+}
+
+.language-makefile .token.builtin {
+  color: #0086b3;
+}
+
+/* Bash */
+.language-bash .token.keyword {
+  color: #0086b3;
+}html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+html body {
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Josefin Sans";
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff;
+  overflow: initial;
+  box-sizing: border-box;
+  word-wrap: break-word;
+}
+html body > :first-child {
+  margin-top: 0;
+}
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5,
+html body h6 {
+  line-height: 1.2;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  color: #000;
+}
+html body h1 {
+  font-size: 2.25em;
+  font-weight: 300;
+  padding-bottom: 0.3em;
+}
+html body h2 {
+  font-size: 1.75em;
+  font-weight: 400;
+  padding-bottom: 0.3em;
+}
+html body h3 {
+  font-size: 1.5em;
+  font-weight: 500;
+}
+html body h4 {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+html body h5 {
+  font-size: 1.1em;
+  font-weight: 600;
+}
+html body h6 {
+  font-size: 1em;
+  font-weight: 600;
+}
+html body h1,
+html body h2,
+html body h3,
+html body h4,
+html body h5 {
+  font-weight: 600;
+}
+html body h5 {
+  font-size: 1em;
+}
+html body h6 {
+  color: #5c5c5c;
+}
+html body strong {
+  color: #000;
+}
+html body del {
+  color: #5c5c5c;
+}
+html body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+html body a {
+  color: #08c;
+  text-decoration: none;
+}
+html body a:hover {
+  color: #00a3f5;
+  text-decoration: none;
+}
+html body img {
+  max-width: 100%;
+}
+html body > p {
+  margin-top: 0;
+  margin-bottom: 16px;
+  word-wrap: break-word;
+}
+html body > ol,
+html body > ul {
+  margin-bottom: 16px;
+}
+html body ol,
+html body ul {
+  padding-left: 2em;
+}
+html body ol.no-list,
+html body ul.no-list {
+  padding: 0;
+  list-style-type: none;
+}
+html body ol ol,
+html body ol ul,
+html body ul ol,
+html body ul ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+html body li {
+  margin-bottom: 0;
+}
+html body li.task-list-item {
+  list-style: none;
+}
+html body li > p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+html body .task-list-item-checkbox {
+  margin: 0 0.2em 0.25em -1.8em;
+  vertical-align: middle;
+}
+html body .task-list-item-checkbox:hover {
+  cursor: pointer;
+}
+html body blockquote {
+  margin: 16px 0;
+  font-size: inherit;
+  padding: 0 15px;
+  color: #5c5c5c;
+  border-left: 4px solid #d6d6d6;
+}
+html body blockquote > :first-child {
+  margin-top: 0;
+}
+html body blockquote > :last-child {
+  margin-bottom: 0;
+}
+html body hr {
+  height: 4px;
+  margin: 32px 0;
+  background-color: #d6d6d6;
+  border: 0 none;
+}
+html body table {
+  margin: 10px 0 15px;
+  border-collapse: collapse;
+  border-spacing: 0;
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+html body table th {
+  font-weight: bold;
+  color: #000;
+}
+html body table td,
+html body table th {
+  border: 1px solid #d6d6d6;
+  padding: 6px 13px;
+}
+html body dl {
+  padding: 0;
+}
+html body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+html body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+html body code {
+  font-family: Menlo, Monaco, Consolas, 'Courier New', monospace;
+  font-size: 0.85em !important;
+  color: #000;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+  padding: 0.2em 0;
+}
+html body code::after,
+html body code::before {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+html body pre > code {
+  padding: 0;
+  margin: 0;
+  font-size: 0.85em !important;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+html body .highlight {
+  margin-bottom: 16px;
+}
+html body .highlight pre,
+html body pre {
+  padding: 1em;
+  overflow: auto;
+  font-size: 0.85em !important;
+  line-height: 1.45;
+  border: #d6d6d6;
+  border-radius: 3px;
+}
+html body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+html body pre code,
+html body pre tt {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+html body pre code:after,
+html body pre code:before,
+html body pre tt:after,
+html body pre tt:before {
+  content: normal;
+}
+html body blockquote,
+html body dl,
+html body ol,
+html body p,
+html body pre,
+html body ul {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+html body kbd {
+  color: #000;
+  border: 1px solid #d6d6d6;
+  border-bottom: 2px solid #c7c7c7;
+  padding: 2px 4px;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+}
+@media print {
+  html body {
+    background-color: #fff;
+  }
+  html body h1,
+  html body h2,
+  html body h3,
+  html body h4,
+  html body h5,
+  html body h6 {
+    color: #000;
+    page-break-after: avoid;
+  }
+  html body blockquote {
+    color: #5c5c5c;
+  }
+  html body pre {
+    page-break-inside: avoid;
+  }
+  html body table {
+    display: table;
+  }
+  html body img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  html body code,
+  html body pre {
+    word-wrap: break-word;
+    white-space: pre;
+  }
+}
+.markdown-preview {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+.markdown-preview .newpage,
+.markdown-preview .pagebreak {
+  page-break-before: always;
+}
+.markdown-preview pre.line-numbers {
+  position: relative;
+  padding-left: 3.8em;
+  counter-reset: linenumber;
+}
+.markdown-preview pre.line-numbers > code {
+  position: relative;
+}
+.markdown-preview pre.line-numbers .line-numbers-rows {
+  position: absolute;
+  pointer-events: none;
+  top: 1em;
+  font-size: 100%;
+  left: 0;
+  width: 3em;
+  letter-spacing: -1px;
+  border-right: 1px solid #999;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.markdown-preview pre.line-numbers .line-numbers-rows > span {
+  pointer-events: none;
+  display: block;
+  counter-increment: linenumber;
+}
+.markdown-preview pre.line-numbers .line-numbers-rows > span:before {
+  content: counter(linenumber);
+  color: #999;
+  display: block;
+  padding-right: 0.8em;
+  text-align: right;
+}
+.markdown-preview .mathjax-exps .MathJax_Display {
+  text-align: center !important;
+}
+.markdown-preview:not([for="preview"]) .code-chunk .btn-group {
+  display: none;
+}
+.markdown-preview:not([for="preview"]) .code-chunk .status {
+  display: none;
+}
+.markdown-preview:not([for="preview"]) .code-chunk .output-div {
+  margin-bottom: 16px;
+}
+.scrollbar-style::-webkit-scrollbar {
+  width: 8px;
+}
+.scrollbar-style::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+.scrollbar-style::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(150, 150, 150, 0.66);
+  border: 4px solid rgba(150, 150, 150, 0.66);
+  background-clip: content-box;
+}
+html body[for="html-export"]:not([data-presentation-mode]) {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow: auto;
+}
+html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+  position: relative;
+  top: 0;
+}
+@media screen and (min-width: 914px) {
+  html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+    padding: 2em calc(-407%);
+  }
+}
+@media screen and (max-width: 914px) {
+  html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+    padding: 2em;
+  }
+}
+@media screen and (max-width: 450px) {
+  html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview {
+    font-size: 14px !important;
+    padding: 1em;
+  }
+}
+@media print {
+  html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn {
+    display: none;
+  }
+}
+html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn {
+  position: fixed;
+  bottom: 8px;
+  left: 8px;
+  font-size: 28px;
+  cursor: pointer;
+  color: inherit;
+  z-index: 99;
+  width: 32px;
+  text-align: center;
+  opacity: 0.4;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn {
+  opacity: 1;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  padding: 32px 0 48px;
+  font-size: 14px;
+  box-shadow: 0 0 4px rgba(150, 150, 150, 0.33);
+  box-sizing: border-box;
+  overflow: auto;
+  background-color: inherit;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar {
+  width: 8px;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: rgba(150, 150, 150, 0.66);
+  border: 4px solid rgba(150, 150, 150, 0.66);
+  background-clip: content-box;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a {
+  text-decoration: none;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul {
+  padding: 0 1.6em;
+  margin-top: 0.8em;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li {
+  margin-bottom: 0.8em;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul {
+  list-style-type: none;
+}
+html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+  left: 300px;
+  width: calc(-200%);
+  padding: 2em calc(-557%);
+  margin: 0;
+  box-sizing: border-box;
+}
+@media screen and (max-width: 1274px) {
+  html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+    padding: 2em;
+  }
+}
+@media screen and (max-width: 450px) {
+  html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview {
+    background: red;
+    width: 100%;
+  }
+}
+html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview {
+  left: 50%;
+  transform: translateX(-50%);
+}
+html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc {
+  display: none;
+}
+ 
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview   ">
+      <p>本文介绍了linux下的压缩程式tar、gzip、gunzip、bzip2、bunzip2、compress 、uncompress、 zip、 unzip、rar、unrar等程式，以及如何使用它们对.tar、.gz 、.tar.gz、.tgz、.bz2、.tar.bz2、.Z、. tar.Z、.zip、.rar这10种压缩文件进行操作</p>
+<p>Linux下最常用的打包程序就是tar了，使用tar程序打出来的包我们常称为tar包，tar包文件的命令通常都是以.tar结尾的。生成tar包后，就可以用其它的程序来进行压缩了，所以首先就来讲讲tar命令的基本用法：</p>
+<p>tar命令的选项有很多(用man tar可以查看到)，但常用的就那么几个选项，下面来举例说明一下：</p>
+<h1 class="mume-header" id="tar-cf-alltar-jpg">tar -cf all.tar *.jpg</h1>
+
+<p>这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包 ，-f指定包的文件名。</p>
+<h1 class="mume-header" id="tar-rf-alltar-gif">tar -rf all.tar *.gif</h1>
+
+<p>这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的意思。</p>
+<h1 class="mume-header" id="tar-uf-alltar-logogif">tar -uf all.tar logo.gif</h1>
+
+<p>这条命令是更新原来tar包all.tar中logo.gif文件，-u是表示更新文件的意思。</p>
+<h1 class="mume-header" id="tar-tf-alltar">tar -tf all.tar</h1>
+
+<p>这条命令是列出all.tar包中所有文件，-t是列出文件的意思</p>
+<h1 class="mume-header" id="tar-xf-alltar">tar -xf all.tar</h1>
+
+<p>这条命令是解出all.tar包中所有文件，-x是解开的意思</p>
+<p>以上就是tar的最基本的用法。为了方便用户在打包解包的同时可以压缩或解压文件，tar提供了一种特殊的功能。这就是tar可以在打包或解包的同时调用其它的压缩程序，比如调用gzip、bzip2等。</p>
+<ol>
+<li>tar调用</li>
+</ol>
+<p>gzip是GNU组织开发的一个压缩程序，.gz结尾的文件就是gzip压缩的结果。与gzip 相对的解压程序是gunzip。tar中使用-z这个参数来调用gzip。下面来举例说明一下：</p>
+<h1 class="mume-header" id="tar-czf-alltargz-jpg">tar -czf all.tar.gz *.jpg</h1>
+
+<p>这条命令是将所有.jpg的文件打成一个tar包，并且将其用gzip压缩，生成一个gzip压缩过的包，包名为all.tar.gz</p>
+<h1 class="mume-header" id="tar-xzf-alltargz">tar -xzf all.tar.gz</h1>
+
+<p>这条命令是将上面产生的包解开。</p>
+<ol start="2">
+<li>tar调用bzip2</li>
+</ol>
+<p>bzip2是一个压缩能力更强的压缩程序，.bz2结尾的文件就是bzip2压缩的结果。</p>
+<p>与bzip2相对的解压程序是bunzip2。tar中使用-j这个参数来调用gzip。下面来举例说明一下：</p>
+<h1 class="mume-header" id="tar-cjf-alltarbz2-jpg">tar -cjf all.tar.bz2 *.jpg</h1>
+
+<p>这条命令是将所有.jpg的文件打成一个tar包，并且将其用bzip2压缩，生成一个bzip2压缩过的包，包名为all.tar.bz2</p>
+<h1 class="mume-header" id="tar-xjf-alltarbz2">tar -xjf all.tar.bz2</h1>
+
+<p>这条命令是将上面产生的包解开。</p>
+<p>3)tar调用compress</p>
+<p>compress也是一个压缩程序，但是好象使用compress的人不如gzip和bzip2的人多。.Z结尾的文件就是bzip2压缩的结果。与 compress相对的解压程序是uncompress。tar中使用-Z这个参数来调用compress。下面来举例说明一下：</p>
+<h1 class="mume-header" id="tar-czf-alltarz-jpg">tar -cZf all.tar.Z *.jpg</h1>
+
+<p>这条命令是将所有.jpg的文件打成一个tar包，并且将其用compress压缩，生成一个uncompress压缩过的包，包名为all.tar.Z</p>
+<h1 class="mume-header" id="tar-xzf-alltarz">tar -xZf all.tar.Z</h1>
+
+<p>这条命令是将上面产生的包解开</p>
+<p>有了上面的知识，你应该可以解开多种压缩文件了，下面对于tar系列的压缩文件作一个小结：</p>
+<p>1)对于.tar结尾的文件</p>
+<p>tar -xf all.tar</p>
+<p>2)对于.gz结尾的文件</p>
+<p>gzip -d all.gz</p>
+<p>gunzip all.gz</p>
+<p>3)对于.tgz或.tar.gz结尾的文件</p>
+<p>tar -xzf all.tar.gz</p>
+<p>tar -xzf all.tgz</p>
+<p>4)对于.bz2结尾的文件</p>
+<p>bzip2 -d all.bz2</p>
+<p>bunzip2 all.bz2</p>
+<p>5)对于tar.bz2结尾的文件</p>
+<p>tar -xjf all.tar.bz2</p>
+<p>6)对于.Z结尾的文件</p>
+<p>uncompress all.Z</p>
+<p>7)对于.tar.Z结尾的文件</p>
+<p>tar -xZf all.tar.z</p>
+<p>另外对于Window下的常见压缩文件.zip和.rar，Linux也有相应的方法来解压它们：</p>
+<p>1)对于.zip</p>
+<p>linux下提供了zip和unzip程序，zip是压缩程序，unzip是解压程序。它们的参数选项很多，这里只做简单介绍，依旧举例说明一下其用法：</p>
+<h1 class="mume-header" id="zip-allzip-jpg">zip all.zip *.jpg</h1>
+
+<p>这条命令是将所有.jpg的文件压缩成一个zip包</p>
+<h1 class="mume-header" id="unzip-allzip">unzip all.zip</h1>
+
+<p>这条命令是将all.zip中的所有文件解压出来</p>
+<p>2)对于.rar</p>
+<p>要在linux下处理.rar文件，需要安装RAR for Linux，可以从网上下载，但要记住，RAR for Linux 不是免费的；可从http://www.rarsoft.com/download.htm下载RARfor Linux 3.2.<br>
+0，然后安装：</p>
+<p>2<br>
+3</p>
+<h1 class="mume-header" id="tar-xzpvf-rarlinux-320targz">tar -xzpvf rarlinux-3.2.0.tar.gz</h1>
+
+<h1 class="mume-header" id="cd-rar">cd rar</h1>
+
+<h1 class="mume-header" id="make">make</h1>
+
+<p>这样就安装好了，安装后就有了rar和unrar这两个程序，rar是压缩程序，unrar 是解压程序。它们的参数选项很多，这里只做简单介绍，依旧举例说明一下其用法：</p>
+<h1 class="mume-header" id="rar-a-all-jpg">rar a all *.jpg</h1>
+
+<p>这条命令是将所有.jpg的文件压缩成一个rar包，名为all.rar，该程序会将.rar 扩展名将自动附加到包名后。</p>
+<h1 class="mume-header" id="unrar-e-allrar">unrar e all.rar</h1>
+
+<p>这条命令是将all.rar中的所有文件解压出来</p>
+<p>到此为至，我们已经介绍过linux下的tar、gzip、gunzip、bzip2、bunzip2、compress 、 uncompress、 zip、unzip、rar、unrar等程式，你应该已经能够使用它们对.tar 、.gz、.tar.gz、.tgz、.bz2、.tar.bz2、. Z、.tar.Z、.zip、.rar这10种压缩文<br>
+件进行解压了，以后应该不需要为下载了一个软件而不知道如何在Linux下解开而烦恼了。而且以上方法对于Unix也基本有效。</p>
+<p>本文介绍了linux下的压缩程式tar、gzip、gunzip、bzip2、bunzip2、compress 、uncompress、 zip、 unzip、rar、unrar等程式，以及如何使用它们对.tar、.gz 、.tar.gz、.tgz、.bz2、.tar.bz2、.Z、. tar.Z、.zip、.rar这10种压缩文件进行<br>
+操作。</p>
+<p>以下补充</p>
+<p>tar</p>
+<p>-c: 建立压缩档案<br>
+-x：解压<br>
+-t：查看内容<br>
+-r：向压缩归档文件末尾追加文件<br>
+-u：更新原压缩包中的文件</p>
+<p>这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。</p>
+<p>-z：有gzip属性的<br>
+-j：有bz2属性的<br>
+-Z：有compress属性的<br>
+-v：显示所有过程<br>
+-O：将文件解开到标准输出</p>
+<p>下面的参数-f是必须的</p>
+<p>-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。</p>
+<p>2</p>
+<h1 class="mume-header" id="tar-cf-alltar-jpg%E8%BF%99%E6%9D%A1%E5%91%BD%E4%BB%A4%E6%98%AF%E5%B0%86%E6%89%80%E6%9C%89jpg%E7%9A%84%E6%96%87%E4%BB%B6%E6%89%93%E6%88%90%E4%B8%80%E4%B8%AA%E5%90%8D%E4%B8%BAalltar%E7%9A%84%E5%8C%85-c%E6%98%AF%E8%A1%A8%E7%A4%BA%E4%BA%A7%E7%94%9F%E6%96%B0%E7%9A%84%E5%8C%85-f%E6%8C%87%E5%AE%9A%E5%8C%85%E7%9A%84%E6%96%87%E4%BB%B6%E5%90%8D">tar -cf all.tar *.jpg这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名。</h1>
+
+<h1 class="mume-header" id="tar-rf-alltar-gif-1">tar -rf all.tar *.gif</h1>
+
+<p>这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的意思。</p>
+<h1 class="mume-header" id="tar-uf-alltar-logogif-1">tar -uf all.tar logo.gif</h1>
+
+<p>这条命令是更新原来tar包all.tar中logo.gif文件，-u是表示更新文件的意思。</p>
+<h1 class="mume-header" id="tar-tf-alltar-1">tar -tf all.tar</h1>
+
+<p>这条命令是列出all.tar包中所有文件，-t是列出文件的意思</p>
+<h1 class="mume-header" id="tar-xf-alltar-1">tar -xf all.tar</h1>
+
+<p>这条命令是解出all.tar包中所有文件，-x是解开的意思</p>
+<p>压缩</p>
+<pre class="language-text">tar –cvf jpg.tar *.jpg &#x2F;&#x2F;将目录里所有jpg文件打包成tar.jpg
+tar –czf jpg.tar.gz *.jpg &#x2F;&#x2F;将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gz
+tar –cjf jpg.tar.bz2 *.jpg &#x2F;&#x2F;将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2
+tar –cZf jpg.tar.Z *.jpg &#x2F;&#x2F;将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Z
+rar a jpg.rar *.jpg &#x2F;&#x2F;rar格式的压缩，需要先下载rar for linux
+zip jpg.zip *.jpg &#x2F;&#x2F;zip格式的压缩，需要先下载zip for linux
+</pre>
+<p>解压</p>
+<pre class="language-text">tar –xvf file.tar &#x2F;&#x2F;解压 tar包
+tar -xzvf file.tar.gz &#x2F;&#x2F;解压tar.gz
+tar -xjvf file.tar.bz2 &#x2F;&#x2F;解压 tar.bz2
+tar –xZvf file.tar.Z &#x2F;&#x2F;解压tar.Z
+unrar e file.rar &#x2F;&#x2F;解压rar
+unzip file.zip &#x2F;&#x2F;解压zip
+</pre>
+<p>总结</p>
+<pre class="language-text">1、*.tar 用 tar –xvf 解压
+2、*.gz 用 gzip -d或者gunzip 解压
+3、*.tar.gz和*.tgz 用 tar –xzf 解压
+4、*.bz2 用 bzip2 -d或者用bunzip2 解压
+5、*.tar.bz2用tar –xjf 解压
+6、*.Z 用 uncompress 解压
+7、*.tar.Z 用tar –xZf 解压
+8、*.rar 用 unrar e解压
+9、*.zip 用 unzip 解压
+</pre>
+<p>Linux下解压RAR软件下载和解压.zip和.rar文件</p>
+<p>下载地址：<a href="http://www.rarsoft.com/download.htm%EF%BC%88%E7%9B%AE%E5%89%8D%E6%9C%80%E6%96%B0%E4%B8%BARAR">http://www.rarsoft.com/download.htm（目前最新为RAR</a> 3.71 for Linux）</p>
+<p>以最新的为准。</p>
+<p>对于Window下的常见压缩文件.zip和.rar，Linux也有相应的方法来解压它们：</p>
+<p>1:对于.zip</p>
+<p>linux下提供了zip和unzip程序，zip是压缩程序，unzip是解压程序。它们的参数选项很多，这里只做简单介绍，举例说明一下其用法：</p>
+<p>2</p>
+<h1 class="mume-header" id="zip-allzip-jpg%E8%BF%99%E6%9D%A1%E5%91%BD%E4%BB%A4%E6%98%AF%E5%B0%86%E6%89%80%E6%9C%89jpg%E7%9A%84%E6%96%87%E4%BB%B6%E5%8E%8B%E7%BC%A9%E6%88%90%E4%B8%80%E4%B8%AAzip%E5%8C%85">zip all.zip *.jpg(这条命令是将所有.jpg的文件压缩成一个zip包)</h1>
+
+<h1 class="mume-header" id="unzip-allzip%E8%BF%99%E6%9D%A1%E5%91%BD%E4%BB%A4%E6%98%AF%E5%B0%86allzip%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E6%96%87%E4%BB%B6%E8%A7%A3%E5%8E%8B%E5%87%BA%E6%9D%A5">unzip all.zip(这条命令是将all.zip中的所有文件解压出来)</h1>
+
+<p>2:对于.rar</p>
+<p>要在linux下处理.rar文件，需要安装RAR for Linux，可以从网上下载，但要记住，RAR for Linux不是免费的；可从http://www.rarsoft.com/download.htm下载RAR 3。60 for Linux ，然后安装其安装操作如下:</p>
+<p>2<br>
+3</p>
+<h1 class="mume-header" id="tar-xzpvf-rarlinux-320targz-1">tar -xzpvf rarlinux-3.2.0.tar.gz</h1>
+
+<h1 class="mume-header" id="cd-rar-1">cd rar</h1>
+
+<h1 class="mume-header" id="make-1">make</h1>
+
+<p>这样就安装好了，安装后就有了rar和unrar这两个程序，rar是压缩程序，unrar是解压程序。它们的参数选项很多，举例说明一下其用法</p>
+<h1 class="mume-header" id="rar-a-all-jpg-1">rar a all *.jpg</h1>
+
+<p>这条命令是将所有.jpg的文件压缩成一个rar包，名为all.rar，该程序会将.rar 扩展名将自动附加到包名后。</p>
+<h1 class="mume-header" id="unrar-e-allrar-1">unrar e all.rar</h1>
+
+<p>这条命令是将all.rar中的所有文件解压出来。</p>
+<p>xxxx.tar.gz文件使用tar带zxvf参数，可以一次解压开。XXXX为文件名。例如：</p>
+<p>$tar zxvf xxxx.tar.gz</p>
+<p>gzip -d</p>
+<p>语 法：gzip [-acdfhlLnNqrtvV][-S &lt;压缩字尾字符串&gt;][-&lt;压缩效率&gt;][--best/fast][文件...] 或 gzip [-acdfhlLnNqrtvV][-S &lt;压缩字尾字符串&gt;][-&lt;压缩效率&gt;][--best/fast][目录]</p>
+<p>补充说明：gzip是个使用广泛的压缩程序，文件经它压缩过后，其名称后面会多出&quot;.gz&quot;的扩展名。</p>
+<p>参 数：</p>
+<p>-a或--ascii 使用ASCII文字模式。<br>
+-c或--stdout或--to-stdout 把压缩后的文件输出到标准输出设备，不去更动原始文件。<br>
+-d或--decompress或----uncompress 解开压缩文件。<br>
+-f或--force 强行压缩文件。不理会文件名称或硬连接是否存在以及该文件是否为符号连接。<br>
+-h或--help 在线帮助。<br>
+-l或--list 列出压缩文件的相关信息。<br>
+-L或--license 显示版本与版权信息。<br>
+-n或--no-name 压缩文件时，不保存原来的文件名称及时间戳记。<br>
+-N或--name 压缩文件时，保存原来的文件名称及时间戳记。<br>
+-q或--quiet 不显示警告信息。<br>
+-r或--recursive 递归处理，将指定目录下的所有文件及子目录一并处理。<br>
+-S&lt;压缩字尾字符串&gt;或----suffix&lt;压缩字尾字符串&gt; 更改压缩字尾字符串。<br>
+-t或--test 测试压缩文件是否正确无误。<br>
+-v或--verbose 显示指令执行过程。<br>
+-V或--version 显示版本信息。<br>
+-&lt;压缩效率&gt; 压缩效率是一个介于1－9的数值，预设值为&quot;6&quot;，指定愈大的数值，压缩效率就会愈高。<br>
+--best 此参数的效果和指定&quot;-9&quot;参数相同。<br>
+--fast 此参数的效果和指定&quot;-1&quot;参数相同。</p>
+<p>1、<em>.tar 用 tar –xvf 解压<br>
+2、</em>.gz 用 gzip -d或者gunzip 解压<br>
+3、<em>.tar.gz和</em>.tgz 用 tar –xzf 解压<br>
+4、<em>.bz2 用 bzip2 -d或者用bunzip2 解压<br>
+5、</em>.tar.bz2用tar –xjf 解压<br>
+6、<em>.Z 用 uncompress 解压<br>
+7、</em>.tar.Z 用tar –xZf 解压<br>
+8、<em>.rar 用 unrar e解压<br>
+9、</em>.zip 用 unzip 解压</p>
+<p>Linux下*.tar.gz文件解压缩命令</p>
+<p>1.压缩命令：</p>
+<p>命令格式：tar -zcvf 压缩文件名.tar.gz 被压缩文件名</p>
+<p>可先切换到当前目录下。压缩文件名和被压缩文件名都可加入路径。</p>
+<p>2.解压缩命令：</p>
+<p>命令格式：tar -zxvf 压缩文件名.tar.gz</p>
+<p>解压缩后的文件只能放在当前的目录。</p>
+<p>你可以使用 zip 命令同时处理多个文件和目录，方法是将它们逐一列出，并用空格间隔：</p>
+<p>zip -r filename.zip file1 file2 file3 /usr/work/school</p>
+<p>压缩单个目录命令zip -r filename.zip filename</p>
+<p>上面的命令把 file1、file2、 file3、以及 /usr/work/school 目录的内容（假设这个目录存在）压缩起来，然后放入 filename.zip 文件中。</p>
+
+      </div>
+      
+      
+    </body>
+    
+    
+    
+    
+    
+    
+    
+  </html>
