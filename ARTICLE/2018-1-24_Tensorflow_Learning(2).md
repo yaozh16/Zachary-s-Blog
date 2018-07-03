@@ -73,6 +73,7 @@ tf.constant(value,dtype=None,shape=None,name="Const",verify_shape=False)
 
 **Attension:** Avoid lazy loading
 ### ***model building***
+
 | Step                              | Usage                                |
 |:----------------------------------|:-------------------------------------|
 | decide placeholder                | for data input                       |
@@ -81,6 +82,7 @@ tf.constant(value,dtype=None,shape=None,name="Const",verify_shape=False)
 | decide optimizer                  | it will modify variables when runned |
 | create session and init variables |                                      |
 | **loop**                          |                                      |
+
 
 **loop中的步骤：**
 1. 读取数据
